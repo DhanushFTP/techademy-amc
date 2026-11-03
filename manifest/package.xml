@@ -1,5 +1,4 @@
-This XML file does not appear to have any style information associated with it. The document tree is shown below.
-<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+Package xmlns="http://soap.sforce.com/2006/04/metadata">
 <!--  ===== CODE & UI =====  -->
 <types>
 <members>*</members>
@@ -109,6 +108,20 @@ This XML file does not appear to have any style information associated with it. 
 <members>*</members>
 <name>CustomField</name>
 </types>
+<!--  ===== Email Template =====  -->
+<types>
+<members>*</members>
+<name>EmailTemplate</name>
+</types>
+<types>
+<members>unfiled$public</members>
+<name>EmailFolder</name>
+</types>
+<types>
+<members>unfiled$public/Account_Greeting_Email</members>
+<members>unfiled$public/Product_Interest_Status_Change</members>
+<name>EmailTemplate</name>
+</types>
 <!--  ===== METADATA AROUND OBJECTS =====  -->
 <types>
 <members>*</members>
@@ -149,6 +162,10 @@ This XML file does not appear to have any style information associated with it. 
 <types>
 <members>*</members>
 <name>StandardValueSet</name>
+</types>
+<types>
+<members>*</members>
+<name>Layout</name>
 </types>
 <!--  ===== AUTOMATION =====  -->
 <types>
@@ -226,10 +243,6 @@ This XML file does not appear to have any style information associated with it. 
 <name>EmailTemplate</name>
 </types>
 <!--  ===== SECURITY =====  -->
-<types>
-<members>*</members>
-<name>Profile</name>
-</types>
 <types>
 <members>*</members>
 <name>PermissionSet</name>
