@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Id_ZOHO__c</fullName>
+    <businessStatus>DeprecateCandidate</businessStatus>
+    <description>Zoho Migration</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Zoho Migration</inlineHelpText>
+    <label>Deal Id ZOHO</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

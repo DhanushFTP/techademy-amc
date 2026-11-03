@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_In_Correct_Location</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  /* only if the app filled your single geolocation field */
+  NOT( ISBLANK( Check_In_Location__Latitude__s ) ),
+  NOT( ISBLANK( Check_In_Location__Longitude__s ) ),
+
+  /* Haversine formula in kilometres; Earth ≈ 6371 km */
+  (
+    6371 *
+    ACOS(
+      COS( Account__r.Account_Location__Latitude__s  * 0.0174532925199433 ) *
+      COS( Check_In_Location__Latitude__s             * 0.0174532925199433 ) *
+      COS(
+        ( Check_In_Location__Longitude__s -
+          Account__r.Account_Location__Longitude__s 
+        )                                          * 0.0174532925199433
+      ) +
+      SIN( Account__r.Account_Location__Latitude__s  * 0.0174532925199433 ) *
+      SIN( Check_In_Location__Latitude__s             * 0.0174532925199433 )
+    )
+  ) &gt; 0.3  /* 0.3 km = 300 m; adjust as needed */
+)</errorConditionFormula>
+    <errorMessage>You are outside the 300m boundary of this account. Move closer and try again.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>OSS_Outdated_Remark</fullName>
+        <categories>OSS Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OSS Outdated Remark</shortDescription>
+        <value>OSS data is outdated. Please review and update the answers.</value>
+    </labels>
+    <labels>
+        <fullName>OSS_Outdated_Threshold_Days</fullName>
+        <categories>OSS Dashboard</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OSS Outdated Threshold Days</shortDescription>
+        <value>7</value>
+    </labels>
+    <labels>
+        <fullName>Opportunity_Alert_Closed_Deal_Emails</fullName>
+        <categories>Opportunity Alerts</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Any deal moved to Closed Won or Closed Lost</shortDescription>
+        <value>tharun@fingertipplus.com</value>
+    </labels>
+    <labels>
+        <fullName>Opportunity_Alert_Closed_Won_10L_Emails</fullName>
+        <categories>Opportunity Alerts</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Deal above 10L moved to Closed Won</shortDescription>
+        <value>tharun@fingertipplus.com</value>
+    </labels>
+    <labels>
+        <fullName>Opportunity_Alert_Department_Head_Username</fullName>
+        <categories>Opportunity Alerts</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Username of the department head for deal alerts</shortDescription>
+        <value>dara.elavia@techademy.com</value>
+    </labels>
+    <labels>
+        <fullName>Opportunity_Alert_High_Value_Emails</fullName>
+        <categories>Opportunity Alerts</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Deal above 25L - Stage or Amount changed</shortDescription>
+        <value>tharun@fingertipplus.com</value>
+    </labels>
+    <labels>
+        <fullName>OrgUrl</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OrgUrl</shortDescription>
+        <value>https://techademy2.lightning.force.com</value>
+    </labels>
+    <labels>
+        <fullName>OrgWideEmailAddressID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OrgWideEmailAddressID</shortDescription>
+        <value>interest@techademy.com</value>
+    </labels>
+    <labels>
+        <fullName>Record_View_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Record View URL</shortDescription>
+        <value>https://techademy2.lightning.force.com/</value>
+    </labels>
+    <labels>
+        <fullName>restrictOpportunityUpdate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>restrictOpportunityUpdate</shortDescription>
+        <value>false</value>
+    </labels>
+</CustomLabels>

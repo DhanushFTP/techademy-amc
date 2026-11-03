@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Verbal_assurance_recieved_score__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(
+ Verbal_assurance_recieved__c ,
+&quot;Yes&quot;, 2,
+&quot;No assurance yet&quot;, 1,
+&quot;Proposal yet to be submitted&quot;, 0,
+&quot;Don&apos;t know&quot;, -1,
+
+    0
+) * 0.05*100</formula>
+    <inlineHelpText>Weighted score for After submitting Commercial Proposal, have we received verbal assurance from the Decision maker?</inlineHelpText>
+    <label>Verbal assurance recieved score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

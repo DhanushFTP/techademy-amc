@@ -1,0 +1,12 @@
+<aura:component
+    implements="force:hasRecordId,force:lightningQuickAction,flexipage:availableForRecordHome"
+    access="global">
+  
+  <!-- grab the recordId -->
+  <aura:attribute name="recordId" type="Id"/>
+  
+ <!-- Pass it in two ways: kebab-case and camelCase -->
+ <c:checkInLocation 
+ record-id="{!v.recordId}"
+ recordId="{!v.recordId}"/>
+</aura:component>

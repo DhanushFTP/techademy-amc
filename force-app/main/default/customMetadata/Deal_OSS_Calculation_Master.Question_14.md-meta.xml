@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>14</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Use the verbal assurance to tighten the path to final paperwork and payment approval.
+• Confirm what exactly the assurance covers: vendor preference, commercial comfort, or final internal nod.
+• Ask what remains before official closure.
+• Put dates, owners, and approval steps against the remaining tasks.
+• Do not relax until the verbal confidence becomes a formal commitment.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">14|Yes</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We are positive, but nothing official yet.&apos; Response: &apos;That is good progress. What are the last internal steps between this and a formal yes?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Strong signal. Convert verbal comfort into a dated close plan, approval path, and clear final ask.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Move from assurance to action.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Since you are comfortable moving ahead, what are the final steps and dates to get this signed off?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">Yes</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Do not assume silence means progress.
+• Ask directly what is still missing before they are comfortable giving verbal confidence.
+• Check if the gap is internal alignment, budget, risk, competition, or unresolved commercial point.
+• Create a close plan that earns assurance instead of waiting for it.
+• Move the deal from polite follow-up to buyer-led next step.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">14|No assurance yet</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We need more time.&apos; Response: &apos;Of course. To help properly, what would need to become clearer before you can say you are comfortable moving ahead?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not keep chasing politely. Ask what is missing for a verbal yes and close that gap directly.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Proposal may be sitting without sponsor commitment.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What is the one thing stopping you from giving us a clear go-ahead today?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">No assurance yet</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Do not rush a proposal just because the deal feels active.
+• First confirm requirement clarity, buying criteria, budget direction, and buyer access.
+• Use the pre-proposal stage to shape expectations and reduce rework.
+• Send a proposal only when it will advance the deal, not merely document activity.
+• A well-timed proposal converts better than an early one.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">14|Proposal yet to be submitted</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Send the proposal and we will review.&apos; Response: &apos;Happy to. Before I do that, I want to be sure it is timed right and aligned to your actual decision criteria.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not rush the proposal. First confirm problem, criteria, buyer, and budget so the proposal lands properly.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Proposal too early will weaken your position.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;Before I send numbers, I want to make sure the proposal answers the real decision points.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Proposal yet to be submitted</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Clarify the deal stage before forecasting confidently.
+• Check whether the proposal has been reviewed, who has seen it, and what the current buyer position is.
+• Ask whether there is any informal preference already forming.
+• Without this clarity, the next move may be mistimed.
+• Re-establish where you really stand in the close path.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">14|Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Let us reconnect later.&apos; Response: &apos;Sure. Before that, can I confirm where we stand now so the next step is useful rather than repetitive?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Find out whether the proposal has emotional support inside the account. Commercials without internal backing usually stall.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: No clarity on buyer confidence.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Who is actually pushing this internally, and how do they feel about our proposal today?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">After submitting Commercial Proposal, have we received verbal assurance from the Decision maker?</value>
+    </values>
+</CustomMetadata>

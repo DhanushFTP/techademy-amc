@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>2</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Use the past engagement as proof, but do not assume this deal will close on relationship alone.
+• Review what worked, what did not, and what the customer wants improved this time.
+• Bring adoption data, outcome data, or user feedback from the earlier engagement.
+• Position the next purchase as a logical expansion, renewal, or upgrade with fresh value.
+• Ask what would make this round easier and faster for the buyer to approve.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">2|Repeat purchase</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;This time it is different.&apos; Response: &apos;That is useful to know. Let us keep the trust from the last engagement, but rework the value story for what has changed now.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Use the earlier win to speed up trust. Bring proof of value, adoption, and what will improve this time.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Use past success to expand faster.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;Last time, these were the outcomes. This round, we can improve speed, scale, or coverage.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">Repeat purchase</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Help the buyer shape the business case instead of only selling product.
+• Clarify first-phase scope, success metric, target audience, and implementation owner.
+• Reduce perceived risk with a phased rollout or pilot path.
+• Tie the initiative to institutional goals, workforce readiness, compliance, productivity, or learner outcomes.
+• Make it easy for the buyer to explain internally why this should be funded now.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">2|New Initiative</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We are still exploring.&apos; Response: &apos;That is fine. Let us define what a successful first phase looks like so the exploration becomes useful and decision-ready.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Shape the buying vision early. Help them define the business case, rollout logic, and first-win outcome.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: New initiatives stall if the case for change is weak.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What does a successful first phase look like, and who will judge that success?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">New Initiative</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Diagnose what is not working in the current setup before positioning your alternative.
+• Understand pain points in adoption, quality, platform experience, support, analytics, or commercial value.
+• Show a low-friction transition path with minimal disruption.
+• Build a switching story around better outcomes, not only price.
+• Prepare a side-by-side comparison that makes change feel safe and practical.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">2|Total / Partial replacement of current solution</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Changing vendors is painful.&apos; Response: &apos;Agreed. That is exactly why I would like to show a low-risk transition path rather than just a better-looking proposal.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Win by exposing gaps in the current setup, then show a safer switch path. Focus on pain, transition, and business impact.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Replacement deals become price fights without a switch story.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What is not working today, and what would make a change worth the effort?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Total / Partial replacement of current solution</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• First find out if this is repeat spend, new budget, or a switch from an existing provider.
+• Ask what triggered the conversation and whether there is an incumbent or current internal workaround.
+• Understand if the buyer is expanding, replacing, or exploring.
+• Adjust your sales motion only after the opportunity type is clear.
+• Without this clarity, avoid pitching a generic solution.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">2|Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We are figuring that out ourselves.&apos; Response: &apos;Understood. If I know whether this is expansion, fresh spend, or replacement, I can guide you much more accurately.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">First understand whether this is expansion, new spend, or replacement. The sales motion changes based on that answer.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Wrong positioning because the deal type is unclear.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Is this a fresh budget, an expansion, or a move away from an existing vendor?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">What is the opportunity type?</value>
+    </values>
+</CustomMetadata>

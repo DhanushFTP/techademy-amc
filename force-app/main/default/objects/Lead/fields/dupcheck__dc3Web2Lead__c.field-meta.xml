@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>dupcheck__dc3Web2Lead__c</fullName>
+    <businessStatus>DeprecateCandidate</businessStatus>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <label>is Web2Lead</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Check-In Map">
+      <template if:true={centerLocation}>
+        <lightning-map 
+          map-markers={mapMarkers}
+          zoom-level="14"
+          center={centerLocation}>
+        </lightning-map>
+      </template>
+      <template if:false={centerLocation}>
+        <p class="slds-p-around_medium">No check-ins to display.</p>
+      </template>
+    </lightning-card>
+  </template>

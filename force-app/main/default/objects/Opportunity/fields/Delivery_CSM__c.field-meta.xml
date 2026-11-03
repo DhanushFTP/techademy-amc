@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_CSM__c</fullName>
+    <label>Delivery/CSM</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>CSDM_Lead__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aarti</fullName>
+                <default>false</default>
+                <label>Aarti</label>
+            </value>
+            <value>
+                <fullName>Muzammil</fullName>
+                <default>false</default>
+                <label>Muzammil</label>
+            </value>
+            <value>
+                <fullName>Rakshith K</fullName>
+                <default>false</default>
+                <label>Rakshith K</label>
+            </value>
+            <value>
+                <fullName>Nawaz</fullName>
+                <default>false</default>
+                <label>Nawaz</label>
+            </value>
+            <value>
+                <fullName>Rohith K</fullName>
+                <default>false</default>
+                <label>Rohith K</label>
+            </value>
+            <value>
+                <fullName>Felix</fullName>
+                <default>false</default>
+                <label>Felix</label>
+            </value>
+            <value>
+                <fullName>Ayman</fullName>
+                <default>false</default>
+                <label>Ayman</label>
+            </value>
+            <value>
+                <fullName>Noor Mohammed Baig</fullName>
+                <default>false</default>
+                <label>Noor Mohammed Baig</label>
+            </value>
+            <value>
+                <fullName>Maithili</fullName>
+                <default>false</default>
+                <label>Maithili</label>
+            </value>
+            <value>
+                <fullName>Deepika CG</fullName>
+                <default>false</default>
+                <label>Deepika CG</label>
+            </value>
+            <value>
+                <fullName>Archana</fullName>
+                <default>false</default>
+                <label>Archana</label>
+            </value>
+            <value>
+                <fullName>Goutham</fullName>
+                <default>false</default>
+                <label>Goutham</label>
+            </value>
+            <value>
+                <fullName>Vandhitha</fullName>
+                <default>false</default>
+                <label>Vandhitha</label>
+            </value>
+            <value>
+                <fullName>Ravikumar</fullName>
+                <default>false</default>
+                <label>Ravikumar</label>
+            </value>
+            <value>
+                <fullName>Anusharon JS</fullName>
+                <default>false</default>
+                <label>Anusharon JS</label>
+            </value>
+            <value>
+                <fullName>Samir Sahu</fullName>
+                <default>false</default>
+                <label>Samir Sahu</label>
+            </value>
+            <value>
+                <fullName>Roshan</fullName>
+                <default>false</default>
+                <label>Roshan</label>
+            </value>
+            <value>
+                <fullName>Mani</fullName>
+                <default>false</default>
+                <label>Mani</label>
+            </value>
+            <value>
+                <fullName>Aathif Fahad K</fullName>
+                <default>false</default>
+                <label>Aathif Fahad K</label>
+            </value>
+            <value>
+                <fullName>Manoj S</fullName>
+                <default>false</default>
+                <label>Manoj S</label>
+            </value>
+            <value>
+                <fullName>Lishika</fullName>
+                <default>false</default>
+                <label>Lishika</label>
+            </value>
+            <value>
+                <fullName>Bhargavi</fullName>
+                <default>false</default>
+                <label>Bhargavi</label>
+            </value>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>true</default>
+                <label>Not Applicable</label>
+            </value>
+            <value>
+                <fullName>Anubha</fullName>
+                <default>false</default>
+                <label>Anubha</label>
+            </value>
+            <value>
+                <fullName>Vikram</fullName>
+                <default>false</default>
+                <label>Vikram</label>
+            </value>
+            <value>
+                <fullName>Pooja Chopra</fullName>
+                <default>false</default>
+                <label>Pooja Chopra</label>
+            </value>
+            <value>
+                <fullName>Ankit</fullName>
+                <default>false</default>
+                <label>Ankit</label>
+            </value>
+            <value>
+                <fullName>Keziah</fullName>
+                <default>false</default>
+                <label>Keziah</label>
+            </value>
+            <value>
+                <fullName>Soma</fullName>
+                <default>false</default>
+                <label>Soma</label>
+            </value>
+            <value>
+                <fullName>Abhishek</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Abhishek</label>
+            </value>
+            <value>
+                <fullName>Andrew</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Andrew</label>
+            </value>
+            <value>
+                <fullName>Anwesha</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Anwesha</label>
+            </value>
+            <value>
+                <fullName>Athul K Anand</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Athul K Anand</label>
+            </value>
+            <value>
+                <fullName>Azeez</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Azeez</label>
+            </value>
+            <value>
+                <fullName>Geetha</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Geetha</label>
+            </value>
+            <value>
+                <fullName>Gowtham</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Gowtham</label>
+            </value>
+            <value>
+                <fullName>Jagatheesan</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Jagatheesan</label>
+            </value>
+            <value>
+                <fullName>Kishore</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Kishore</label>
+            </value>
+            <value>
+                <fullName>Nidhi Sharma</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Nidhi Sharma</label>
+            </value>
+            <value>
+                <fullName>Parichay</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Parichay</label>
+            </value>
+            <value>
+                <fullName>Prajwal A</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Prajwal A</label>
+            </value>
+            <value>
+                <fullName>Prathik S</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Prathik S</label>
+            </value>
+            <value>
+                <fullName>Ramya</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Ramya</label>
+            </value>
+            <value>
+                <fullName>Ronak</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Ronak</label>
+            </value>
+            <value>
+                <fullName>Saranya B</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Saranya B</label>
+            </value>
+            <value>
+                <fullName>Sarath Babu</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Sarath Babu</label>
+            </value>
+            <value>
+                <fullName>Shabrin Taj</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Shabrin Taj</label>
+            </value>
+            <value>
+                <fullName>Shankar Biruly</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Shankar Biruly</label>
+            </value>
+            <value>
+                <fullName>Sharlie</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Sharlie</label>
+            </value>
+            <value>
+                <fullName>Shreekanth Naik</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Shreekanth Naik</label>
+            </value>
+            <value>
+                <fullName>Swathy Dhinakaran</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Swathy Dhinakaran</label>
+            </value>
+            <value>
+                <fullName>Swati</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Swati</label>
+            </value>
+            <value>
+                <fullName>Swetha</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Swetha</label>
+            </value>
+            <value>
+                <fullName>Tanush Gopal</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Tanush Gopal</label>
+            </value>
+            <value>
+                <fullName>Vanitha S</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Vanitha S</label>
+            </value>
+            <value>
+                <fullName>Vidhya</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Vidhya</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Soma Sundar</controllingFieldValue>
+            <valueName>Nawaz</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Soma Sundar</controllingFieldValue>
+            <valueName>Rohith K</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ayman</controllingFieldValue>
+            <valueName>Felix</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ayman</controllingFieldValue>
+            <valueName>Ayman</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Anu Sharon</controllingFieldValue>
+            <valueName>Goutham</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Anu Sharon</controllingFieldValue>
+            <valueName>Vandhitha</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Anu Sharon</controllingFieldValue>
+            <valueName>Anusharon JS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Anu Sharon</controllingFieldValue>
+            <valueName>Samir Sahu</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Anu Sharon</controllingFieldValue>
+            <valueName>Keziah</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mani</controllingFieldValue>
+            <valueName>Roshan</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mani</controllingFieldValue>
+            <valueName>Mani</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bhargavi</controllingFieldValue>
+            <valueName>Bhargavi</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Anubha</controllingFieldValue>
+            <valueName>Anubha</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Anubha</controllingFieldValue>
+            <valueName>Vikram</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pooja</controllingFieldValue>
+            <valueName>Pooja Chopra</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Ankit</controllingFieldValue>
+            <valueName>Ankit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lishika</controllingFieldValue>
+            <valueName>Aathif Fahad K</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lishika</controllingFieldValue>
+            <valueName>Manoj S</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lishika</controllingFieldValue>
+            <valueName>Lishika</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aarti</controllingFieldValue>
+            <valueName>Aarti</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aarti</controllingFieldValue>
+            <valueName>Muzammil</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aarti</controllingFieldValue>
+            <valueName>Rakshith K</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Self</controllingFieldValue>
+            <controllingFieldValue>Not applicable</controllingFieldValue>
+            <valueName>Not Applicable</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Maithili</controllingFieldValue>
+            <valueName>Noor Mohammed Baig</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Maithili</controllingFieldValue>
+            <valueName>Maithili</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Maithili</controllingFieldValue>
+            <valueName>Ravikumar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Archana</controllingFieldValue>
+            <valueName>Deepika CG</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Archana</controllingFieldValue>
+            <valueName>Archana</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

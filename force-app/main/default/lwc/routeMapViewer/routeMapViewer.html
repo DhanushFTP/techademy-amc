@@ -1,0 +1,56 @@
+<template>
+    <lightning-card title="Field Sales Route Map" icon-name="utility:routing_offline">
+      <div class="slds-p-around_medium">
+
+        <!-- Date picker -->
+        <lightning-input
+          type="date"
+          label="Select Date"
+          value={selectedDate}
+          max={todayDate}
+          onchange={handleDateChange}>
+        </lightning-input>
+
+        <template if:true={isLoading}>
+          <div class="slds-m-top_medium">
+            <lightning-spinner alternative-text="Loading route data..." size="small"></lightning-spinner>
+          </div>
+        </template>
+
+        <template if:false={isLoading}>
+
+          <!-- Session info -->
+          <template if:true={hasData}>
+            <div class="slds-box slds-theme_shade slds-m-top_small slds-m-bottom_small">
+              <div class="slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_1-of-3">
+                  <p class="slds-text-title_caps">Start Time</p>
+                  <p>{formattedStartTime}</p>
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                  <p class="slds-text-title_caps">End Time</p>
+                  <p>{formattedEndTime}</p>
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                  <p class="slds-text-title_caps">Points</p>
+                  <p>{pointCount}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Map container -->
+            <div class="map-container" lwc:dom="manual"></div>
+          </template>
+
+          <template if:false={hasData}>
+            <template if:true={selectedDate}>
+              <p class="slds-m-top_medium slds-text-body_regular">
+                No tracking data found for this date.
+              </p>
+            </template>
+          </template>
+
+        </template>
+      </div>
+    </lightning-card>
+  </template>

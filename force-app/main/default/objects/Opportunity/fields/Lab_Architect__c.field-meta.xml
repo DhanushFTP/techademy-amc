@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lab_Architect__c</fullName>
+    <label>Lab Architect</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Vivek</fullName>
+                <default>false</default>
+                <label>Vivek</label>
+            </value>
+            <value>
+                <fullName>Mahesh</fullName>
+                <default>false</default>
+                <label>Mahesh</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

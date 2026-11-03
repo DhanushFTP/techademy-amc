@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Existing_LoBs__c</fullName>
+    <label>Existing LoBs</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ILT/VILT</fullName>
+                <default>false</default>
+                <label>ILT/VILT</label>
+            </value>
+            <value>
+                <fullName>Techademy LMS</fullName>
+                <default>false</default>
+                <label>Techademy LMS</label>
+            </value>
+            <value>
+                <fullName>Yaksha</fullName>
+                <default>false</default>
+                <label>Yaksha</label>
+            </value>
+            <value>
+                <fullName>MML</fullName>
+                <default>false</default>
+                <label>MML</label>
+            </value>
+            <value>
+                <fullName>Virtutor</fullName>
+                <default>false</default>
+                <label>Virtutor</label>
+            </value>
+            <value>
+                <fullName>Certifications</fullName>
+                <default>false</default>
+                <label>Certifications</label>
+            </value>
+            <value>
+                <fullName>Stackables</fullName>
+                <default>false</default>
+                <label>Stackables</label>
+            </value>
+            <value>
+                <fullName>Techademy One</fullName>
+                <default>false</default>
+                <label>Techademy One</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>8</visibleLines>
+</CustomField>

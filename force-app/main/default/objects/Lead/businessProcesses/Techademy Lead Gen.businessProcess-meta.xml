@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Techademy Lead Gen</fullName>
+    <isActive>true</isActive>
+    <values>
+        <fullName>Alternate Contact Identified</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Cold</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Connect Later</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Discussion Initiated</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Disqualified</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Enrich Data</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>MQL</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Meeting Awaited</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Meeting Completed</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Meeting Scheduled</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>New</fullName>
+        <default>true</default>
+    </values>
+    <values>
+        <fullName>Not Interested</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Nurturing</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Platform Walkthrough</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Qualified</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Unable to Connect %28Email Sent%29</fullName>
+        <default>false</default>
+    </values>
+</BusinessProcess>

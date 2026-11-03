@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>7</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Use the business impact to strengthen urgency and justify investment.
+• Quantify the cost of doing nothing in money, time, risk, learner quality, or operational load.
+• Link your solution directly to the impact the buyer wants reduced.
+• Bring that impact into proposal and executive conversations.
+• Turn pain into a reason to act now.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">7|Yes</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;The issue is real, but we need to justify spend.&apos; Response: &apos;Exactly. Let us quantify the current cost so the investment discussion becomes easier internally.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Use the business impact strongly in every conversation. Pain that hurts the business should speed up decisions.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Keep linking solution to impact.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;How is this showing up today in performance, delivery, learner outcomes, or customer experience?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">Yes</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Make the impact more concrete so the buyer feels the case for change more clearly.
+• Ask which teams, processes, learners, or metrics are being affected today.
+• Quantify the loss or friction even if it is not yet severe.
+• Show how early action can prevent the issue from becoming larger later.
+• Raise urgency without sounding alarmist.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">7|Partially</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;It is not a major issue yet.&apos; Response: &apos;Understood. Let us size the impact properly so you can decide whether early action is smarter than waiting.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Make the impact more concrete. Partial pain becomes real buying energy only when it is measured and owned.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Mild pain creates weak urgency.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Where is the impact visible today, and who feels it the most?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">Partially</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• If there is no visible impact, this may be a low-priority deal unless you uncover hidden value.
+• Explore whether the driver is growth, future readiness, compliance, differentiation, or convenience.
+• Reframe the offer around strategic upside instead of pain relief.
+• If neither pain nor upside exists, downgrade the opportunity.
+• Do not force urgency where the buyer does not feel any consequence.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">7|Not impacted</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;There is no pressing issue today.&apos; Response: &apos;That is fair. Then the case has to be about strategic upside, not emergency fixing. Let us see if that exists.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">This deal needs a stronger reason to buy. Find strategic upside, leadership pressure, or future risk to create movement.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: No pain often means no priority.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;If the current state is manageable, what would make change worthwhile for you?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Not impacted</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Find out whether the customer is feeling a real cost today or only exploring options.
+• Ask what problem is being prevented, solved, or improved through this purchase.
+• Probe for time loss, quality loss, support burden, learner impact, or missed business outcome.
+• Without visible impact, treat the deal as weakly qualified.
+• Clarify the pain before pushing solution detail.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">7|Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We are just looking around.&apos; Response: &apos;No problem. I would still like to understand what outcome would make this worth acting on for you.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not progress until you understand the cost of doing nothing. Deals without downside get postponed first.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: No impact clarity.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What is the business or institutional downside if this remains unsolved for the next six months?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">Without our solution, is customer&apos;s business getting impacted?</value>
+    </values>
+</CustomMetadata>

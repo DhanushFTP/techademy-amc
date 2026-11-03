@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>Lead Assignment</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <assignedTo>felix.raj@techademy.com</assignedTo>
+            <assignedToType>User</assignedToType>
+            <criteriaItems>
+                <field>Lead.Offering__c</field>
+                <operation>contains</operation>
+                <value>Certification</value>
+            </criteriaItems>
+            <template>unfiled$public/LeadsNewassignmentnotificationSAMPLE</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>koteshwar.rao@techademy.com</assignedTo>
+            <assignedToType>User</assignedToType>
+            <criteriaItems>
+                <field>Lead.Campaign_Info__c</field>
+                <operation>contains</operation>
+                <value>Resource</value>
+            </criteriaItems>
+            <template>unfiled$public/LeadsNewassignmentnotificationSAMPLE</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>yadav@techademy.com</assignedTo>
+            <assignedToType>User</assignedToType>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Offering__c</field>
+                <operation>contains</operation>
+                <value>https://www.techademy.com/education</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Email</field>
+                <operation>contains</operation>
+                <value>.edu</value>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+    <assignmentRule>
+        <fullName>Round Robin</fullName>
+        <active>false</active>
+    </assignmentRule>
+</AssignmentRules>

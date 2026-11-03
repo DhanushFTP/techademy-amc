@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Relation_with_DM_Influencer_Score__c</fullName>
+    <description>Weighted score for Do we have a good relationship with the decision maker and the influencer?</description>
+    <externalId>false</externalId>
+    <formula>CASE(
+ Relation_with_Decision_Maker_Influence__c ,
+&quot;Yes&quot;, 2,
+&quot;Partially&quot;, 1,
+&quot;Through 3rd party&quot;, 0,
+&quot;No&quot;, -1,
+    0
+) * 0.07*100</formula>
+    <inlineHelpText>Weighted score for Do we have a good relationship with the decision maker and the influencer?</inlineHelpText>
+    <label>Relation with DM &amp; Influencer Score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

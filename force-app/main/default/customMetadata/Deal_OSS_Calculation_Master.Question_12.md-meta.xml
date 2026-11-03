@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>12</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Use your clear view of evaluation criteria to shape the proposal around what wins, not what is merely available.
+• Prioritise the top 3 to 5 buyer criteria in every conversation and document.
+• Bring proof against each criterion with evidence, references, and implementation clarity.
+• Check whether any criterion is weighted more heavily by the final approver.
+• Keep confirming that your current solution story matches their scorecard.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">12|Strong</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Just show us the standard deck.&apos; Response: &apos;I can, but I would rather spend time on the few points that matter most to your evaluation.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Great. Build the proposal and demo around the exact evaluation points and show proof against each one.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. You can now sell to their scorecard.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;I will structure the next step around the criteria that matter most to your team.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">Strong</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Strengthen your understanding of how the buyer will judge options.
+• Ask what matters most between outcome, price, service, implementation, analytics, platform fit, or credibility.
+• Separate stated criteria from hidden decision drivers.
+• Tune demo and proposal around the high-weight items.
+• Move from adequate knowledge to a buyer-led win plan.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">12|Adequate</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We are looking at multiple things.&apos; Response: &apos;Understood. Which of those will really carry the most weight in the final decision?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Deepen this. Adequate understanding still leaves room for competitor advantage if they know the hidden criteria better.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: You may know the visible criteria, not the real ones.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Beyond price and features, what will make one option feel easier to approve?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">Adequate</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Do not keep presenting broad capability when the buyer&apos;s scorecard is unclear.
+• Ask directly how the final choice will be made and what would make one option stronger than another.
+• Listen for both formal criteria and real-world deciding factors.
+• Rework your pitch to answer the evaluation lens, not your standard deck.
+• Without this, you risk losing despite a good solution.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">12|Weak</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We will know it when we see it.&apos; Response: &apos;That happens often. It still helps me to know what would make one option feel clearly right from your side.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Re-open discovery before polishing the pitch. A proposal built on weak criteria knowledge usually misses the mark.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: Weak evaluation clarity.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What will the team use to judge fit, confidence, and readiness to move ahead?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Weak</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• This deal needs evaluation discovery before anything else becomes sharper.
+• Ask how the customer will compare vendors, what must be proven, and what the non-negotiables are.
+• Find out who owns the evaluation and whether different stakeholders value different things.
+• Do not guess their priorities from past deals.
+• The more you know here, the less random the outcome becomes.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">12|Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Just share everything.&apos; Response: &apos;I can, though it will be far more useful if I know how you plan to compare and choose.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not submit a polished answer to an unknown test. First learn how they will evaluate this opportunity.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: You do not know how they will choose.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What are the top decision criteria and who owns each of them internally?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">Your understanding of the evaluation criteria of the customer for this opportunity?</value>
+    </values>
+</CustomMetadata>

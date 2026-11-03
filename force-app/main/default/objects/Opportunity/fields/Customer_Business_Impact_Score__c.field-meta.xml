@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Business_Impact_Score__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(
+ Customer_s_Business_Impact__c ,
+&quot;Yes&quot;, 2,
+&quot;Partially&quot;, 1,
+&quot;Not impacted&quot;, 0,
+&quot;Don&apos;t know&quot;, -1,
+
+    0
+
+) * 0.05*100</formula>
+    <inlineHelpText>Weighted Score for Without our solution, is customer&apos;s business getting impacted?</inlineHelpText>
+    <label>Customer Business Impact Score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

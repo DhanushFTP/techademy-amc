@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_timeline_confidence_score__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(
+ Deal_timeline_confidence__c ,
+&quot;Yes&quot;, 2,
+&quot;Partially confident&quot;, 1,
+&quot;Not confident&quot;, 0,
+&quot;Don&apos;t know&quot;, -1,
+
+    0
+) * 0.03*100</formula>
+    <inlineHelpText>Weighted score for Are you fully confident of getting this deal within the proposed timeline?</inlineHelpText>
+    <label>Deal timeline confidence score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

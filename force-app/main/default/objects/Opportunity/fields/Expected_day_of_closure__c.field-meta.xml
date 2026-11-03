@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expected_day_of_closure__c</fullName>
+    <description>When is the expected day of Closure?</description>
+    <inlineHelpText>When is the expected day of Closure?</inlineHelpText>
+    <label>Expected day of closure</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>&lt;30 days</fullName>
+                <default>false</default>
+                <label>&lt;30 days</label>
+            </value>
+            <value>
+                <fullName>30-60 days</fullName>
+                <default>false</default>
+                <label>30-60 days</label>
+            </value>
+            <value>
+                <fullName>60-90 days</fullName>
+                <default>false</default>
+                <label>60-90 days</label>
+            </value>
+            <value>
+                <fullName>Not sure</fullName>
+                <default>false</default>
+                <label>Not sure</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

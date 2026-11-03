@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <decisions>
+        <name>IdentifyStage</name>
+        <label>Identify Stage</label>
+        <locationX>446</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>fully_executed</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Contract_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Fully Executed</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Contract_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Renewed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Fully_Executed_Status</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Fully Executed</label>
+        </rules>
+        <rules>
+            <name>Partially_Executed</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Contract_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Partially Executed</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Contract_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>In Process</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Contract_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Renewal pending</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Partially_Executed_Status</targetReference>
+            </connector>
+            <label>Partially Executed</label>
+        </rules>
+        <rules>
+            <name>Draft_Sent</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Contract_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Draft Sent</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Draft_Status</targetReference>
+            </connector>
+            <label>Draft Sent</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Contract Status Autoupdate {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contract Status Autoupdate</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Draft_Status</name>
+        <label>Draft Status</label>
+        <locationX>578</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Draft</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Fully_Executed_Status</name>
+        <label>Fully Executed Status</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Activated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Partially_Executed_Status</name>
+        <label>Partially Executed Status</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>In Approval Process</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>IdentifyStage</targetReference>
+        </connector>
+        <object>Contract</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

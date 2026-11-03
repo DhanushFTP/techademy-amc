@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trainer_Details__c</fullName>
+    <description>Trainer Education and Work Experience Details</description>
+    <inlineHelpText>Trainer Education and Work Experience Details</inlineHelpText>
+    <label>Trainer Details</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Html</type>
+    <visibleLines>25</visibleLines>
+</CustomField>

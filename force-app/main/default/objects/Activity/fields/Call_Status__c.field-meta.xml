@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_Status__c</fullName>
+    <label>Call Status</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Connected – Positive Response</fullName>
+                <default>false</default>
+                <label>Connected – Positive Response</label>
+            </value>
+            <value>
+                <fullName>Connected – Callback Scheduled</fullName>
+                <default>false</default>
+                <label>Connected – Callback Scheduled</label>
+            </value>
+            <value>
+                <fullName>Connected – Not Interested</fullName>
+                <default>false</default>
+                <label>Connected – Not Interested</label>
+            </value>
+            <value>
+                <fullName>Connected – Needs Follow-Up</fullName>
+                <default>false</default>
+                <label>Connected – Needs Follow-Up</label>
+            </value>
+            <value>
+                <fullName>Connected – Wrong Contact</fullName>
+                <default>false</default>
+                <label>Connected – Wrong Contact</label>
+            </value>
+            <value>
+                <fullName>Not Connected – Voicemail Left</fullName>
+                <default>false</default>
+                <label>Not Connected – Voicemail Left</label>
+            </value>
+            <value>
+                <fullName>Not Connected – No Answer</fullName>
+                <default>false</default>
+                <label>Not Connected – No Answer</label>
+            </value>
+            <value>
+                <fullName>Not Connected – Line Busy</fullName>
+                <default>false</default>
+                <label>Not Connected – Line Busy</label>
+            </value>
+            <value>
+                <fullName>Not Connected – Invalid Number</fullName>
+                <default>false</default>
+                <label>Not Connected – Invalid Number</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

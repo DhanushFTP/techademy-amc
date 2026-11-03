@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>History_with_Customer__c</fullName>
+    <description>How is our history with this customer?</description>
+    <inlineHelpText>How is our history with this customer?</inlineHelpText>
+    <label>History with Customer</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Advantageous</fullName>
+                <default>false</default>
+                <label>Advantageous</label>
+            </value>
+            <value>
+                <fullName>Neutral</fullName>
+                <default>false</default>
+                <label>Neutral</label>
+            </value>
+            <value>
+                <fullName>Never worked</fullName>
+                <default>false</default>
+                <label>Never worked</label>
+            </value>
+            <value>
+                <fullName>Disadvantageous</fullName>
+                <default>false</default>
+                <label>Disadvantageous</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>11</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Use your understanding of the decision process to guide the deal with confidence.
+• Confirm both the formal steps and the informal influence pattern.
+• Map approvals, procurement, finance, academic or L&amp;D leadership, and user stakeholders.
+• Sequence your next actions to match how the customer actually decides.
+• Stay ahead of blockers instead of reacting late.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">11|Strong</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;The process is straightforward.&apos; Response: &apos;Great. I will still map the key steps and owners so we keep the momentum and avoid surprises.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Good. Use your process knowledge to plan the deal backward from approval, legal, and buying checkpoints.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Turn process insight into close control.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Can we map the internal approval steps and owners so we do not lose time later?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">Strong</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Close the gaps before the deal reaches proposal or negotiation pressure.
+• Ask who signs, who recommends, who can delay, and who must be convinced.
+• Check whether procurement, finance, IT, academic council, or leadership approvals matter.
+• Turn the process into a visible deal map with owners and timing.
+• Better process clarity will make your next steps sharper.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">11|Adequate</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;More or less we know how this will move.&apos; Response: &apos;That is a good start. I would like to tighten the last few process details so the forecast and proposal timing stay accurate.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Tighten your understanding of the real decision path. Formal process alone is not enough; informal influence matters too.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Adequate process knowledge can still hide blockers.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Apart from the formal process, whose view really shapes the final decision here?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">Adequate</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Pause forward momentum long enough to understand how this deal really gets approved.
+• Do not rely on your contact&apos;s view alone.
+• Ask for the actual sign-off sequence and any unofficial influencers behind it.
+• Identify what stage the deal is truly in versus what it appears to be in.
+• You need process visibility before you push commercials further.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">11|Weak</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We will figure the process out as we go.&apos; Response: &apos;We can, but even a basic decision map now will save us from late-stage slippage.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Stop guessing. Map all approvers, influencers, and hidden blockers before moving ahead.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: Weak decision-map control.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Who signs, who influences, and who can quietly slow this down if not aligned?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Weak</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• You are effectively flying blind on how the customer will decide.
+• Find out who recommends, who approves, who vetoes, and what steps must happen in between.
+• Ask whether there are committee reviews, procurement gates, budget approvals, or academic governance steps.
+• Without this, forecasting and proposal timing will be unreliable.
+• Treat this as a priority discovery gap.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">11|Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Let us focus on the solution first.&apos; Response: &apos;Happy to. I also want to understand how the decision will actually happen so I can support you properly at each step.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not confuse activity with progress. First learn how this account really decides and who carries weight.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: No decision-process clarity.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Can you help me understand how decisions like this usually get made internally?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">How is our understanding of the formal and the informal decision making process?</value>
+    </values>
+</CustomMetadata>

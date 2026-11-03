@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>10</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Use the strength of the relationship to get honest guidance on the path to close.
+• Validate that both influencer and decision maker are aligned, not just personally positive.
+• Ask what could still derail the deal internally.
+• Use the trust to secure a dated next step and clearer buying process.
+• Keep the relationship active through closure, not just discovery.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">10|Yes</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We are aligned, just give us time.&apos; Response: &apos;Of course. To help the process, what is the next internal step and who should be involved from here?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Good. Use that access to test truth early and move the decision maker closer to the business case, not just the demo.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Keep decision-maker access active.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What would you need to see or hear to feel confident taking this forward internally?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">Yes</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Strengthen weak links rather than assuming one sponsor is enough.
+• Map who likes you, who knows you, and who still needs to be won over.
+• Build separate value narratives for influencer and decision maker.
+• Ask your current contact to help expand access in a natural way.
+• Do not progress as if full buyer coverage already exists.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">10|Partially</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;You can work through me for now.&apos; Response: &apos;Happy to. At the same time, it would help if I can also align with the people who will shape the final decision.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Strengthen direct access. One good champion is helpful, but it is not enough if the final buyer is distant.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Partial access creates last-minute surprises.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Would it make sense to include the final approver in the next discussion so we can align early?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">Partially</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Reduce dependence on the intermediary wherever possible.
+• Respect the channel or introducer, but build direct credibility with the buyer.
+• Ask for a joint meeting so you can hear needs first-hand.
+• Avoid sending major proposal revisions through a single go-between.
+• Direct access will improve win rate and reduce distortion.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">10|Through 3rd party</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Please route everything through our consultant/partner.&apos; Response: &apos;Certainly. It would still help to have one direct conversation as well so I can align accurately and avoid rework.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not stay dependent on an intermediary. Win a direct conversation with the buyer or you will lose control.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: You are selling through a filter.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;To make this useful, I would value 20 minutes with the main decision maker as well.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Through 3rd party</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• This is a serious weakness. Do not pretend the deal is controlled.
+• Get access to the buyer side intentionally through a relevant conversation, not a random introduction ask.
+• Lead with insight or value that earns a meeting.
+• Find a warm route in through existing customers, partners, or internal references if possible.
+• Until buyer access improves, avoid late-stage behaviour like discounting or proposal chasing.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">10|No</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;It is difficult to get the decision maker involved now.&apos; Response: &apos;Understood. Even one short alignment call at the right time can prevent delays and help us tailor this much better.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not progress to proposal without buyer access. First earn a meeting with the decision maker and key influencer.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: No access to authority.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Who besides your team should join the next call so the decision can move faster?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">No</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">Do we have a good relationship with the decision maker and the influencer?</value>
+    </values>
+</CustomMetadata>

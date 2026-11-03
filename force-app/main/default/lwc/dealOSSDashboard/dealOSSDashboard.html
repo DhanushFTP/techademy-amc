@@ -1,0 +1,135 @@
+<!--
+ ******************************************************************
+ * Component Name : dealOSSDashboard (template)
+ * Company        : Fingertip Technologies Pvt Ltd
+ * Created Date   : 22-05-2026
+ * @description   : Markup for the OSS Deal Calculation dashboard - the
+ *                  toggle, Opportunity Score card, Deal Strategy Summary,
+ *                  and the detailed coaching table.
+ * @author        : Naveen Kumar R
+ * Used By        : - Opportunity Lightning Record Page
+ * Change Log:
+ * =============================================================================
+ * Ver | Author          | Date       | Description
+ * =============================================================================
+ * 1.0 | Naveen Kumar R  | 22-05-2026 | Initial version
+ * =============================================================================
+ ******************************************************************
+-->
+<template>
+    <lightning-card title="OSS Deal Calculation Dashboard" icon-name="standard:metrics">
+        <div class="wrap">
+            <div class="topbar">
+                <lightning-input
+                    type="toggle"
+                    label="Show OSS Deal Calculation"
+                    checked={showTable}
+                    message-toggle-active="Visible"
+                    message-toggle-inactive="Hidden"
+                    onchange={handleToggle}>
+                </lightning-input>
+
+                <lightning-input
+                    type="toggle"
+                    label="Show Dashboard"
+                    checked={showDashboard}
+                    message-toggle-active="Visible"
+                    message-toggle-inactive="Hidden"
+                    onchange={handleDashboardToggle}>
+                </lightning-input>
+
+                <div class={scorecardClass}>
+                    <span class="sc-label">Opportunity Score</span>
+                    <span class={scoreValueClass}>{opportunityScoreDisplay}</span>
+                </div>
+
+                <template lwc:if={showOutdatedRemark}>
+                    <div class="outdated-remark">{outdatedRemark}</div>
+                </template>
+            </div>
+
+            <div class="strategy-row">
+                <template lwc:if={hasStrategy}>
+                    <div class="strategy">
+                        <div class="strat-headrow">
+                            <div class="strat-head-left">Deal Strategy Summary</div>
+                            <div class="strat-head-right">Auto Coaching Dashboard</div>
+                        </div>
+                        <template for:each={strategyRows} for:item="s">
+                            <div key={s.key} class="strat-row">
+                                <div class="strat-label">{s.label}</div>
+                                <div class={s.valueClass}>{s.value}</div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <template lwc:if={showDashboard}>
+                    <div class="trend">
+                        <iframe src={trendUrl} title="OSS Score Trend" class="trend-iframe"></iframe>
+                    </div>
+                </template>
+            </div>
+
+            <template lwc:if={showTable}>
+                <div class="body">
+                    <template lwc:if={loading}>
+                        <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                    </template>
+
+                    <template lwc:if={error}>
+                        <div class="msg error">{error}</div>
+                    </template>
+
+                    <template lwc:if={hasRows}>
+                        <div class="table-scroll">
+                            <table class="oss">
+                                <thead>
+                                    <tr>
+                                        <th class="c-sl">Sl No.</th>
+                                        <th class="c-q">Please answer the following Questions</th>
+                                        <th class="c-ans">Your Answer</th>
+                                        <th class="c-score">Answer Score</th>
+                                        <th class="c-text">Recommendation<span class="sub">What to do next</span></th>
+                                        <th class="c-text">Talk Track<span class="sub">What to say</span></th>
+                                        <th class="c-text">Risk / Coach Flag<span class="sub">What to watch</span></th>
+                                        <th class="c-text">Action Plan<span class="sub">How to improve this score</span></th>
+                                        <th class="c-text">Likely Objection + Response<span class="sub">How to handle resistance</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={rows} for:item="row">
+                                        <tr key={row.slNo} class={row.rowClass}>
+                                            <td class="c-sl">{row.slNo}</td>
+                                            <td class="c-q">{row.question}</td>
+                                            <td class="c-ans">
+                                                <div class="ans">{row.yourAnswer}</div>
+                                                <template lwc:if={row.note}>
+                                                    <div class="note">{row.note}</div>
+                                                </template>
+                                            </td>
+                                            <td class="c-score">
+                                                <template lwc:if={row.hasScore}>
+                                                    <span class={row.scoreBadge}>{row.score}</span>
+                                                </template>
+                                            </td>
+                                            <td class="c-text">{row.recommendation}</td>
+                                            <td class="c-text">{row.talkTrack}</td>
+                                            <td class="c-text">{row.riskFlag}</td>
+                                            <td class="c-text c-ap">
+                                                <template for:each={row.actionPlanLines} for:item="line">
+                                                    <div key={line.id} class="ap-line">{line.text}</div>
+                                                </template>
+                                            </td>
+                                            <td class="c-text">{row.likelyObjection}</td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

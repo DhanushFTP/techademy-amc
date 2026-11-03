@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Issue_with_Association__c</fullName>
+    <label>Issue with Association</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>None</fullName>
+                <default>true</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Trainer Issues</fullName>
+                <default>false</default>
+                <label>Trainer Issues</label>
+            </value>
+            <value>
+                <fullName>Lab Issues</fullName>
+                <default>false</default>
+                <label>Lab Issues</label>
+            </value>
+            <value>
+                <fullName>Multiple issues</fullName>
+                <default>false</default>
+                <label>Multiple issues</label>
+            </value>
+            <value>
+                <fullName>Commercial Issues</fullName>
+                <default>false</default>
+                <label>Commercial Issues</label>
+            </value>
+            <value>
+                <fullName>SM Issue</fullName>
+                <default>false</default>
+                <label>SM Issue</label>
+            </value>
+            <value>
+                <fullName>Cost</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cost</label>
+            </value>
+            <value>
+                <fullName>Evaluation Issues</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Evaluation issues</label>
+            </value>
+            <value>
+                <fullName>Expectation Mismatch</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Expectation mismatch</label>
+            </value>
+            <value>
+                <fullName>Lab unavailable</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lab unavailable</label>
+            </value>
+            <value>
+                <fullName>PO issues</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>PO issues</label>
+            </value>
+            <value>
+                <fullName>Payment Issues</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Payment issues</label>
+            </value>
+            <value>
+                <fullName>TAT Issues</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>TAT Issues</label>
+            </value>
+            <value>
+                <fullName>Trainer Backout</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Trainer Backout</label>
+            </value>
+            <value>
+                <fullName>Trainer Backout for Evaluation</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Trainer backout after evaluation</label>
+            </value>
+            <value>
+                <fullName>Trainer backout before evaluation</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Trainer backout before evaluation</label>
+            </value>
+            <value>
+                <fullName>Trainer Backout for training</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Trainer backout before training</label>
+            </value>
+            <value>
+                <fullName>Trainer backout during training</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Trainer backout during training</label>
+            </value>
+            <value>
+                <fullName>Trainer Date Issues</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Trainer date issues</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

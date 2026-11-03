@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dependency_risk_score__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(
+ Any_Dependency_risk__c ,
+&quot;No dependency&quot;, 2,
+&quot;Yes, but insignificant&quot;, 1,
+&quot;Yes, significants&quot;, 0,
+&quot;Don&apos;t know&quot;, -1,
+    0
+) * 0.03*100</formula>
+    <inlineHelpText>Weighted score for Are there any dependency risk? Is the decision dependent on any event/situation to happen?</inlineHelpText>
+    <label>Dependency risk score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

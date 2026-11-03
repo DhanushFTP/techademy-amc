@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Potential_ID_new__c</fullName>
+    <description>Auto Generated from Salesforce</description>
+    <displayFormat>PF-{0000000}</displayFormat>
+    <externalId>true</externalId>
+    <inlineHelpText>Auto Generated from Salesforce. Map this to further Recruit potentials</inlineHelpText>
+    <label>Potential ID New</label>
+    <trackHistory>false</trackHistory>
+    <type>AutoNumber</type>
+</CustomField>

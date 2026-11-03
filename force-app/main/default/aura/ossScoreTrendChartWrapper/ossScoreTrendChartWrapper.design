@@ -1,0 +1,3 @@
+<design:component label="OSS Score Trend Chart">
+    <design:attribute name="height" label="Chart Height (px)" default="340" />
+</design:component>

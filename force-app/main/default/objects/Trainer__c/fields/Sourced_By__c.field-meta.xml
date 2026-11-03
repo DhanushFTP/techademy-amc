@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sourced_By__c</fullName>
+    <label>Sourced By</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pushpa</fullName>
+                <default>false</default>
+                <label>Pushpa</label>
+            </value>
+            <value>
+                <fullName>Pratyusha</fullName>
+                <default>false</default>
+                <label>Pratyusha</label>
+            </value>
+            <value>
+                <fullName>Chandan Kumar</fullName>
+                <default>false</default>
+                <label>Chandan Kumar</label>
+            </value>
+            <value>
+                <fullName>Yadhu</fullName>
+                <default>false</default>
+                <label>Yadhu</label>
+            </value>
+            <value>
+                <fullName>Manokaran</fullName>
+                <default>false</default>
+                <label>Manokaran</label>
+            </value>
+            <value>
+                <fullName>Vismitha</fullName>
+                <default>false</default>
+                <label>Vismitha</label>
+            </value>
+            <value>
+                <fullName>Rashmitha</fullName>
+                <default>false</default>
+                <label>Rashmitha</label>
+            </value>
+            <value>
+                <fullName>Cauvery N S</fullName>
+                <default>false</default>
+                <label>Cauvery N S</label>
+            </value>
+            <value>
+                <fullName>Vaishnavi H P</fullName>
+                <default>false</default>
+                <label>Vaishnavi H P</label>
+            </value>
+            <value>
+                <fullName>Ameya</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Ameya</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Choice_A__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Choice A</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Fully Clear</fullName>
+                <default>false</default>
+                <label>Fully Clear</label>
+            </value>
+            <value>
+                <fullName>Partially clear</fullName>
+                <default>false</default>
+                <label>Partially clear</label>
+            </value>
+            <value>
+                <fullName>Yet to get some from the customer</fullName>
+                <default>false</default>
+                <label>Yet to get some from the customer</label>
+            </value>
+            <value>
+                <fullName>Don&apos;t know</fullName>
+                <default>false</default>
+                <label>Don&apos;t know</label>
+            </value>
+            <value>
+                <fullName>Repeat purchase</fullName>
+                <default>false</default>
+                <label>Repeat purchase</label>
+            </value>
+            <value>
+                <fullName>New Initiative</fullName>
+                <default>false</default>
+                <label>New Initiative</label>
+            </value>
+            <value>
+                <fullName>Total / Partial replacement of current solution</fullName>
+                <default>false</default>
+                <label>Total / Partial replacement of current solution</label>
+            </value>
+            <value>
+                <fullName>Need</fullName>
+                <default>false</default>
+                <label>Need</label>
+            </value>
+            <value>
+                <fullName>Want</fullName>
+                <default>false</default>
+                <label>Want</label>
+            </value>
+            <value>
+                <fullName>Requirement</fullName>
+                <default>false</default>
+                <label>Requirement</label>
+            </value>
+            <value>
+                <fullName>Evaluation</fullName>
+                <default>false</default>
+                <label>Evaluation</label>
+            </value>
+            <value>
+                <fullName>Yes &amp; Urgent</fullName>
+                <default>false</default>
+                <label>Yes &amp; Urgent</label>
+            </value>
+            <value>
+                <fullName>Yes but Not urgent</fullName>
+                <default>false</default>
+                <label>Yes but Not urgent</label>
+            </value>
+            <value>
+                <fullName>Unclear</fullName>
+                <default>false</default>
+                <label>Unclear</label>
+            </value>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+            <value>
+                <fullName>Partially, about 50%</fullName>
+                <default>false</default>
+                <label>Partially, about 50%</label>
+            </value>
+            <value>
+                <fullName>Less than 30%</fullName>
+                <default>false</default>
+                <label>Less than 30%</label>
+            </value>
+            <value>
+                <fullName>Accepted</fullName>
+                <default>false</default>
+                <label>Accepted</label>
+            </value>
+            <value>
+                <fullName>Under discussion</fullName>
+                <default>false</default>
+                <label>Under discussion</label>
+            </value>
+            <value>
+                <fullName>No response</fullName>
+                <default>false</default>
+                <label>No response</label>
+            </value>
+            <value>
+                <fullName>Rework necessary</fullName>
+                <default>false</default>
+                <label>Rework necessary</label>
+            </value>
+            <value>
+                <fullName>Partially</fullName>
+                <default>false</default>
+                <label>Partially</label>
+            </value>
+            <value>
+                <fullName>Not impacted</fullName>
+                <default>false</default>
+                <label>Not impacted</label>
+            </value>
+            <value>
+                <fullName>Advantageous</fullName>
+                <default>false</default>
+                <label>Advantageous</label>
+            </value>
+            <value>
+                <fullName>Neutral</fullName>
+                <default>false</default>
+                <label>Neutral</label>
+            </value>
+            <value>
+                <fullName>Never worked</fullName>
+                <default>false</default>
+                <label>Never worked</label>
+            </value>
+            <value>
+                <fullName>Disadvantageous</fullName>
+                <default>false</default>
+                <label>Disadvantageous</label>
+            </value>
+            <value>
+                <fullName>No competition</fullName>
+                <default>false</default>
+                <label>No competition</label>
+            </value>
+            <value>
+                <fullName>Yes, but weak</fullName>
+                <default>false</default>
+                <label>Yes, but weak</label>
+            </value>
+            <value>
+                <fullName>Yes, they are strong</fullName>
+                <default>false</default>
+                <label>Yes, they are strong</label>
+            </value>
+            <value>
+                <fullName>Through 3rd party</fullName>
+                <default>false</default>
+                <label>Through 3rd party</label>
+            </value>
+            <value>
+                <fullName>No</fullName>
+                <default>false</default>
+                <label>No</label>
+            </value>
+            <value>
+                <fullName>Strong</fullName>
+                <default>false</default>
+                <label>Strong</label>
+            </value>
+            <value>
+                <fullName>Adequate</fullName>
+                <default>false</default>
+                <label>Adequate</label>
+            </value>
+            <value>
+                <fullName>Weak</fullName>
+                <default>false</default>
+                <label>Weak</label>
+            </value>
+            <value>
+                <fullName>Looks like, but not sure</fullName>
+                <default>false</default>
+                <label>Looks like, but not sure</label>
+            </value>
+            <value>
+                <fullName>Not available, as of now</fullName>
+                <default>false</default>
+                <label>Not available, as of now</label>
+            </value>
+            <value>
+                <fullName>Customer not sharing</fullName>
+                <default>false</default>
+                <label>Customer not sharing</label>
+            </value>
+            <value>
+                <fullName>No assurance yet</fullName>
+                <default>false</default>
+                <label>No assurance yet</label>
+            </value>
+            <value>
+                <fullName>Proposal yet to be submitted</fullName>
+                <default>false</default>
+                <label>Proposal yet to be submitted</label>
+            </value>
+            <value>
+                <fullName>&lt;30 days</fullName>
+                <default>false</default>
+                <label>&lt;30 days</label>
+            </value>
+            <value>
+                <fullName>30-60 days</fullName>
+                <default>false</default>
+                <label>30-60 days</label>
+            </value>
+            <value>
+                <fullName>60-90 days</fullName>
+                <default>false</default>
+                <label>60-90 days</label>
+            </value>
+            <value>
+                <fullName>Not sure</fullName>
+                <default>false</default>
+                <label>Not sure</label>
+            </value>
+            <value>
+                <fullName>No dependency</fullName>
+                <default>false</default>
+                <label>No dependency</label>
+            </value>
+            <value>
+                <fullName>Yes, but insignificant</fullName>
+                <default>false</default>
+                <label>Yes, but insignificant</label>
+            </value>
+            <value>
+                <fullName>Yes, significant</fullName>
+                <default>false</default>
+                <label>Yes, significant</label>
+            </value>
+            <value>
+                <fullName>Less by 10%</fullName>
+                <default>false</default>
+                <label>Less by 10%</label>
+            </value>
+            <value>
+                <fullName>Much less</fullName>
+                <default>false</default>
+                <label>Much less</label>
+            </value>
+            <value>
+                <fullName>May be</fullName>
+                <default>false</default>
+                <label>May be</label>
+            </value>
+            <value>
+                <fullName>Not in near future</fullName>
+                <default>false</default>
+                <label>Not in near future</label>
+            </value>
+            <value>
+                <fullName>An Asset</fullName>
+                <default>false</default>
+                <label>An Asset</label>
+            </value>
+            <value>
+                <fullName>Be a Reference</fullName>
+                <default>false</default>
+                <label>Be a Reference</label>
+            </value>
+            <value>
+                <fullName>Insignificant</fullName>
+                <default>false</default>
+                <label>Insignificant</label>
+            </value>
+            <value>
+                <fullName>Partially confident</fullName>
+                <default>false</default>
+                <label>Partially confident</label>
+            </value>
+            <value>
+                <fullName>Not confident</fullName>
+                <default>false</default>
+                <label>Not confident</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

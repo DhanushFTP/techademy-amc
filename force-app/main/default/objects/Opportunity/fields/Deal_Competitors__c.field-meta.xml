@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Competitors__c</fullName>
+    <description>Are there any  competitors on this deal ?</description>
+    <inlineHelpText>Are there any  competitors on this deal ?</inlineHelpText>
+    <label>Deal Competitors</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No competition</fullName>
+                <default>false</default>
+                <label>No competition</label>
+            </value>
+            <value>
+                <fullName>Yes, but weak</fullName>
+                <default>false</default>
+                <label>Yes, but weak</label>
+            </value>
+            <value>
+                <fullName>Yes, they are strong</fullName>
+                <default>false</default>
+                <label>Yes, they are strong</label>
+            </value>
+            <value>
+                <fullName>Don&apos;t know</fullName>
+                <default>false</default>
+                <label>Don&apos;t know</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

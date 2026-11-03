@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>onemergefree__MailingAddressUpdateDate__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Timestamp of the latest update to the Mailing Address.</description>
+    <inlineHelpText>Timestamp of the latest update to the Mailing Address.</inlineHelpText>
+    <label>Mailing Address Update Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>DateTime</type>
+</CustomField>

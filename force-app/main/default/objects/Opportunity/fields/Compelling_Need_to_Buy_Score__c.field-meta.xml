@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Compelling_Need_to_Buy_Score__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(
+ Compelling_Need_to_Buy__c   ,
+&quot;Yes &amp; Urgent&quot;, 2,
+&quot;Yes but Not urgent&quot;, 1,
+&quot;Unclear&quot;, 0,
+&quot;Don&apos;t know&quot;, -1,
+ 
+    0
+) * 0.05*100</formula>
+    <inlineHelpText>Are the Customer&apos;s reasons to buy tied to a specific, compelling need, which is acknowledged by the sr. executives</inlineHelpText>
+    <label>Compelling Need to Buy Score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

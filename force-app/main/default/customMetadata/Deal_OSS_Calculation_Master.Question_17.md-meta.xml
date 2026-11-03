@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>17</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Use the healthy deal size to protect value and avoid unnecessary discounting.
+• Tie commercials to business impact, scale, implementation value, and future upside.
+• Confirm that the scope and pricing remain aligned with the buyer&apos;s desired outcome.
+• Make sure a bigger deal still feels easy to approve through good structuring.
+• Protect margin by selling value before concession.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">17|Yes</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;The pricing feels high.&apos; Response: &apos;I understand. Given the scope and value, I would like to keep the conversation around outcome and commercial shape, not just around headline price.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Good. Use deal size confidence to protect value and avoid unnecessary discounting too early.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Hold value confidently.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;Given the scope and expected impact, this investment level is in line with similar wins.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">Yes</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Check whether the smaller deal size is a tactical entry point or a sign of scope weakness.
+• Explore upsell elements, phased expansion, or add-ons that genuinely improve buyer outcomes.
+• Do not push for more size unless the value case supports it.
+• Protect winability while looking for smart expansion.
+• A slightly smaller deal can still be the right first step.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">17|Less by 10%</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Can we start smaller?&apos; Response: &apos;Yes, if that still solves the right problem. Let us make sure the smaller scope remains meaningful and expandable.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Tighten scope or add value proof before negotiating down. Small gaps can often be bridged without price cuts.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Early price pressure risk.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Is the concern about total price, phase-one size, or confidence in outcome?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">Less by 10%</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Challenge whether the deal has been over-narrowed or heavily price-pressured.
+• Ask what has been removed and whether the current scope still solves the real problem.
+• Explore a stronger phased roadmap so phase one is smaller but future value is visible.
+• Avoid accepting a poor commercial shape without understanding why it shrank.
+• Reset the deal around value, not only around what is easiest to approve.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">17|Much less</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;This is all we can consider right now.&apos; Response: &apos;Understood. Then let us structure phase one carefully so it delivers value and keeps room for the right expansion later.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not chase the full scope at the wrong price. Repackage the offer into a smaller, high-value starting point.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: Value and price are misaligned.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;Rather than force a misfit commercial, let us shape a first phase that is easier to approve.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Much less</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Benchmark the current commercial shape against similar customer size, use case, and line of business.
+• Check if you have under-scoped, under-priced, or misunderstood the buyer&apos;s true requirement.
+• Use internal deal references to sanity-check the opportunity value.
+• Then decide whether to expand scope, hold position, or keep it as an entry deal.
+• You need a clear value benchmark before finalising commercials.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">17|Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We have not thought about ideal deal size.&apos; Response: &apos;That is fine. I will benchmark this against similar situations so we can judge whether the scope is right.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Benchmark this deal against similar accounts before you negotiate. Confidence comes from context, not instinct.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Weak price strategy.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;How does this compare with what similar customers have approved for a similar scope?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">Is the deal size equal to or greater than the target average deal size of similar customer size and Line of business?</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_future_impact_score__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(
+ Winning_other_customers__c ,
+&quot;An Asset&quot;, 2,
+&quot;Be a Reference&quot;, 1,
+&quot;Insignificant&quot;, 0,
+&quot;Don&apos;t know&quot;, -1,
+
+    0
+) * 0.03*100</formula>
+    <inlineHelpText>Weighted score for with regard to winning other customers in future, how important this deal will be ?</inlineHelpText>
+    <label>Deal future impact score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

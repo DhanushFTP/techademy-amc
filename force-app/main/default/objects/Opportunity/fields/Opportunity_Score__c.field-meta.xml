@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Score__c</fullName>
+    <externalId>false</externalId>
+    <formula>(RFQ_Score__c) + 
+(Opportunity_Type_Score__c) + 
+(Opportunity_Engaged_Stage_Score__c) + 
+(Compelling_Need_to_Buy_Score__c)+
+(Customer_Requirement_Fulfilment_Score__c) + 
+(Proposed_Solution_Accepted_Score__c) + 
+(Customer_Business_Impact_Score__c) + 
+(History_with_Customer_Score__c) + 
+(Deal_Competitors_Score__c)+
+(Relation_with_DM_Influencer_Score__c) + 
+(Understanding_of_formal_informal_DM_Sc__c) + 
+(Customer_evaluation_understanding_score__c) + 
+(Customer_Budget_Score__c)+
+(Verbal_assurance_recieved_score__c) + 
+(Expected_day_of_closure_score__c) + 
+(Deal_future_impact_score__c) + 
+(Future_business_potential_score__c) + 
+(Deal_timeline_confidence_score__c)</formula>
+    <inlineHelpText>Total Score from OSS</inlineHelpText>
+    <label>Opportunity Score Card</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,275 @@
+/* ── Main container ── */
+.forecast-container {
+    background: #fff;
+    border: 1px solid #dddbda;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin: 1rem;
+}
+
+/* ── Controls bar ── */
+.controls-bar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #dddbda;
+    background: #fff;
+}
+
+.controls-left {
+    flex: 0 0 auto;
+}
+
+.controls-right {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.user-picker {
+    min-width: 220px;
+}
+
+.fy-picker {
+    min-width: 130px;
+}
+
+.conversion-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.conversion-label {
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: #444;
+    white-space: nowrap;
+}
+
+.conversion-input {
+    width: 90px;
+}
+
+/* ── Table wrapper ── */
+.table-wrapper {
+    overflow-x: auto;
+    padding: 0 1rem 1rem;
+}
+
+/* ── Forecast table ── */
+.forecast-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    table-layout: fixed;
+}
+
+.forecast-table th,
+.forecast-table td {
+    padding: 0.5rem 0.75rem;
+    text-align: right;
+    border-bottom: 1px solid #e5e5e5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.forecast-table th {
+    background-color: #f3f3f3;
+    font-weight: 600;
+    color: #444;
+    position: relative;
+    user-select: none;
+}
+
+.forecast-table td:first-child,
+.forecast-table th:first-child {
+    text-align: left;
+    min-width: 180px;
+}
+
+.forecast-table tr:hover td {
+    background-color: #f9f9f9;
+}
+
+/* ── Total row ── */
+.total-row td {
+    font-weight: 700;
+    background-color: #f3f3f3;
+}
+
+/* ── Current month badge ── */
+.current-badge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background-color: #0070d2;
+    color: #fff;
+    font-size: 0.7rem;
+    vertical-align: middle;
+}
+
+/* ── Month label ── */
+.month-label {
+    color: #0070d2;
+    cursor: pointer;
+}
+
+/* ── Gap column ── */
+.gap-negative {
+    color: #c23934;
+    font-weight: 600;
+}
+
+/* ── Member sub-rows ── */
+.member-row td {
+    background-color: #f8fbff;
+    font-size: 0.8125rem;
+}
+
+.member-row:hover td {
+    background-color: #eef4ff !important;
+}
+
+.member-name-cell {
+    text-align: left;
+}
+
+.member-indent {
+    color: #aaa;
+    margin-right: 6px;
+    font-size: 0.75rem;
+}
+
+/* ── Current month highlight ── */
+.current-month-row td {
+    background-color: #fffbf0;
+}
+
+/* ── Expand/collapse chevron ── */
+.expand-chevron {
+    display: inline-block;
+    width: 16px;
+    margin-right: 4px;
+    cursor: pointer;
+    color: #0070d2;
+    font-size: 0.65rem;
+    vertical-align: middle;
+    user-select: none;
+}
+
+.expand-chevron:hover {
+    color: #005fb2;
+}
+
+/* ── Clickable forecast category cells ── */
+.clickable-cell {
+    cursor: pointer;
+    color: #0070d2;
+}
+
+.clickable-cell:hover {
+    background-color: #e8f4fd !important;
+    text-decoration: underline;
+}
+
+/* ── Column resize handle ── */
+.resize-handle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    cursor: col-resize;
+    z-index: 1;
+    background: transparent;
+}
+
+.resize-handle:hover {
+    background: rgba(0, 112, 210, 0.25);
+}
+
+/* ── Prevent text selection while resizing ── */
+.forecast-table.no-select,
+.forecast-table.no-select * {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* ── Drill-down panel ── */
+.drill-panel {
+    margin-top: 1.5rem;
+    border: 1px solid #dddbda;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.drill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1rem;
+    background: #f3f3f3;
+    border-bottom: 1px solid #dddbda;
+    border-radius: 4px 4px 0 0;
+}
+
+.drill-title {
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: #16325c;
+}
+
+.drill-table-wrapper {
+    overflow-x: auto;
+}
+
+.drill-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+}
+
+.drill-table th,
+.drill-table td {
+    padding: 0.45rem 0.75rem;
+    border-bottom: 1px solid #e5e5e5;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.drill-table th {
+    background: #f8f8f8;
+    font-weight: 600;
+    color: #444;
+    position: sticky;
+    top: 0;
+}
+
+.drill-table tr:hover td {
+    background: #f9f9f9;
+}
+
+.deal-name-cell {
+    color: #0070d2;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.amount-cell {
+    text-align: right;
+}
+
+.no-deals-row {
+    text-align: center;
+    color: #777;
+    padding: 1.5rem;
+    font-style: italic;
+}

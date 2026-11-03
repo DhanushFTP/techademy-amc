@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>18</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Use the future potential to position this deal as the start of a wider partnership.
+• Understand the next logical expansion areas across platforms, programs, users, campuses, or geographies.
+• Avoid overselling future value before landing the current deal well.
+• Reference the broader roadmap when discussing implementation design and service quality.
+• Win the first engagement in a way that naturally opens the door to more.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">18|Yes</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Let us first close the current need.&apos; Response: &apos;Absolutely. I only raise future potential so we design today&apos;s solution in a way that supports tomorrow as well.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Use future potential to protect the current deal value. Position this as the start of a larger relationship, not a one-off sale.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Expansion story strengthens the account.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;If phase one works well, which adjacent areas would you want us to support next?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">Yes</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Test the upside without assuming it.
+• Ask what else could open up if the current engagement succeeds.
+• Listen for cross-sell, renewal, expansion, new cohorts, new departments, or platform extensions.
+• Capture possible future value in your account plan, not in the buyer&apos;s face as pressure.
+• Use current success to earn the right to discuss more later.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">18|May be</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Possibly, if this goes well.&apos; Response: &apos;That is a good starting point. Let us make this first engagement successful enough to earn the right to discuss more later.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Explore the next logical use case now so the buyer sees a bigger upside to saying yes.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Expansion potential is still vague.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;If this works, where else would this create value for your teams or campuses?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">May be</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Treat the deal on its own merits and do not rely on future upside to justify weak commercials now.
+• Focus on landing the current problem cleanly and profitably.
+• Still leave a good service and adoption foundation for later opportunity.
+• Do not give away too much today because of hoped-for future business.
+• Win the present deal first.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">18|Not in near future</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;There is nothing else beyond this.&apos; Response: &apos;Understood. Then I will focus on making the current deal strong on its own merit.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Keep the current deal tightly outcome-led. Do not assume expansion; earn trust first with a clean first win.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Limited upside beyond the first order.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;Let us make phase one successful first. That will create the basis for any broader conversation later.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Not in near future</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Ask whether this could be a one-time purchase or the start of something broader if successful.
+• Explore future cohorts, departments, campuses, skill tracks, or assessment layers where relevant.
+• Understand whether expansion depends on current outcomes.
+• Use this insight for internal planning and value framing.
+• Do not assume long-term potential without buyer cues.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">18|Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Too early to discuss future scope.&apos; Response: &apos;Fair enough. Even a directional view helps me think about the right shape of the first engagement.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Ask one smart future-facing question before close. Even a single expansion signal can strengthen the business case today.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: No view on account growth potential.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Beyond this immediate need, do you see similar capability needs coming up later?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">Is there any future business potential from this customer beyond the initial engagement?</value>
+    </values>
+</CustomMetadata>

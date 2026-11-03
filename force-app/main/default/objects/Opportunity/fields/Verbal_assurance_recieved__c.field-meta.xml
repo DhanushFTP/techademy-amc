@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Verbal_assurance_recieved__c</fullName>
+    <description>After submitting Commercial Proposal, have we received verbal assurance from the Decision maker?</description>
+    <inlineHelpText>After submitting Commercial Proposal, have we received verbal assurance from the Decision maker?</inlineHelpText>
+    <label>Verbal assurance recieved</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+            <value>
+                <fullName>No assurance yet</fullName>
+                <default>false</default>
+                <label>No assurance yet</label>
+            </value>
+            <value>
+                <fullName>Proposal yet to be submitted</fullName>
+                <default>false</default>
+                <label>Proposal yet to be submitted</label>
+            </value>
+            <value>
+                <fullName>Don&apos;t know</fullName>
+                <default>false</default>
+                <label>Don&apos;t know</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

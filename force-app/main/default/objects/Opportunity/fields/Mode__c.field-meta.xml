@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mode__c</fullName>
+    <label>Mode</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ILT Only</fullName>
+                <default>false</default>
+                <label>ILT Only</label>
+            </value>
+            <value>
+                <fullName>VILT Only</fullName>
+                <default>false</default>
+                <label>VILT Only</label>
+            </value>
+            <value>
+                <fullName>Platform Only</fullName>
+                <default>false</default>
+                <label>Platform Only</label>
+            </value>
+            <value>
+                <fullName>Blended</fullName>
+                <default>false</default>
+                <label>Blended</label>
+            </value>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+                <label>Not Applicable</label>
+            </value>
+            <value>
+                <fullName>Platform with content</fullName>
+                <default>false</default>
+                <label>Platform with content</label>
+            </value>
+            <value>
+                <fullName>ILT/VILT</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>ILT/VILT</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

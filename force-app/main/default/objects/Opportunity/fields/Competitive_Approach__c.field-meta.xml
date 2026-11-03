@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Competitive_Approach__c</fullName>
+    <inlineHelpText>What is the Competitive Approach?</inlineHelpText>
+    <label>Competitive Approach</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Confront &amp; Beat</fullName>
+                <default>false</default>
+                <label>Confront &amp; Beat</label>
+            </value>
+            <value>
+                <fullName>Skirt &amp; Resize</fullName>
+                <default>false</default>
+                <label>Skirt &amp; Resize</label>
+            </value>
+            <value>
+                <fullName>Divide &amp; Win</fullName>
+                <default>false</default>
+                <label>Divide &amp; Win</label>
+            </value>
+            <value>
+                <fullName>Contain &amp; Delay</fullName>
+                <default>false</default>
+                <label>Contain &amp; Delay</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

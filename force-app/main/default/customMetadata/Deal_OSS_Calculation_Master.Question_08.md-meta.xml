@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>8</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Use the relationship as an accelerator, not as a substitute for qualification.
+• Leverage trust to get candid feedback on budget, competition, and decision path.
+• Bring up previous wins, responsiveness, or service quality as credibility anchors.
+• Ask for access to wider stakeholders while goodwill is high.
+• Stay disciplined so the relationship converts into action.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">8|Advantageous</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We know you, so this should be easy.&apos; Response: &apos;I appreciate that trust. I still want to earn this deal properly by aligning tightly to what matters this time.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Use your history as leverage, but do not get lazy. Convert goodwill into broader access and quicker decisions.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Trust is an asset if used well.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Given our past work together, would it help to involve the wider team early and accelerate this?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">Advantageous</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Invest deliberately in trust and relevance.
+• Show understanding of the customer context through tailored discovery and follow-through.
+• Create small wins quickly, such as a useful insight, benchmark, or improved proposal framing.
+• Increase confidence through responsiveness and clarity, not pressure.
+• Turn neutral history into active preference.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">8|Neutral</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We do not know you well yet.&apos; Response: &apos;That is fair. Let me make this easy to evaluate through relevance, proof, and clear follow-through.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Create trust fast with relevant proof, credible questions, and a no-pressure tone. Let confidence build through clarity.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Neutral accounts need faster trust-building.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;Let me keep this simple and useful. I will focus only on what matters to your outcome.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">Neutral</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Reduce perceived risk quickly because the buyer has no prior trust bank with you.
+• Use case studies, references, demos, and implementation clarity to build credibility.
+• Keep promises tight and realistic in early conversations.
+• Ask how they normally evaluate a new partner and what would reassure them.
+• Act like a safe pair of hands from the first interaction.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">8|Never worked</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;You are new to us.&apos; Response: &apos;Absolutely, which is why I will keep this practical, transparent, and backed by relevant proof.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Shorten the trust gap with references, pilot logic, and a low-friction first step. New logos need safety.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: New-account trust gap.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Would a reference conversation or a small first phase help make this easier internally?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Never worked</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Address the trust issue directly but professionally.
+• Understand what created the negative perception: service, delivery, commercials, product, or responsiveness.
+• Do not defend too early. Listen, acknowledge, and reset expectations.
+• Bring senior sponsorship or a recovery plan if needed.
+• Rebuild confidence in small steps before pushing for closure.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">8|Disadvantageous</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We had a poor experience earlier.&apos; Response: &apos;Thank you for saying that directly. I would like to understand what went wrong so I do not repeat it and can show a better path.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Acknowledge the history directly and reset the narrative with ownership, not defensiveness. You must earn another chance.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: Past baggage is blocking the deal.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;I know the earlier experience matters. Let us address that openly and show what will be different this time.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Disadvantageous</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">How is our history with this customer ?</value>
+    </values>
+</CustomMetadata>

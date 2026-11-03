@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>account6QA6sense_LOB__c</fullName>
+    <businessStatus>DeprecateCandidate</businessStatus>
+    <defaultValue>false</defaultValue>
+    <description>The 6QA status of the account for the product.
+
+The values are either:
+1 = 6QA
+0 = Not 6QA</description>
+    <label>6sense Account 6QA LOB</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,250 @@
+<template>
+    <div class="forecast-container">
+
+        <!-- Controls bar -->
+        <div class="controls-bar">
+            <div class="controls-left">
+                <lightning-combobox
+                    label="Forecasting for"
+                    value={selectedUserId}
+                    options={users}
+                    placeholder="Me (Current User)"
+                    onchange={handleUserChange}
+                    class="user-picker">
+                </lightning-combobox>
+            </div>
+            <div class="controls-right">
+                <lightning-combobox
+                    label="Period"
+                    value={selectedFyLabel}
+                    options={fyOptions}
+                    onchange={handleFyChange}
+                    class="fy-picker">
+                </lightning-combobox>
+                <div class="conversion-input-group">
+                    <span class="conversion-label">Conversion %</span>
+                    <lightning-input
+                        type="number"
+                        value={conversionRate}
+                        min="0" max="100" step="0.01"
+                        label="Conversion %" variant="label-hidden"
+                        class="conversion-input"
+                        oninput={handleConversionInput}
+                        onblur={handleConversionBlur}
+                        onkeydown={handleConversionKeydown}>
+                    </lightning-input>
+                    <lightning-button-icon
+                        icon-name="utility:save"
+                        alternative-text="Save conversion rate"
+                        title="Save conversion rate"
+                        onclick={saveConversion}>
+                    </lightning-button-icon>
+                    <template if:true={savingConversion}>
+                        <lightning-spinner alternative-text="Saving" size="small"></lightning-spinner>
+                    </template>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error -->
+        <template if:true={error}>
+            <div class="slds-p-around_medium">
+                <p class="slds-text-color_error">{error}</p>
+            </div>
+        </template>
+
+        <!-- Loading -->
+        <template if:true={isLoading}>
+            <div class="slds-p-around_large slds-text-align_center">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <!-- Table -->
+        <template if:false={isLoading}>
+            <div class="table-wrapper">
+                <table class="forecast-table">
+                    <thead>
+                        <tr>
+                            <th style="min-width:200px">
+                                Months
+                                <span class="resize-handle" onmousedown={handleResizeMousedown}></span>
+                            </th>
+                            <th>Quota<span class="resize-handle" onmousedown={handleResizeMousedown}></span></th>
+                            <th>Conversion<span class="resize-handle" onmousedown={handleResizeMousedown}></span></th>
+                            <th>Required Pipeline<span class="resize-handle" onmousedown={handleResizeMousedown}></span></th>
+                            <th>Current Pipeline<span class="resize-handle" onmousedown={handleResizeMousedown}></span></th>
+                            <th>Gap<span class="resize-handle" onmousedown={handleResizeMousedown}></span></th>
+                            <th>Closed<span class="resize-handle" onmousedown={handleResizeMousedown}></span></th>
+                            <th>Commit<span class="resize-handle" onmousedown={handleResizeMousedown}></span></th>
+                            <th>Best Case<span class="resize-handle" onmousedown={handleResizeMousedown}></span></th>
+                            <th>Pipeline<span class="resize-handle" onmousedown={handleResizeMousedown}></span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Total row -->
+                        <template if:true={totals}>
+                            <tr class="total-row">
+                                <td>{totalRowLabel}</td>
+                                <td>{totals.quotaFormatted}</td>
+                                <td>{conversionLabel}</td>
+                                <td>{totals.requiredPipelineFormatted}</td>
+                                <td>{totals.currentPipelineFormatted}</td>
+                                <td class={totals.gapClass}>{totals.gapFormatted}</td>
+                                <td>{totals.closedFormatted}</td>
+                                <td>{totals.commitFormatted}</td>
+                                <td>{totals.bestCaseFormatted}</td>
+                                <td>{totals.pipelineFormatted}</td>
+                            </tr>
+                        </template>
+
+                        <!-- Flattened month rows + member sub-rows -->
+                        <template for:each={flatRows} for:item="fr">
+                            <!-- Month row or member sub-row -->
+                            <tr key={fr._key} class={fr._rowClass}>
+
+                                <!-- Month row cells -->
+                                <template if:true={fr._isMonthRow}>
+                                    <td>
+                                        <template if:true={isManager}>
+                                            <span
+                                                class="expand-chevron"
+                                                data-month={fr.startDate}
+                                                onclick={handleMonthToggle}
+                                                title="Expand / Collapse">
+                                                <template if:true={fr.isExpanded}>▼</template>
+                                                <template if:false={fr.isExpanded}>▶</template>
+                                            </span>
+                                        </template>
+                                        <span class="month-label">{fr.monthLabel}</span>
+                                        <template if:true={fr.isCurrent}>
+                                            <span class="current-badge">Current</span>
+                                        </template>
+                                    </td>
+                                    <td>{fr.quotaFormatted}</td>
+                                    <td>{fr.conversionLabel}</td>
+                                    <td>{fr.requiredPipelineFormatted}</td>
+                                    <td>{fr.currentPipelineFormatted}</td>
+                                    <td class={fr.gapClass}>{fr.gapFormatted}</td>
+                                    <td class="clickable-cell"
+                                        data-month={fr.startDate} data-category="Closed"
+                                        onclick={handleCategoryClick}>{fr.closedFormatted}</td>
+                                    <td class="clickable-cell"
+                                        data-month={fr.startDate} data-category="Commit"
+                                        onclick={handleCategoryClick}>{fr.commitFormatted}</td>
+                                    <td class="clickable-cell"
+                                        data-month={fr.startDate} data-category="BestCase"
+                                        onclick={handleCategoryClick}>{fr.bestCaseFormatted}</td>
+                                    <td class="clickable-cell"
+                                        data-month={fr.startDate} data-category="Pipeline"
+                                        onclick={handleCategoryClick}>{fr.pipelineFormatted}</td>
+                                </template>
+
+                                <!-- Member sub-row cells -->
+                                <template if:false={fr._isMonthRow}>
+                                    <td class="member-name-cell">
+                                        <span class="member-indent">↳</span>
+                                        {fr.userName}
+                                    </td>
+                                    <td>{fr.quotaFormatted}</td>
+                                    <td>{fr.conversionLabel}</td>
+                                    <td>{fr.requiredPipelineFormatted}</td>
+                                    <td>{fr.currentPipelineFormatted}</td>
+                                    <td class={fr.gapClass}>{fr.gapFormatted}</td>
+                                    <td class="clickable-cell"
+                                        data-month={fr.startDate} data-category="Closed"
+                                        onclick={handleCategoryClick}>{fr.closedFormatted}</td>
+                                    <td class="clickable-cell"
+                                        data-month={fr.startDate} data-category="Commit"
+                                        onclick={handleCategoryClick}>{fr.commitFormatted}</td>
+                                    <td class="clickable-cell"
+                                        data-month={fr.startDate} data-category="BestCase"
+                                        onclick={handleCategoryClick}>{fr.bestCaseFormatted}</td>
+                                    <td class="clickable-cell"
+                                        data-month={fr.startDate} data-category="Pipeline"
+                                        onclick={handleCategoryClick}>{fr.pipelineFormatted}</td>
+                                </template>
+
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+
+                <!-- Drill-down panel -->
+                <template if:true={showDrill}>
+                    <div class="drill-panel">
+                        <div class="drill-header">
+                            <span class="drill-title">{drillTitle}</span>
+                            <lightning-button-icon
+                                icon-name="utility:close" size="small"
+                                alternative-text="Close" title="Close"
+                                onclick={closeDrill}>
+                            </lightning-button-icon>
+                        </div>
+                        <template if:true={drillLoading}>
+                            <div class="slds-p-around_medium slds-text-align_center">
+                                <lightning-spinner alternative-text="Loading deals" size="small"></lightning-spinner>
+                            </div>
+                        </template>
+                        <template if:true={drillError}>
+                            <div class="slds-p-around_medium">
+                                <p class="slds-text-color_error">{drillError}</p>
+                            </div>
+                        </template>
+                        <template if:false={drillLoading}>
+                            <div class="drill-table-wrapper">
+                                <table class="drill-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Deal Name</th>
+                                            <th>Parent Deal</th>
+                                            <th>Owner</th>
+                                            <th>Account Name</th>
+                                            <th>Line of Business</th>
+                                            <th>Product</th>
+                                            <th>Stage</th>
+                                            <th>Amount</th>
+                                            <th>Close Date</th>
+                                            <th>Age</th>
+                                            <th>Expected Start</th>
+                                            <th>Expected End</th>
+                                            <th>Training Duration</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <template for:each={drillRows} for:item="d">
+                                            <tr key={d.id}>
+                                                <td>{d.rowNum}</td>
+                                                <td class="deal-name-cell">{d.name}</td>
+                                                <td>{d.parentDeal}</td>
+                                                <td>{d.ownerName}</td>
+                                                <td>{d.accountName}</td>
+                                                <td>{d.lineOfBusiness}</td>
+                                                <td>{d.product}</td>
+                                                <td>{d.stageName}</td>
+                                                <td class="amount-cell">{d.amountFormatted}</td>
+                                                <td>{d.closeDate}</td>
+                                                <td>{d.age}</td>
+                                                <td>{d.expectedStart}</td>
+                                                <td>{d.expectedEnd}</td>
+                                                <td>{d.trainingDuration}</td>
+                                            </tr>
+                                        </template>
+                                        <template if:true={noDrillRows}>
+                                            <tr>
+                                                <td colspan="14" class="no-deals-row">No deals found for this cell.</td>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+            </div>
+        </template>
+
+    </div>
+</template>

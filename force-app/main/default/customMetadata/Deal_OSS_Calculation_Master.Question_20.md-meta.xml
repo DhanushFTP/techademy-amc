@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>20</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Convert confidence into a concrete close plan rather than optimism.
+• List what remains, who owns each item, and the exact dates tied to closure.
+• Validate that your confidence is backed by buyer signals, not only internal hope.
+• Keep pressure light but disciplined through the final stretch.
+• Use confidence to drive execution, not complacency.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">20|Yes</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Sounds promising, but let us see.&apos; Response: &apos;Absolutely. I want to back my confidence with a clear action plan so both sides know exactly what closes this.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Good. Convert confidence into a dated action plan so confidence becomes execution, not optimism.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Finish with discipline.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What are the final steps we should lock today to land this inside the timeline?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">Yes</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Identify what is blocking full confidence and tackle that directly.
+• Check for buyer access gaps, budget uncertainty, competition, legal steps, or unresolved objections.
+• Turn vague concern into a named risk with an owner and next action.
+• Use the dashboard signals to decide whether to reopen discovery, tighten close plan, or hold proposal.
+• Forecast with discipline until confidence is earned.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">20|Partially confident</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;There are still a few open concerns.&apos; Response: &apos;That is helpful. Let us name those concerns directly so we can close them one by one.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">List exactly what still worries you, then remove those issues one by one. Confidence improves through control.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Moderate slippage risk.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What are the top two reasons this may still slip, and how do we handle them now?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">Partially confident</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Do not hide the weak confidence behind activity.
+• Name the top reasons this deal may slip or be lost.
+• Take one corrective action on each major risk instead of sending more generic follow-ups.
+• If the core gaps are not fixable, reduce forecast weight and refocus effort.
+• Low confidence should trigger honest deal repair, not hopeful chasing.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">20|Not confident</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We are unsure this will move soon.&apos; Response: &apos;Understood. Then I would rather diagnose the real blockers now than keep pushing generic follow-ups.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not hide your own doubt. Re-qualify the deal and fix the biggest blocker before spending more effort.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: Seller confidence is weak for a reason.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;I want to be honest. Before we push ahead, we need to solve the main blocker first.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Not confident</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Your forecast quality is weak because the current signals are unclear.
+• Audit the deal: problem, urgency, buyer access, process, budget, competition, and next step.
+• Use that review to decide whether this is a real opportunity or only an active conversation.
+• Rebuild confidence from facts, not intuition.
+• Only then commit to an internal close view.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">20|Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Too early to tell.&apos; Response: &apos;Fair enough. Let us do a quick deal audit together so the next steps are based on facts, not guesses.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Pause and review the deal end to end. If you cannot explain how this closes, the buyer probably cannot either.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: No close path clarity.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What exact event, person, or gap is stopping me from seeing a clear close path?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">Are you fully confident of getting this deal within the proposed timeline ?</value>
+    </values>
+</CustomMetadata>

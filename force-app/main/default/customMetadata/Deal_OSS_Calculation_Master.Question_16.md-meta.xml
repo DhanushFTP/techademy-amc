@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>16</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Use the clean path to close faster and more confidently.
+• Confirm that no hidden dependencies such as budget release, policy clearance, committee approval, or IT check remain.
+• Sequence next steps tightly because dependency-free deals can move well when managed actively.
+• Do not create delay through internal slow follow-up on your side.
+• Convert simplicity into momentum.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">16|No dependency</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Nothing major is pending.&apos; Response: &apos;That is excellent. Then we can move faster by locking the remaining actions and dates now.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Good. Keep the close plan simple and move quickly while there are fewer moving parts.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Push speed.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Since there are no major dependencies, can we lock the next two decision steps now?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">No dependency</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Clarify the dependency and keep it visible without letting it control the deal.
+• Ask who owns that dependency and when it is expected to clear.
+• Build follow-up around the dependency date.
+• Work in parallel on everything else that can be completed now.
+• Reduce the chance of a small dependency becoming a big excuse.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">16|Yes, but insignificant</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;There is a small dependency.&apos; Response: &apos;Fine. Let us make it visible and work around everything else in parallel.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Name the dependency clearly and keep it on a watchlist. Small blockers become big surprises when ignored.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Small dependency can still delay closure.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What exactly is the dependency, and by when will it be resolved?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">Yes, but insignificant</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Treat this as a major risk to forecast and closure timing.
+• Understand exactly what event must happen, who controls it, and how likely it is.
+• Check whether your deal can be structured in phases to reduce dependency pressure.
+• Keep leadership informed internally if this is a strategic opportunity.
+• Do not forecast aggressively until the dependency has a clear path.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">16|Yes, significant</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;This depends on another decision first.&apos; Response: &apos;Understood. Then I want to plan this around that reality rather than over-forecast the close.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not ignore this. Build the deal plan around the dependency owner, date, and workaround path.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: External or internal blocker present.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What must happen first, who controls it, and is there any way to parallel-track our work?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Yes, significant</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Find out what external or internal event the decision depends on before you rely on the timeline.
+• Ask about budget release, approvals, academic cycle, leadership sign-off, procurement event, or other linked decisions.
+• Make hidden dependencies visible now, not late in the cycle.
+• This will improve both forecasting and next-step planning.
+• Deals often slip because this question was never asked properly.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">16|Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;I am not sure what else this depends on.&apos; Response: &apos;No problem. Let us map the possible approvals and linked events now so we do not get surprised later.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Surface the hidden blockers now. Unseen dependencies are one of the easiest ways for a &apos;good&apos; deal to slip.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: Unknown blocker risk.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Is this dependent on budget release, leadership approval, vendor onboarding, or another project?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">Are there any dependency risk? Is the decision dependent on any event/situation to happen?</value>
+    </values>
+</CustomMetadata>

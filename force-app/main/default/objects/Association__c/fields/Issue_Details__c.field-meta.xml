@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Issue_Details__c</fullName>
+    <label>Issue Details</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <controllingField>Issue_with_Association__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Trainer Backout before Evaluation</fullName>
+                <default>false</default>
+                <label>Trainer Backout before Evaluation</label>
+            </value>
+            <value>
+                <fullName>Trainer Backout after Evaluation</fullName>
+                <default>false</default>
+                <label>Trainer Backout after Evaluation</label>
+            </value>
+            <value>
+                <fullName>Trainer Backout during Training</fullName>
+                <default>false</default>
+                <label>Trainer Backout during Training</label>
+            </value>
+            <value>
+                <fullName>Trainer Rejected</fullName>
+                <default>false</default>
+                <label>Trainer Rejected</label>
+            </value>
+            <value>
+                <fullName>Trainer Dates Unavailability</fullName>
+                <default>false</default>
+                <label>Trainer Dates Unavailability</label>
+            </value>
+            <value>
+                <fullName>Trainer Feedback</fullName>
+                <default>false</default>
+                <label>Trainer Feedback</label>
+            </value>
+            <value>
+                <fullName>Trainer Behaviour</fullName>
+                <default>false</default>
+                <label>Trainer Behaviour</label>
+            </value>
+            <value>
+                <fullName>Lab Unavailability</fullName>
+                <default>false</default>
+                <label>Lab Unavailability</label>
+            </value>
+            <value>
+                <fullName>Lab Cost</fullName>
+                <default>false</default>
+                <label>Lab Cost</label>
+            </value>
+            <value>
+                <fullName>Lab Performance</fullName>
+                <default>false</default>
+                <label>Lab Performance</label>
+            </value>
+            <value>
+                <fullName>OEM Labs</fullName>
+                <default>false</default>
+                <label>OEM Labs</label>
+            </value>
+            <value>
+                <fullName>Margin</fullName>
+                <default>false</default>
+                <label>Margin</label>
+            </value>
+            <value>
+                <fullName>Issue with Requirement Clarity</fullName>
+                <default>false</default>
+                <label>Issue with Requirement Clarity</label>
+            </value>
+            <value>
+                <fullName>Training Extension without Pay</fullName>
+                <default>false</default>
+                <label>Training Extension without Pay</label>
+            </value>
+            <value>
+                <fullName>Pax Increase</fullName>
+                <default>false</default>
+                <label>Pax Increase</label>
+            </value>
+            <value>
+                <fullName>Trainer Cost</fullName>
+                <default>false</default>
+                <label>Trainer Cost</label>
+            </value>
+            <value>
+                <fullName>Trainer Quality</fullName>
+                <default>false</default>
+                <label>Trainer Quality</label>
+            </value>
+            <value>
+                <fullName>Post Confirmation Commercial Issue</fullName>
+                <default>false</default>
+                <label>Post Confirmation Commercial Issue</label>
+            </value>
+            <value>
+                <fullName>Delay in Follow-up by Solutions</fullName>
+                <default>false</default>
+                <label>Delay in Follow-up by Solutions</label>
+            </value>
+            <value>
+                <fullName>Incorrect Follow-up by Solutions</fullName>
+                <default>false</default>
+                <label>Incorrect Follow-up by Solutions</label>
+            </value>
+            <value>
+                <fullName>Trainer Projection Issues</fullName>
+                <default>false</default>
+                <label>Trainer Projection Issues</label>
+            </value>
+            <value>
+                <fullName>Delay in Internal Coordination</fullName>
+                <default>false</default>
+                <label>Delay in Internal Coordination</label>
+            </value>
+            <value>
+                <fullName>TAT Issue</fullName>
+                <default>false</default>
+                <label>TAT Issue</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Trainer Issues</controllingFieldValue>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <valueName>Trainer Backout before Evaluation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Trainer Issues</controllingFieldValue>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <valueName>Trainer Backout after Evaluation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Trainer Issues</controllingFieldValue>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <valueName>Trainer Backout during Training</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Trainer Issues</controllingFieldValue>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <valueName>Trainer Rejected</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Trainer Issues</controllingFieldValue>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <valueName>Trainer Dates Unavailability</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Trainer Issues</controllingFieldValue>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <valueName>Trainer Feedback</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Trainer Issues</controllingFieldValue>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <valueName>Trainer Behaviour</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lab Issues</controllingFieldValue>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <valueName>Lab Unavailability</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lab Issues</controllingFieldValue>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <valueName>Lab Cost</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lab Issues</controllingFieldValue>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <valueName>Lab Performance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Lab Issues</controllingFieldValue>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <valueName>OEM Labs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <controllingFieldValue>Commercial Issues</controllingFieldValue>
+            <valueName>Margin</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <controllingFieldValue>Commercial Issues</controllingFieldValue>
+            <valueName>Issue with Requirement Clarity</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <controllingFieldValue>Commercial Issues</controllingFieldValue>
+            <valueName>Training Extension without Pay</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <controllingFieldValue>Commercial Issues</controllingFieldValue>
+            <valueName>Pax Increase</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <controllingFieldValue>SM Issue</controllingFieldValue>
+            <valueName>Trainer Cost</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <controllingFieldValue>SM Issue</controllingFieldValue>
+            <valueName>Trainer Quality</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <controllingFieldValue>SM Issue</controllingFieldValue>
+            <valueName>Post Confirmation Commercial Issue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <controllingFieldValue>SM Issue</controllingFieldValue>
+            <valueName>Delay in Follow-up by Solutions</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <controllingFieldValue>SM Issue</controllingFieldValue>
+            <valueName>Incorrect Follow-up by Solutions</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <controllingFieldValue>SM Issue</controllingFieldValue>
+            <valueName>Trainer Projection Issues</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Multiple issues</controllingFieldValue>
+            <controllingFieldValue>SM Issue</controllingFieldValue>
+            <valueName>Delay in Internal Coordination</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SM Issue</controllingFieldValue>
+            <valueName>TAT Issue</valueName>
+        </valueSettings>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

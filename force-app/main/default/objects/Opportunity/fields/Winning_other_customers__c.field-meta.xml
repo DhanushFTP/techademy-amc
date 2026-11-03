@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Winning_other_customers__c</fullName>
+    <description>With regard to winning other customers in future, how important this deal will be ?</description>
+    <inlineHelpText>With regard to winning other customers in future, how important this deal will be ?</inlineHelpText>
+    <label>Deal future impact</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>An Asset</fullName>
+                <default>false</default>
+                <label>An Asset</label>
+            </value>
+            <value>
+                <fullName>Be a Reference</fullName>
+                <default>false</default>
+                <label>Be a Reference</label>
+            </value>
+            <value>
+                <fullName>Insignificant</fullName>
+                <default>false</default>
+                <label>Insignificant</label>
+            </value>
+            <value>
+                <fullName>Don&apos;t know</fullName>
+                <default>false</default>
+                <label>Don&apos;t know</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Profile_restriction</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    NOT(ISNEW()),                     
+    ISCHANGED(StageName),             
+    $Profile.Name = &quot;Training Solutions Manager&quot;
+)</errorConditionFormula>
+    <errorMessage>You don&apos;t have the necessary permission</errorMessage>
+</ValidationRule>

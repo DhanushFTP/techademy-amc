@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Custom Metadata Type
+Deal OSS Calculation Master (Deal_OSS_Calculation_Master__mdt)
+Master configuration for the Opportunity Scoring System (OSS). Each record holds one qualification question and its four answer choices (A–D), with the score and coaching content — recommendation, talk track, risk flag, action plan, and objection handling - for every choice. Read by the dealOSSDashboard component.</description>
+    <label>Deal OSS Calculation Master</label>
+    <pluralLabel>Deal OSS Calculation Masters</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

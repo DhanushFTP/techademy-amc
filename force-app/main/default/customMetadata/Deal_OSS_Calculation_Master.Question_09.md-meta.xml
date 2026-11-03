@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>9</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Do not become complacent just because there is no visible competitor today.
+• Confirm whether the real competitor is delay, internal build, or status quo.
+• Use the opening to lock decision criteria, buying path, and timeline.
+• Build preference before a new competitor enters the picture.
+• Keep momentum and do not over-negotiate against yourself.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">9|No competition</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We are not comparing right now.&apos; Response: &apos;Good to know. Then my focus will be on helping you make a clean decision, not on forcing a competitive pitch.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not relax. Use the open lane to shape the buyer criteria and lock the path to decision.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Create decision momentum.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Since you are not comparing active options, what would help you feel fully confident moving ahead?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">No competition</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Use competitive weakness to sharpen your differentiation early.
+• Make the buyer say what matters most and tie those points to your strengths.
+• Show why your approach is safer, faster, easier, or more outcome-driven.
+• Prevent the discussion from becoming only price-based.
+• Use proof and relevance to close the door on weaker alternatives.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">9|Yes, but weak</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We are speaking to someone else too.&apos; Response: &apos;That makes sense. Let me focus on the few areas where the decision will really be made, not on broad claims.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Differentiate early and make the comparison easy. Show why choosing you is safer, simpler, and more useful.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Weak competition can still win if you stay generic.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;Let me show where we will create better outcomes with less execution risk.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">Yes, but weak</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Build a deliberate competitive plan instead of hoping your proposal speaks for itself.
+• Understand why the competitor is strong: relationship, pricing, product, incumbent status, or perception.
+• Attack where you are truly stronger and avoid fighting on their best ground.
+• Equip the buyer with a clear reason to choose differently.
+• Bring internal leadership or specialists if the deal is strategically important.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">9|Yes, they are strong</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;The other vendor is very strong here.&apos; Response: &apos;Understood. Then it becomes important that I show you where our approach is genuinely stronger for your priorities.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Stop feature dumping. Build a win story around buyer pain, proof, access, and what the competitor cannot match.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Strong competitor needs a sharp counter-plan.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What would make you choose the safer partner here, not just the familiar one?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Yes, they are strong</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Find out who else the buyer is considering and how they are being judged.
+• Ask whether this is a formal comparison, incumbent renewal, or market scan.
+• Understand the competitor&apos;s hold on the account, if any.
+• Without competitive clarity, you cannot choose the right sales strategy.
+• Do this before proposal if possible.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">9|Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We are still deciding who all to look at.&apos; Response: &apos;That helps. I would still like to understand what alternatives you may compare so I can stay relevant to your evaluation.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Find out who else is in, what they are known for, and how the buyer is comparing options. You need a real battlefield map.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: No competitive picture.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Who else is being considered, and what do you think they are strongest at in this deal?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">Are there any competitors on this deal ?</value>
+    </values>
+</CustomMetadata>

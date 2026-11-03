@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Status__c</fullName>
+    <description>Status of the Account</description>
+    <inlineHelpText>Status of the Account</inlineHelpText>
+    <label>Account Status</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>MQL</fullName>
+                <default>false</default>
+                <label>Marketing Qualified</label>
+            </value>
+            <value>
+                <fullName>SQL</fullName>
+                <default>true</default>
+                <label>Sales Qualified</label>
+            </value>
+            <value>
+                <fullName>Need Analysis</fullName>
+                <default>false</default>
+                <label>Need Analysis</label>
+            </value>
+            <value>
+                <fullName>Initial Discussion</fullName>
+                <default>false</default>
+                <label>Initial Discussion</label>
+            </value>
+            <value>
+                <fullName>Demo/Evaluation</fullName>
+                <default>false</default>
+                <label>Demo</label>
+            </value>
+            <value>
+                <fullName>Opportunity Received</fullName>
+                <default>false</default>
+                <label>Opportunity Received</label>
+            </value>
+            <value>
+                <fullName>Opportunity Solutioned</fullName>
+                <default>false</default>
+                <label>Opportunity Solutioned</label>
+            </value>
+            <value>
+                <fullName>Evaluation</fullName>
+                <default>false</default>
+                <label>Evaluation</label>
+            </value>
+            <value>
+                <fullName>Commercial Discussion</fullName>
+                <default>false</default>
+                <label>Commercial Discussion</label>
+            </value>
+            <value>
+                <fullName>Empaneled</fullName>
+                <default>false</default>
+                <label>Empaneled</label>
+            </value>
+            <value>
+                <fullName>Active</fullName>
+                <default>false</default>
+                <label>Active</label>
+            </value>
+            <value>
+                <fullName>Cold</fullName>
+                <default>false</default>
+                <label>Cold</label>
+            </value>
+            <value>
+                <fullName>Disqualified: Not Target</fullName>
+                <default>false</default>
+                <label>Disqualified: Not Target</label>
+            </value>
+            <value>
+                <fullName>Disqualified: Account not found</fullName>
+                <default>false</default>
+                <label>Disqualified: Account not found</label>
+            </value>
+            <value>
+                <fullName>Disqualified: Competitor</fullName>
+                <default>false</default>
+                <label>Disqualified: Competitor</label>
+            </value>
+            <value>
+                <fullName>Disqualified: Other</fullName>
+                <default>false</default>
+                <label>Disqualified: Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

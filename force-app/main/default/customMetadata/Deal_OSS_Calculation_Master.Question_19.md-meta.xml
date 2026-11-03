@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>19</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Use the strategic value of this logo or account carefully in your internal prioritisation and external storytelling.
+• Understand exactly why it matters: marquee brand, university reputation, market entry, or domain proof.
+• Protect delivery quality because this deal can become a future sales asset.
+• Ask what would make them comfortable serving as a public or private success story later.
+• Win this deal in a way that creates long-term reference value.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">19|An Asset</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Please do not treat us like a logo.&apos; Response: &apos;Completely fair. My priority is solving your need well. The strategic value only changes how seriously we support the account internally.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Use this deal as a logo, story, or sector credibility play. Shape the offer so the future reference value is protected.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Strategic value is high.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;If this goes well, would you be open to being a reference or case example later?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">An Asset</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Build the deal and delivery plan with future referenceability in mind.
+• Capture the buyer outcome, implementation success, and satisfaction path early.
+• Ask what would need to happen for them to become a positive reference later.
+• Protect experience quality because references are earned after the sale.
+• Use the potential reference value to justify good internal support now.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">19|Be a Reference</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We do not usually give references.&apos; Response: &apos;Understood. My focus then is to deliver strong outcomes first. Any future advocacy can be discussed only if you are genuinely comfortable.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Capture what makes this a usable reference and sell with that future story in mind.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Good strategic value if executed well.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What outcome would make this a strong reference within your industry or academic network?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">Be a Reference</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Do not overinvest because of imagined market signalling.
+• Evaluate the deal on current revenue, fit, and win probability.
+• Still deliver professionally, but do not distort commercial judgement for brand optics.
+• Keep focus on solving the present customer need well.
+• Let the deal stand on its own business merit.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">19|Insignificant</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;This is just a normal purchase for us.&apos; Response: &apos;That is fine. I will treat it with the right level of seriousness and keep the discussion focused on current value.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Keep the deal commercial and efficient. Do not overinvest unless the current revenue itself justifies it.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Limited strategic upside.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;We will stay focused on making this a clean, practical win without adding unnecessary complexity.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Insignificant</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Clarify whether this account would matter for future credibility, case studies, or market entry.
+• Ask internally whether this customer name, sector, or institution carries strategic value.
+• Use that insight to balance effort, pricing discipline, and support allocation.
+• Do not confuse a nice logo with a must-win unless there is a real strategic reason.
+• Get clarity before making internal trade-offs.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">19|Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Why does that matter?&apos; Response: &apos;Mostly for how we plan support and account development internally. It does not change the way we solve your immediate need.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Check whether this logo, sector, or institution can open doors later. Strategic value changes how hard you should fight.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: You may be under- or over-investing.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Would winning this account help us influence similar buyers in this segment?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">With regard to winning other customers in future, how important this deal will be ?</value>
+    </values>
+</CustomMetadata>

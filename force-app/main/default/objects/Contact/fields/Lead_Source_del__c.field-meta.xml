@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Source_del__c</fullName>
+    <businessStatus>Hidden</businessStatus>
+    <label>Lead Source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>-None-</fullName>
+                <default>false</default>
+                <label>-None-</label>
+            </value>
+            <value>
+                <fullName>Advertisement</fullName>
+                <default>false</default>
+                <label>Advertisement</label>
+            </value>
+            <value>
+                <fullName>Cold Call</fullName>
+                <default>false</default>
+                <label>Cold Call</label>
+            </value>
+            <value>
+                <fullName>Employee Referral</fullName>
+                <default>false</default>
+                <label>Employee Referral</label>
+            </value>
+            <value>
+                <fullName>External Referral</fullName>
+                <default>false</default>
+                <label>External Referral</label>
+            </value>
+            <value>
+                <fullName>Online Store</fullName>
+                <default>false</default>
+                <label>Online Store</label>
+            </value>
+            <value>
+                <fullName>Partner</fullName>
+                <default>false</default>
+                <label>Partner</label>
+            </value>
+            <value>
+                <fullName>Twitter</fullName>
+                <default>false</default>
+                <label>Twitter</label>
+            </value>
+            <value>
+                <fullName>Public Relations</fullName>
+                <default>false</default>
+                <label>Public Relations</label>
+            </value>
+            <value>
+                <fullName>Facebook</fullName>
+                <default>false</default>
+                <label>Facebook</label>
+            </value>
+            <value>
+                <fullName>Google+</fullName>
+                <default>false</default>
+                <label>Google+</label>
+            </value>
+            <value>
+                <fullName>Sales Email Alias</fullName>
+                <default>false</default>
+                <label>Sales Email Alias</label>
+            </value>
+            <value>
+                <fullName>Seminar Partner</fullName>
+                <default>false</default>
+                <label>Seminar Partner</label>
+            </value>
+            <value>
+                <fullName>Internal Seminar</fullName>
+                <default>false</default>
+                <label>Internal Seminar</label>
+            </value>
+            <value>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+                <label>Trade Show</label>
+            </value>
+            <value>
+                <fullName>Web Cases</fullName>
+                <default>false</default>
+                <label>Web Cases</label>
+            </value>
+            <value>
+                <fullName>Web Mail</fullName>
+                <default>false</default>
+                <label>Web Mail</label>
+            </value>
+            <value>
+                <fullName>Chat</fullName>
+                <default>false</default>
+                <label>Chat</label>
+            </value>
+            <value>
+                <fullName>Self Uploaded</fullName>
+                <default>false</default>
+                <label>Self Uploaded</label>
+            </value>
+            <value>
+                <fullName>Linkedin Ads</fullName>
+                <default>false</default>
+                <label>Linkedin Ads</label>
+            </value>
+            <value>
+                <fullName>Facebook Ads</fullName>
+                <default>false</default>
+                <label>Facebook Ads</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

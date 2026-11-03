@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pipeline__c</fullName>
+    <label>Pipeline</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Deal Pipeline</fullName>
+                <default>false</default>
+                <label>Deal Pipeline</label>
+            </value>
+            <value>
+                <fullName>Delivery Pipeline</fullName>
+                <default>false</default>
+                <label>Delivery Pipeline</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HEI_Management__c</fullName>
+    <label>HEI Management</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>true</default>
+                <label>Not Applicable</label>
+            </value>
+            <value>
+                <fullName>State Government</fullName>
+                <default>false</default>
+                <label>State Government</label>
+            </value>
+            <value>
+                <fullName>Central Government</fullName>
+                <default>false</default>
+                <label>Central Government</label>
+            </value>
+            <value>
+                <fullName>Private Un-Aided</fullName>
+                <default>false</default>
+                <label>Private Un-Aided</label>
+            </value>
+            <value>
+                <fullName>University</fullName>
+                <default>false</default>
+                <label>University</label>
+            </value>
+            <value>
+                <fullName>Private Aided (Government Aided)</fullName>
+                <default>false</default>
+                <label>Private Aided (Government Aided)</label>
+            </value>
+            <value>
+                <fullName>Local Body</fullName>
+                <default>false</default>
+                <label>Local Body</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

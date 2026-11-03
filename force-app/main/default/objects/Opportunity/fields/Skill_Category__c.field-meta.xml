@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Skill_Category__c</fullName>
+    <label>Skill Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>true</default>
+                <label>Not Applicable</label>
+            </value>
+            <value>
+                <fullName>Web Tech - Java</fullName>
+                <default>false</default>
+                <label>Web Tech - Java</label>
+            </value>
+            <value>
+                <fullName>Web Tech - Non Java with DB and Testing</fullName>
+                <default>false</default>
+                <label>Web Tech - Non Java with DB and Testing</label>
+            </value>
+            <value>
+                <fullName>AI and Data Science including Big Data and IoT</fullName>
+                <default>false</default>
+                <label>AI and Data Science including Big Data and IoT</label>
+            </value>
+            <value>
+                <fullName>Cloud, DevOps &amp; Security</fullName>
+                <default>false</default>
+                <label>Cloud, DevOps &amp; Security</label>
+            </value>
+            <value>
+                <fullName>Products - Oracle, SAP, and other relevant products</fullName>
+                <default>false</default>
+                <label>Products - Oracle, SAP, and other relevant products</label>
+            </value>
+            <value>
+                <fullName>IMS</fullName>
+                <default>false</default>
+                <label>IMS</label>
+            </value>
+            <value>
+                <fullName>ITSM &amp; Process Management</fullName>
+                <default>false</default>
+                <label>ITSM &amp; Process Management</label>
+            </value>
+            <value>
+                <fullName>Generic Soft Skills</fullName>
+                <default>false</default>
+                <label>Generic Soft Skills</label>
+            </value>
+            <value>
+                <fullName>RFP</fullName>
+                <default>false</default>
+                <label>RFP</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

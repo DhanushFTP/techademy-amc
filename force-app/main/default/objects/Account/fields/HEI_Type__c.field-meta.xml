@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HEI_Type__c</fullName>
+    <label>HEI Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>None</fullName>
+                <default>true</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Central University</fullName>
+                <default>false</default>
+                <label>Central University</label>
+            </value>
+            <value>
+                <fullName>Deemed University-Government</fullName>
+                <default>false</default>
+                <label>Deemed University-Government</label>
+            </value>
+            <value>
+                <fullName>Deemed University-Government Aided</fullName>
+                <default>false</default>
+                <label>Deemed University-Government Aided</label>
+            </value>
+            <value>
+                <fullName>State Private University</fullName>
+                <default>false</default>
+                <label>State Private University</label>
+            </value>
+            <value>
+                <fullName>State Public University</fullName>
+                <default>false</default>
+                <label>State Public University</label>
+            </value>
+            <value>
+                <fullName>Affiliated College</fullName>
+                <default>false</default>
+                <label>Affiliated College</label>
+            </value>
+            <value>
+                <fullName>Constituent / University College</fullName>
+                <default>false</default>
+                <label>Constituent / University College</label>
+            </value>
+            <value>
+                <fullName>PG Center / Off-Campus Center</fullName>
+                <default>false</default>
+                <label>PG Center / Off-Campus Center</label>
+            </value>
+            <value>
+                <fullName>Autonomous College</fullName>
+                <default>false</default>
+                <label>Autonomous College</label>
+            </value>
+            <value>
+                <fullName>Recognized Center</fullName>
+                <default>false</default>
+                <label>Recognized Center</label>
+            </value>
+            <value>
+                <fullName>Deemed University-Private</fullName>
+                <default>false</default>
+                <label>Deemed University-Private</label>
+            </value>
+            <value>
+                <fullName>Institute of National Importance</fullName>
+                <default>false</default>
+                <label>Institute of National Importance</label>
+            </value>
+            <value>
+                <fullName>Institute under State Legislature Act</fullName>
+                <default>false</default>
+                <label>Institute under State Legislature Act</label>
+            </value>
+            <value>
+                <fullName>Central Open University</fullName>
+                <default>false</default>
+                <label>Central Open University</label>
+            </value>
+            <value>
+                <fullName>State Open University</fullName>
+                <default>false</default>
+                <label>State Open University</label>
+            </value>
+            <value>
+                <fullName>State Private Open University</fullName>
+                <default>false</default>
+                <label>State Private Open University</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

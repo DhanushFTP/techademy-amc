@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Techademy Lead Queue</name>
+    <queueMembers>
+        <users>
+            <user>disha.valecha@techademy.com</user>
+            <user>kaniskaran.t@techademy.com</user>
+            <user>karthik.kumar@techademy.com</user>
+            <user>meenakshi.sasish@techademy.com</user>
+            <user>raksha.sundaresan@techademy.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

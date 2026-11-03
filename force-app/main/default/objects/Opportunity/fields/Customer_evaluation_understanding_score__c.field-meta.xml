@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_evaluation_understanding_score__c</fullName>
+    <description>Weighted score for Your understanding of the evaluation criteria of the customer for this opportunity?</description>
+    <externalId>false</externalId>
+    <formula>CASE(
+ Customer_evaluation_criteria__c ,
+&quot;Strong&quot;, 2,
+&quot;Adequate&quot;, 1,
+&quot;Weak&quot;, 0,
+&quot;Don&apos;t know&quot;, -1,
+    0
+) * 0.07*100</formula>
+    <inlineHelpText>Weighted score for Your understanding of the evaluation criteria of the customer for this opportunity?</inlineHelpText>
+    <label>Customer Evaluation Understanding Score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Marketing_LOB__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <inlineHelpText>What marketing campaigns needs to be run for this deal?</inlineHelpText>
+    <label>Marketing LOB</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Recurring Deal | Exclude from Marketing</fullName>
+                <default>false</default>
+                <label>Recurring Deal | Exclude from Marketing</label>
+            </value>
+            <value>
+                <fullName>Capstone Project</fullName>
+                <default>false</default>
+                <label>Capstone Project</label>
+            </value>
+            <value>
+                <fullName>Certifications</fullName>
+                <default>false</default>
+                <label>Certifications</label>
+            </value>
+            <value>
+                <fullName>Cloud Labs</fullName>
+                <default>false</default>
+                <label>Cloud Labs</label>
+            </value>
+            <value>
+                <fullName>Freshers Program</fullName>
+                <default>false</default>
+                <label>Freshers Program</label>
+            </value>
+            <value>
+                <fullName>FSE</fullName>
+                <default>false</default>
+                <label>FSE</label>
+            </value>
+            <value>
+                <fullName>ILT</fullName>
+                <default>false</default>
+                <label>ILT</label>
+            </value>
+            <value>
+                <fullName>Induction</fullName>
+                <default>false</default>
+                <label>Induction</label>
+            </value>
+            <value>
+                <fullName>Internship</fullName>
+                <default>false</default>
+                <label>Internship</label>
+            </value>
+            <value>
+                <fullName>Licenses</fullName>
+                <default>false</default>
+                <label>Licenses</label>
+            </value>
+            <value>
+                <fullName>MML</fullName>
+                <default>false</default>
+                <label>MML</label>
+            </value>
+            <value>
+                <fullName>MML Private Lab</fullName>
+                <default>false</default>
+                <label>MML Private Lab</label>
+            </value>
+            <value>
+                <fullName>MML Public Lab</fullName>
+                <default>false</default>
+                <label>MML Public Lab</label>
+            </value>
+            <value>
+                <fullName>Project Readiness &amp; Deployment</fullName>
+                <default>false</default>
+                <label>Project Readiness &amp; Deployment</label>
+            </value>
+            <value>
+                <fullName>Question Bank</fullName>
+                <default>false</default>
+                <label>Question Bank</label>
+            </value>
+            <value>
+                <fullName>Techademy Bench to Billability</fullName>
+                <default>false</default>
+                <label>Techademy Bench to Billability</label>
+            </value>
+            <value>
+                <fullName>Blended Learning</fullName>
+                <default>false</default>
+                <label>Techademy Blended Learning</label>
+            </value>
+            <value>
+                <fullName>Techademy Complex Project Management</fullName>
+                <default>false</default>
+                <label>Techademy Complex Project Management</label>
+            </value>
+            <value>
+                <fullName>Techademy Content</fullName>
+                <default>false</default>
+                <label>Techademy Content</label>
+            </value>
+            <value>
+                <fullName>Techademy CURE/ Upskilling &amp; Reskilling</fullName>
+                <default>false</default>
+                <label>Techademy CURE/ Upskilling &amp; Reskilling</label>
+            </value>
+            <value>
+                <fullName>Techademy FSE/ Stack-Based Skilling</fullName>
+                <default>false</default>
+                <label>Techademy FSE/ Stack-Based Skilling</label>
+            </value>
+            <value>
+                <fullName>Techademy Interview as Service</fullName>
+                <default>false</default>
+                <label>Techademy Interview as Service</label>
+            </value>
+            <value>
+                <fullName>Laterals</fullName>
+                <default>false</default>
+                <label>Techademy Laterals Training</label>
+            </value>
+            <value>
+                <fullName>Techademy Learn Before Joining</fullName>
+                <default>false</default>
+                <label>Techademy Learn Before Joining</label>
+            </value>
+            <value>
+                <fullName>Techademy Lite</fullName>
+                <default>false</default>
+                <label>Techademy Lite</label>
+            </value>
+            <value>
+                <fullName>Techademy LXP</fullName>
+                <default>true</default>
+                <label>Techademy LXP</label>
+            </value>
+            <value>
+                <fullName>Techademy Role-Based Assessments</fullName>
+                <default>false</default>
+                <label>Techademy Role-Based Assessments</label>
+            </value>
+            <value>
+                <fullName>Techademy Role Based Skilling</fullName>
+                <default>false</default>
+                <label>Techademy Role Based Skilling</label>
+            </value>
+            <value>
+                <fullName>Techademy Skill Assessments</fullName>
+                <default>false</default>
+                <label>Techademy Skill Assessments</label>
+            </value>
+            <value>
+                <fullName>Techademy Stack-Based Assessments</fullName>
+                <default>false</default>
+                <label>Techademy Stack-Based Assessments</label>
+            </value>
+            <value>
+                <fullName>Techademy VILT</fullName>
+                <default>false</default>
+                <label>Techademy VILT</label>
+            </value>
+            <value>
+                <fullName>Virtutor</fullName>
+                <default>false</default>
+                <label>Virtutor</label>
+            </value>
+            <value>
+                <fullName>Yaksha Assessments</fullName>
+                <default>false</default>
+                <label>Yaksha Assessments</label>
+            </value>
+            <value>
+                <fullName>Yaksha Competency Map</fullName>
+                <default>false</default>
+                <label>Yaksha Competency Map</label>
+            </value>
+            <value>
+                <fullName>Yaksha Hackathon</fullName>
+                <default>false</default>
+                <label>Yaksha Hackathon</label>
+            </value>
+            <value>
+                <fullName>Yaksha Hiring Assessments</fullName>
+                <default>false</default>
+                <label>Yaksha Hiring Assessments</label>
+            </value>
+            <value>
+                <fullName>Yaksha PBA</fullName>
+                <default>false</default>
+                <label>Yaksha PBA</label>
+            </value>
+            <value>
+                <fullName>Yaksha</fullName>
+                <default>false</default>
+                <label>Yaksha Platform</label>
+            </value>
+            <value>
+                <fullName>Techademy GenAI</fullName>
+                <default>false</default>
+                <label>Techademy GenAI</label>
+            </value>
+            <value>
+                <fullName>BFSI</fullName>
+                <default>false</default>
+                <label>BFSI</label>
+            </value>
+            <value>
+                <fullName>Campus Hiring</fullName>
+                <default>false</default>
+                <label>Campus Hiring</label>
+            </value>
+            <value>
+                <fullName>Hackathon</fullName>
+                <default>false</default>
+                <label>Hackathon</label>
+            </value>
+            <value>
+                <fullName>Learner Engagement</fullName>
+                <default>false</default>
+                <label>Learner Engagement</label>
+            </value>
+            <value>
+                <fullName>Accreditation</fullName>
+                <default>false</default>
+                <label>Accreditation</label>
+            </value>
+            <value>
+                <fullName>Techademy ONE</fullName>
+                <default>false</default>
+                <label>Techademy ONE</label>
+            </value>
+            <value>
+                <fullName>University Entrance Exams</fullName>
+                <default>false</default>
+                <label>University Entrance Exams</label>
+            </value>
+            <value>
+                <fullName>Internal Exams</fullName>
+                <default>false</default>
+                <label>Internal Exams</label>
+            </value>
+            <value>
+                <fullName>Placement Preparation</fullName>
+                <default>false</default>
+                <label>Placement Preparation</label>
+            </value>
+            <value>
+                <fullName>LMS</fullName>
+                <default>false</default>
+                <label>LMS</label>
+            </value>
+            <value>
+                <fullName>ERP</fullName>
+                <default>false</default>
+                <label>ERP</label>
+            </value>
+            <value>
+                <fullName>Stackables</fullName>
+                <default>false</default>
+                <label>Stackables</label>
+            </value>
+            <value>
+                <fullName>Assessment</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Assessment</label>
+            </value>
+            <value>
+                <fullName>Assessments</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Assessments</label>
+            </value>
+            <value>
+                <fullName>Assessments Single F</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Assessments Single F</label>
+            </value>
+            <value>
+                <fullName>Bench Reskilling</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Bench Reskilling</label>
+            </value>
+            <value>
+                <fullName>Blende FSE</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Blende FSE</label>
+            </value>
+            <value>
+                <fullName>Case studies</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Case studies</label>
+            </value>
+            <value>
+                <fullName>Cloud</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cloud</label>
+            </value>
+            <value>
+                <fullName>Consulting</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Consulting</label>
+            </value>
+            <value>
+                <fullName>Content Development</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Content Development</label>
+            </value>
+            <value>
+                <fullName>Digital Learning</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Digital Learning</label>
+            </value>
+            <value>
+                <fullName>IIHT Labs</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>IIHT Labs</label>
+            </value>
+            <value>
+                <fullName>IT and business cons</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>IT and business cons</label>
+            </value>
+            <value>
+                <fullName>Induction(Techademy)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Induction(Techademy)</label>
+            </value>
+            <value>
+                <fullName>LBJ</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LBJ</label>
+            </value>
+            <value>
+                <fullName>LBJ - India</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LBJ - India</label>
+            </value>
+            <value>
+                <fullName>Techademy</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Techademy</label>
+            </value>
+            <value>
+                <fullName>Techademy (Digital C</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Techademy (Digital C</label>
+            </value>
+            <value>
+                <fullName>Technology consultin</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Technology consultin</label>
+            </value>
+            <value>
+                <fullName>VILT</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>VILT</label>
+            </value>
+            <value>
+                <fullName>Yaksha and Program M</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Yaksha and Program M</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

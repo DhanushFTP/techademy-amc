@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expected_day_of_closure_score__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(
+ Expected_day_of_closure__c ,
+&quot;&lt;30 days&quot;, 2,
+&quot;30-60 days&quot;, 1,
+&quot;60-90 days&quot;, 0,
+&quot;Not sure&quot;, -1,
+
+    0
+) * 0.05*100</formula>
+    <inlineHelpText>Weighted score for When is the expected day of Closure?</inlineHelpText>
+    <label>Expected day of closure score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

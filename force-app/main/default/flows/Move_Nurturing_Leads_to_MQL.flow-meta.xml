@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <decisions>
+        <name>Is_Lead_Still_in_Nurturing</name>
+        <label>Is Lead Still in Nurturing?</label>
+        <locationX>374</locationX>
+        <locationY>384</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Still_Nurturing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varLeadRecord.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Nurturing</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Move_to_MQL</targetReference>
+            </connector>
+            <label>Still Nurturing</label>
+        </rules>
+    </decisions>
+    <description>Move Inactive Nurturing Leads to MQL</description>
+    <environments>Default</environments>
+    <interviewLabel>Move Inactive Nurturing Leads {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Move Nurturing Leads to MQL</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Lead_Record_After_45_Days</name>
+        <label>Get Lead Record After 45 Days</label>
+        <locationX>374</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_Lead_Still_in_Nurturing</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <outputReference>varLeadRecord</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Status</queriedFields>
+    </recordLookups>
+    <recordUpdates>
+        <name>Move_to_MQL</name>
+        <label>Move to MQL</label>
+        <locationX>242</locationX>
+        <locationY>492</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>MQL</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Nurturing</stringValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>Check_Status_After_45_Days</name>
+            <connector>
+                <targetReference>Get_Lead_Record_After_45_Days</targetReference>
+            </connector>
+            <label>Check Status After 45 Days</label>
+            <offsetNumber>45</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>LastModifiedDate</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>varLeadRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Lead</objectType>
+    </variables>
+</Flow>

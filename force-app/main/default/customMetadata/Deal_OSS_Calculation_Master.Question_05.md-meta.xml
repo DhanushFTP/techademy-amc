@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>5</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Lead with the few capabilities that matter most to this buyer.
+• Translate capability fit into specific outcomes, implementation ease, and risk reduction.
+• Support the fit claim with relevant proof from similar B2B or academic cases.
+• Pre-empt objections on delivery, adoption, integration, or scale.
+• Now focus on buying path, not just product fit.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">5|Yes</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Others also say they can do this.&apos; Response: &apos;Fair point. Let me show you not just fit, but why our delivery and outcome path is stronger for your context.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Good fit. Now translate capability into their language with a crisp before-after story and proof points.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Move from fit to proof.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;Based on what you shared, this is how we solve it end to end and what outcome you should expect.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">Yes</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Do not hide the partial fit. Reframe the deal around the problems you solve best.
+• Check whether the missing 50% is truly critical or only desirable.
+• Offer a phased solution, partner path, or alternate delivery model if appropriate.
+• Protect trust by being explicit about what is in scope and what is not.
+• Only progress if the buyer agrees the important needs are covered.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">5|Partially, about 50%</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Can you still cover the rest?&apos; Response: &apos;Possibly through phasing or a different scope. I would rather be clear now and build the right path than over-promise.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not oversell. Narrow the scope, position a phased approach, or combine services so the fit feels safe.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Overpromising will hurt trust later.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Would phase one on the top priorities make sense while we plan the remaining gaps?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">Partially, about 50%</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Do not oversell a weak fit just to keep the deal alive.
+• Challenge whether this opportunity should be pursued in its current shape.
+• Explore scope reset, pilot, adjacent use case, or partner-led route.
+• If the core requirement is a mismatch, qualify out early and professionally.
+• Save time for deals where you can genuinely win and deliver well.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">5|Less than 30%</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Can you customise heavily?&apos; Response: &apos;We can explore that, but first I want to be honest about whether this remains the right opportunity for both sides.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not force-fit the deal. Re-qualify hard, reshape the problem, or walk away if the gap is too large.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: Weak solution fit.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;I do not want to sell you the wrong setup. Let us first check if the core fit is strong enough.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Less than 30%</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Run a structured fit-gap discussion with product, delivery, or solutioning support.
+• Map the buyer requirement against your actual capability, delivery readiness, and constraints.
+• Clarify integrations, services dependency, learner format, analytics need, and rollout model.
+• Avoid promising anything before internal validation is complete.
+• Then position the strongest viable path, not a hopeful one.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">5|Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Can you confirm later?&apos; Response: &apos;Yes, but I would like to validate internally first so whatever I commit is dependable.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Map their requirements against your solution line by line before the next meeting. Certainty beats optimism here.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Unknown fit creates proposal rework.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Can we validate the top use cases together so I can confirm fit honestly?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">Can our offerings / capability fulfil the customer&apos;s requirements fully?</value>
+    </values>
+</CustomMetadata>

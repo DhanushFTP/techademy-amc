@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_for_Disqualification_Not_Intere__c</fullName>
+    <label>Reason for Disqualification</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Individual</fullName>
+                <default>false</default>
+                <label>Individual</label>
+            </value>
+            <value>
+                <fullName>Looking for a Job</fullName>
+                <default>false</default>
+                <label>Looking for a Job</label>
+            </value>
+            <value>
+                <fullName>Company Size too Small</fullName>
+                <default>false</default>
+                <label>Company Size too Small</label>
+            </value>
+            <value>
+                <fullName>Not the right target audience</fullName>
+                <default>false</default>
+                <label>Not the right target audience</label>
+            </value>
+            <value>
+                <fullName>Competitor</fullName>
+                <default>false</default>
+                <label>Competitor</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>1</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Recap the requirement, success outcome, timeline, and users back to the buyer in one mail.
+• Get written confirmation on scope, deliverables, commercials assumptions, and decision path.
+• Turn the requirement into a solution note tailored to the client&apos;s L&amp;D or academic context.
+• Identify one proof point or case study that mirrors this requirement closely.
+• Use the clarity you have to move the deal to buyer alignment, not just vendor response.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">1|Fully Clear</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Just send the proposal.&apos; Response: &apos;Happy to. I will tailor it around the exact scope and success outcome we aligned on so it moves faster internally.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">You have the brief. Lock the use case, success measure, and buyer pain in writing before the next step.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Keep control and avoid scope drift.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;Let me recap the problem, scope, and success outcome so we stay aligned.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">Fully Clear</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Book a short discovery call only to close the missing requirement gaps.
+• Ask for current process, learner/user group, scale, success metric, and rollout expectation.
+• Convert vague asks into measurable outcomes such as adoption, completion, score lift, or turnaround time.
+• Send a simple checklist after the call and get buyer confirmation in writing.
+• Hold demo or proposal until the unknowns are closed.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">1|Partially clear</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;You already know enough.&apos; Response: &apos;I know the broad need. I just want to close the few open points so I do not send you something that misses the mark.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Run a short discovery call and close every gap before demo or proposal. Do not fill blanks with assumptions.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Partial clarity leads to weak demos and rework.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What are the must-have outcomes, timeline, users, and non-negotiables here?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">Partially clear</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Stop building solution detail until the missing requirement inputs are received.
+• Send a tight question list instead of a long note so the buyer can respond quickly.
+• Prioritise must-knows first: scope, timeline, stakeholders, expected outcome, and buying criteria.
+• Offer a 15-minute working session to fill the gaps together.
+• Once the gaps are closed, re-position your solution around their stated needs.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">1|Yet to get some from the customer</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Please share something first.&apos; Response: &apos;I can, but even a quick 10-minute clarification now will save both of us a lot of rework later.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Pause the pitch and get the missing requirement details first. A fast checklist works better than another long deck.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: You are selling with missing facts.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Before I propose anything, can we spend 15 minutes to complete the missing requirement points?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Yet to get some from the customer</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Do not progress the deal as a solution discussion yet.
+• Re-open the conversation around the business problem, learner pain, operational challenge, or assessment gap.
+• Find the owner of the requirement and ask how this need surfaced.
+• Understand who is affected, what is broken today, and what success must look like.
+• Only after this, move back into fit, demo, or proposal.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">1|Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Send a standard deck for now.&apos; Response: &apos;I can share context material, but before I suggest a solution I need to understand the actual problem so I do not waste your time.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not progress this deal yet. First understand the requirement, owner, and expected outcome from the buyer side.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: No requirement clarity means a blind deal.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Can you walk me through the problem, who it affects, and what success should look like?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Don&apos;t know</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">Have you received/understood the Requirements / RFQ from the customer ?</value>
+    </values>
+</CustomMetadata>

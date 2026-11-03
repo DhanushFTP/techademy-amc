@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Use_Assignment_Rule__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>When checked, the active Lead assignment rule runs on insert (same behaviour as standard Web-to-Lead).</description>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <label>Use Assignment Rule</label>
+    <type>Checkbox</type>
+</CustomField>

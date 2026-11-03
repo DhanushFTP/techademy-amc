@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Requirements_RFQ__c</fullName>
+    <inlineHelpText>Have you received/understood the Requirements / RFQ from the customer ?</inlineHelpText>
+    <label>Requirements / RFQ</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Fully Clear</fullName>
+                <default>false</default>
+                <label>Fully Clear</label>
+            </value>
+            <value>
+                <fullName>Partially clear</fullName>
+                <default>false</default>
+                <label>Partially clear</label>
+            </value>
+            <value>
+                <fullName>Yet to get some from the customer</fullName>
+                <default>false</default>
+                <label>Yet to get some from the customer</label>
+            </value>
+            <value>
+                <fullName>Don’t know</fullName>
+                <default>false</default>
+                <label>Don’t know</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_s_Business_Impact__c</fullName>
+    <description>Without our solution, is customer&apos;s business getting impacted?</description>
+    <inlineHelpText>Without our solution, is customer&apos;s business getting impacted?</inlineHelpText>
+    <label>Customer&apos;s Business Impact</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+            <value>
+                <fullName>Partially</fullName>
+                <default>false</default>
+                <label>Partially</label>
+            </value>
+            <value>
+                <fullName>Not impacted</fullName>
+                <default>false</default>
+                <label>Not impacted</label>
+            </value>
+            <value>
+                <fullName>Don&apos;t know</fullName>
+                <default>false</default>
+                <label>Don&apos;t know</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

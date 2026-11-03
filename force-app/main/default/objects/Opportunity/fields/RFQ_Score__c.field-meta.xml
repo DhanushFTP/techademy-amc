@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RFQ_Score__c</fullName>
+    <description>Weighted Score for Question 1</description>
+    <externalId>false</externalId>
+    <formula>CASE(
+     Requirements_RFQ__c ,
+    &quot;Fully Clear&quot;, 2,
+    &quot;Partially clear&quot;, 1,
+    &quot;Yet to get some from the customer&quot;, 0,
+    &quot;Don’t know&quot;, -1,
+    0
+)*0.05*100</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>RFQ Score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

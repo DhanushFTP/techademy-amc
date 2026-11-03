@@ -1,0 +1,50 @@
+<template>
+    <lightning-card title="Check In / Out">
+      <div class="slds-p-around_medium">
+
+        <!-- Loading state -->
+        <template if:true={isLoading}>
+          <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+        </template>
+
+        <template if:false={isLoading}>
+
+          <!-- No active check-in → show Check In button -->
+          <template if:false={activeCheckIn}>
+            <lightning-button
+              label="Check In"
+              variant="brand"
+              icon-name="utility:checkin"
+              onclick={handleCheckIn}>
+            </lightning-button>
+          </template>
+
+          <!-- Active check-in → show Check Out form -->
+          <template if:true={activeCheckIn}>
+            <div class="slds-m-bottom_small">
+              <p class="slds-text-body_small slds-text-color_success">
+                <lightning-icon icon-name="utility:success" size="xx-small" variant="success"></lightning-icon>
+                &nbsp;Checked in at {checkInTimeFormatted}
+              </p>
+            </div>
+            <lightning-textarea
+              label="Notes (optional)"
+              placeholder="Add any notes about this visit..."
+              value={checkOutNotes}
+              onchange={handleNotesChange}
+              max-length="5000">
+            </lightning-textarea>
+            <div class="slds-m-top_small">
+              <lightning-button
+                label="Check Out"
+                variant="destructive"
+                icon-name="utility:checkout"
+                onclick={handleCheckOut}>
+              </lightning-button>
+            </div>
+          </template>
+
+        </template>
+      </div>
+    </lightning-card>
+  </template>

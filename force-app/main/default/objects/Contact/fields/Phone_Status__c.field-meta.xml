@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Phone_Status__c</fullName>
+    <description>Status of Phone Number</description>
+    <label>Phone Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Valid</fullName>
+                <default>true</default>
+                <label>Valid</label>
+            </value>
+            <value>
+                <fullName>Invalid</fullName>
+                <default>false</default>
+                <label>Invalid</label>
+            </value>
+            <value>
+                <fullName>RNR</fullName>
+                <default>false</default>
+                <label>RNR</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

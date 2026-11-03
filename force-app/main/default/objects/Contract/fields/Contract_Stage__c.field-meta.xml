@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contract_Stage__c</fullName>
+    <label>Contract Stage</label>
+    <required>true</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Draft Sent</fullName>
+                <default>false</default>
+                <label>Draft Sent</label>
+            </value>
+            <value>
+                <fullName>In Process</fullName>
+                <default>false</default>
+                <label>In Process</label>
+            </value>
+            <value>
+                <fullName>Partially Executed</fullName>
+                <default>false</default>
+                <label>Partially Executed</label>
+            </value>
+            <value>
+                <fullName>Fully Executed</fullName>
+                <default>false</default>
+                <label>Fully Executed</label>
+            </value>
+            <value>
+                <fullName>Renewal pending</fullName>
+                <default>false</default>
+                <label>Renewal pending</label>
+            </value>
+            <value>
+                <fullName>Renewed</fullName>
+                <default>false</default>
+                <label>Renewed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

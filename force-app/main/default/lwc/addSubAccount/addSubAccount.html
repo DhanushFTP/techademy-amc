@@ -1,0 +1,92 @@
+<template>
+  <div class="slds-p-around_medium">
+
+    <!-- Loading / checking ownership -->
+    <template if:true={isLoading}>
+      <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+    </template>
+
+    <!-- Not owner error state -->
+    <template if:true={isNotOwner}>
+      <div class="slds-notify slds-notify_alert slds-theme_error slds-m-bottom_medium" role="alert">
+        <span class="slds-assistive-text">error</span>
+        <lightning-icon icon-name="utility:error" alternative-text="Error"
+          variant="inverse" size="x-small" class="slds-m-right_x-small">
+        </lightning-icon>
+        You must be the account owner to add sub-accounts.
+      </div>
+    </template>
+
+    <!-- Form (only shown when owner and loaded) -->
+    <template if:true={isReady}>
+
+      <!-- Parent Account (read-only) -->
+      <div class="slds-form-element slds-m-bottom_small">
+        <label class="slds-form-element__label slds-text-color_weak">Parent Account</label>
+        <div class="slds-form-element__control">
+          <p class="slds-text-body_regular slds-text-title_bold">{parentAccountName}</p>
+        </div>
+      </div>
+
+      <!-- Sub Account Name -->
+      <lightning-input
+        label="Sub Account Name"
+        value={subAccountName}
+        onchange={handleNameChange}
+        required
+        class="slds-m-bottom_small">
+      </lightning-input>
+
+      <!-- Website -->
+      <lightning-input
+        label="Website"
+        type="url"
+        value={website}
+        onchange={handleWebsiteChange}
+        class="slds-m-bottom_small">
+      </lightning-input>
+
+      <!-- Phone -->
+      <lightning-input
+        label="Phone"
+        type="tel"
+        value={phone}
+        onchange={handlePhoneChange}
+        class="slds-m-bottom_small">
+      </lightning-input>
+
+      <!-- Location -->
+      <div class="slds-form-element slds-m-bottom_medium">
+        <label class="slds-form-element__label">Account Location</label>
+        <div class="slds-form-element__control">
+          <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_x-small">
+            {locationDisplay}
+          </p>
+          <lightning-button
+            label="Use My Current Location"
+            variant="neutral"
+            icon-name="utility:location"
+            onclick={handleUseCurrentLocation}
+            disabled={isCapturingLocation}>
+          </lightning-button>
+          <template if:true={isCapturingLocation}>
+            <lightning-spinner alternative-text="Capturing location..." size="x-small"></lightning-spinner>
+          </template>
+        </div>
+      </div>
+
+      <!-- Create button -->
+      <lightning-button
+        label="Create Sub Account"
+        variant="brand"
+        onclick={handleCreate}
+        disabled={isCreating}>
+      </lightning-button>
+      <template if:true={isCreating}>
+        <lightning-spinner alternative-text="Creating..." size="x-small"></lightning-spinner>
+      </template>
+
+    </template>
+
+  </div>
+</template>

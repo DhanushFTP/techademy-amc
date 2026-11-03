@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_size_comparison__c</fullName>
+    <description>Is the deal size equal to or greater than the target average deal size of similar customer size and Line of business?</description>
+    <inlineHelpText>Is the deal size equal to or greater than the target average deal size of similar customer size and Line of business?</inlineHelpText>
+    <label>Deal size comparison</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+            <value>
+                <fullName>Less by 10%</fullName>
+                <default>false</default>
+                <label>Less by 10%</label>
+            </value>
+            <value>
+                <fullName>Much less</fullName>
+                <default>false</default>
+                <label>Much less</label>
+            </value>
+            <value>
+                <fullName>Don&apos;t know</fullName>
+                <default>false</default>
+                <label>Don&apos;t know</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

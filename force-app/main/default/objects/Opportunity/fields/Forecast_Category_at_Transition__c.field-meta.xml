@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Forecast_Category_at_Transition__c</fullName>
+    <description>Maps the current stage to its forecast category for reporting purposes</description>
+    <externalId>false</externalId>
+    <formula>IF(OR(
+TEXT(StageName)=&quot;Exploratory Call&quot;,
+TEXT(StageName)=&quot;Needs Analysis&quot;,
+TEXT(StageName)=&quot;Solution Pending&quot;,
+TEXT(StageName)=&quot;Demo Awaited&quot;,
+TEXT(StageName)=&quot;Demo Scheduled&quot;,
+TEXT(StageName)=&quot;Demo Completed&quot;,
+TEXT(StageName)=&quot;Solution Proposed&quot;,
+TEXT(StageName)=&quot;Alternate Solution Pending&quot;,
+TEXT(StageName)=&quot;Alternate Solution Proposed&quot;,
+TEXT(StageName)=&quot;Trainer Evaluation&quot;,
+TEXT(StageName)=&quot;Trial Accounts Given&quot;
+), &quot;Pipeline&quot;, IF(OR(
+TEXT(StageName)=&quot;Negotiation / Review&quot;,
+TEXT(StageName)=&quot;Final Approval pending&quot;
+), &quot;Best Case&quot;, IF(OR(
+TEXT(StageName)=&quot;Closed Won&quot;,
+TEXT(StageName)=&quot;Delivery Pending&quot;,
+TEXT(StageName)=&quot;Delivery In Progress&quot;,
+TEXT(StageName)=&quot;Delivery Completed&quot;
+), &quot;Commit&quot;, IF(OR(
+TEXT(StageName)=&quot;Invoiced&quot;,
+TEXT(StageName)=&quot;Invoiced - Delivery Pending&quot;,
+TEXT(StageName)=&quot;Invoiced - Delivery in Progress&quot;,
+TEXT(StageName)=&quot;Overdue&quot;,
+TEXT(StageName)=&quot;Collected&quot;
+), &quot;Closed&quot;, IF(OR(
+TEXT(StageName)=&quot;Campaign&quot;,
+TEXT(StageName)=&quot;Closed Lost&quot;,
+TEXT(StageName)=&quot;Closed-Lost to Competition&quot;,
+TEXT(StageName)=&quot;Cold&quot;,
+TEXT(StageName)=&quot;Deferred&quot;,
+TEXT(StageName)=&quot;Solution Declined&quot;,
+TEXT(StageName)=&quot;Training Cancelled&quot;
+), &quot;Omitted&quot;, &quot;Unknown&quot;)))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Forecast Category at Transition</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

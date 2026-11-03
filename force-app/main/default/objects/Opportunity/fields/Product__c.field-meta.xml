@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product__c</fullName>
+    <label>Line of Business</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ILT/VILT</fullName>
+                <default>false</default>
+                <label>ILT/VILT</label>
+            </value>
+            <value>
+                <fullName>Platform</fullName>
+                <default>false</default>
+                <label>Platform</label>
+            </value>
+            <value>
+                <fullName>Blended</fullName>
+                <default>false</default>
+                <label>Blended</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

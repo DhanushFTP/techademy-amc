@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <label>Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>-None-</fullName>
+                <default>false</default>
+                <label>-None-</label>
+            </value>
+            <value>
+                <fullName>Prospective Contact</fullName>
+                <default>false</default>
+                <label>Prospective Contact</label>
+            </value>
+            <value>
+                <fullName>Meeting Awaited</fullName>
+                <default>false</default>
+                <label>Meeting Awaited</label>
+            </value>
+            <value>
+                <fullName>Meeting Scheduled</fullName>
+                <default>false</default>
+                <label>Meeting Scheduled</label>
+            </value>
+            <value>
+                <fullName>Meeting Completed</fullName>
+                <default>false</default>
+                <label>Meeting Completed</label>
+            </value>
+            <value>
+                <fullName>Demo Scheduled</fullName>
+                <default>false</default>
+                <label>Demo Scheduled</label>
+            </value>
+            <value>
+                <fullName>Demo Completed</fullName>
+                <default>false</default>
+                <label>Demo Completed</label>
+            </value>
+            <value>
+                <fullName>Evaluation / Trial</fullName>
+                <default>false</default>
+                <label>Evaluation / Trial</label>
+            </value>
+            <value>
+                <fullName>Proposal</fullName>
+                <default>false</default>
+                <label>Proposal</label>
+            </value>
+            <value>
+                <fullName>Solution</fullName>
+                <default>false</default>
+                <label>Solution</label>
+            </value>
+            <value>
+                <fullName>Won</fullName>
+                <default>false</default>
+                <label>Won</label>
+            </value>
+            <value>
+                <fullName>Cold</fullName>
+                <default>false</default>
+                <label>Cold</label>
+            </value>
+            <value>
+                <fullName>Alternate Contact Identified</fullName>
+                <default>false</default>
+                <label>Alternate Contact Identified</label>
+            </value>
+            <value>
+                <fullName>Disqualified</fullName>
+                <default>false</default>
+                <label>Disqualified</label>
+            </value>
+            <value>
+                <fullName>Active</fullName>
+                <default>false</default>
+                <label>Active</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

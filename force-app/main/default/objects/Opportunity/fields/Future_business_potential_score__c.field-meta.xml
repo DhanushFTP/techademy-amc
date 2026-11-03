@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Future_business_potential_score__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(
+ Future_business_potential__c ,
+&quot;Yes&quot;, 2,
+&quot;May be&quot;, 1,
+&quot;Not in near future&quot;, 0,
+&quot;Don&apos;t know&quot;, -1,
+
+    0
+) * 0.05*100</formula>
+    <inlineHelpText>Weighted score for Is there any future business potential from this customer beyond the initial engagement?</inlineHelpText>
+    <label>Future business potential score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

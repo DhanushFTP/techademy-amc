@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Line_of_Business__c</fullName>
+    <label>Product</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Product__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Freshers Training</fullName>
+                <default>false</default>
+                <label>Freshers Training</label>
+            </value>
+            <value>
+                <fullName>Lateral Training</fullName>
+                <default>false</default>
+                <label>Lateral Training</label>
+            </value>
+            <value>
+                <fullName>Open Batch</fullName>
+                <default>false</default>
+                <label>Open Batch</label>
+            </value>
+            <value>
+                <fullName>Contract Staffing</fullName>
+                <default>false</default>
+                <label>Contract Staffing</label>
+            </value>
+            <value>
+                <fullName>LXP/Skill-Assist</fullName>
+                <default>false</default>
+                <label>LXP/Skill-Assist</label>
+            </value>
+            <value>
+                <fullName>Assessment</fullName>
+                <default>false</default>
+                <label>Assessment</label>
+            </value>
+            <value>
+                <fullName>Cloud Labs</fullName>
+                <default>false</default>
+                <label>Cloud Labs</label>
+            </value>
+            <value>
+                <fullName>AlphaRecrewt</fullName>
+                <default>false</default>
+                <label>AlphaRecrewt</label>
+            </value>
+            <value>
+                <fullName>HexP</fullName>
+                <default>false</default>
+                <label>HexP</label>
+            </value>
+            <value>
+                <fullName>Content</fullName>
+                <default>false</default>
+                <label>Content</label>
+            </value>
+            <value>
+                <fullName>Certification</fullName>
+                <default>false</default>
+                <label>Certification</label>
+            </value>
+            <value>
+                <fullName>ToD</fullName>
+                <default>false</default>
+                <label>ToD</label>
+            </value>
+            <value>
+                <fullName>Content Development</fullName>
+                <default>false</default>
+                <label>Content Development</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>ILT/VILT</controllingFieldValue>
+            <controllingFieldValue>Blended</controllingFieldValue>
+            <valueName>Freshers Training</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILT/VILT</controllingFieldValue>
+            <controllingFieldValue>Blended</controllingFieldValue>
+            <valueName>Lateral Training</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILT/VILT</controllingFieldValue>
+            <controllingFieldValue>Blended</controllingFieldValue>
+            <valueName>Open Batch</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ILT/VILT</controllingFieldValue>
+            <valueName>Contract Staffing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Platform</controllingFieldValue>
+            <valueName>LXP/Skill-Assist</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Platform</controllingFieldValue>
+            <valueName>Assessment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Platform</controllingFieldValue>
+            <valueName>Cloud Labs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Platform</controllingFieldValue>
+            <valueName>AlphaRecrewt</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Platform</controllingFieldValue>
+            <valueName>HexP</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Platform</controllingFieldValue>
+            <valueName>Content</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Certification</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>ToD</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Content Development</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Others</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

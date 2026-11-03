@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Potential_Id__c</fullName>
+    <description>Potential ID Generated from Zoho CRM | Depcreciated field. Only us for reference.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Potential ID Generated from Zoho CRM | Depcreciated field. Only us for reference.</inlineHelpText>
+    <label>Potential ID [Zoho CRM]</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

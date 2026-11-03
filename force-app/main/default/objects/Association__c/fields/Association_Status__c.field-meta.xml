@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Association_Status__c</fullName>
+    <label>Association Status</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Awaiting Feedback</fullName>
+                <default>false</default>
+                <label>Awaiting Feedback</label>
+            </value>
+            <value>
+                <fullName>Backed out</fullName>
+                <default>false</default>
+                <label>Backed out</label>
+            </value>
+            <value>
+                <fullName>Delivered</fullName>
+                <default>false</default>
+                <label>Delivered</label>
+            </value>
+            <value>
+                <fullName>Engaged</fullName>
+                <default>false</default>
+                <label>Engaged</label>
+            </value>
+            <value>
+                <fullName>Internal Evaluation</fullName>
+                <default>false</default>
+                <label>Internal Evaluation</label>
+            </value>
+            <value>
+                <fullName>Internal Rejected</fullName>
+                <default>false</default>
+                <label>Internal Rejected</label>
+            </value>
+            <value>
+                <fullName>Next Round</fullName>
+                <default>false</default>
+                <label>Next Round</label>
+            </value>
+            <value>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+                <label>On Hold</label>
+            </value>
+            <value>
+                <fullName>Projected</fullName>
+                <default>false</default>
+                <label>Projected</label>
+            </value>
+            <value>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+                <label>Rejected</label>
+            </value>
+            <value>
+                <fullName>Selected</fullName>
+                <default>false</default>
+                <label>Selected</label>
+            </value>
+            <value>
+                <fullName>Shortlisted</fullName>
+                <default>false</default>
+                <label>Shortlisted</label>
+            </value>
+            <value>
+                <fullName>Unqualified</fullName>
+                <default>false</default>
+                <label>Unqualified</label>
+            </value>
+            <value>
+                <fullName>Declined</fullName>
+                <default>false</default>
+                <label>Declined</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

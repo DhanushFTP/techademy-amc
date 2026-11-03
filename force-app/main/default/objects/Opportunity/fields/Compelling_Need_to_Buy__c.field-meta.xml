@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Compelling_Need_to_Buy__c</fullName>
+    <inlineHelpText>Are the Customer&apos;s reasons to buy tied to a specific, compelling need, which is acknowledged by the sr. executives</inlineHelpText>
+    <label>Compelling Need to Buy</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes &amp; Urgent</fullName>
+                <default>false</default>
+                <label>Yes &amp; Urgent</label>
+            </value>
+            <value>
+                <fullName>Yes but Not urgent</fullName>
+                <default>false</default>
+                <label>Yes but Not urgent</label>
+            </value>
+            <value>
+                <fullName>Unclear</fullName>
+                <default>false</default>
+                <label>Unclear</label>
+            </value>
+            <value>
+                <fullName>Don&apos;t know</fullName>
+                <default>false</default>
+                <label>Don&apos;t know</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

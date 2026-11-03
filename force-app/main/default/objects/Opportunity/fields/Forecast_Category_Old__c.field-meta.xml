@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Forecast_Category_Old__c</fullName>
+    <businessStatus>DeprecateCandidate</businessStatus>
+    <label>Forecast Category_Old</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pipeline</fullName>
+                <default>false</default>
+                <label>Pipeline</label>
+            </value>
+            <value>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+                <label>Best Case</label>
+            </value>
+            <value>
+                <fullName>Committed</fullName>
+                <default>false</default>
+                <label>Committed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

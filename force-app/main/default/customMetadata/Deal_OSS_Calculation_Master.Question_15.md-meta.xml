@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>15</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Drive a dated close plan immediately while momentum is high.
+• List all remaining approvals, documents, and buyer actions that must happen before closure.
+• Confirm commercial, legal, procurement, and implementation readiness now.
+• Use tight follow-ups with owners and dates.
+• Protect against last-minute slippage by surfacing blockers early.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">15|&lt;30 days</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We are trying to close quickly.&apos; Response: &apos;Great. Then let us map the remaining approvals and documents now so nothing slows the close unexpectedly.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Good. Build a close plan now with exact dates, approvers, and response commitments.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Use the near-term window well.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;To hit that timeline, what needs to happen this week from both our sides?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">&lt;30 days</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Use the medium horizon to close gaps before the deal reaches final pressure.
+• Break the next 30 to 60 days into discovery close, proposal, validation, approval, and closure stages.
+• Ask which internal events or meetings will determine movement.
+• Create intermediate commitments so the deal keeps moving.
+• Do not wait passively for the expected close window.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">15|30-60 days</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;This will likely take a bit of time.&apos; Response: &apos;That is fine. Let us break that window into the specific steps that will move it forward.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Bring structure to the middle window. Map milestones so it does not quietly become 90+ days.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Moderate delay risk if milestones are loose.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What approvals or discussions sit between now and the decision date?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">30-60 days</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• A longer cycle needs stronger control, not just patience.
+• Find what must happen to bring the timeline forward or at least keep it real.
+• Build urgency through impact, budget timing, admissions, planning cycles, or business deadlines.
+• Keep multi-stakeholder engagement active so the deal does not cool off.
+• Convert a vague long cycle into a managed plan.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">15|60-90 days</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;This is a longer-cycle decision.&apos; Response: &apos;Understood. I would like to know what has to happen across that period so we can keep the deal active and relevant.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Find out why this is so far out. Either there is low urgency, internal dependency, or weak sponsorship.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Long-dated deals lose energy.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What would need to change for this to move faster than the current window?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">60-90 days</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• This is a forecasting weakness and usually means the buyer process is still unclear.
+• Ask what event, approval, meeting, or milestone would signal real closure timing.
+• Map the buying path backwards from their likely decision point.
+• Use that to define a realistic date range instead of guesswork.
+• Do not commit internally to a close month without buyer evidence.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">15|Not sure</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Too early to say.&apos; Response: &apos;That is okay. Even a likely decision event or milestone would help us pace this correctly.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not accept a floating timeline. Ask for the trigger event, budget cycle, or internal milestone that sets the date.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: No close date discipline.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What event or approval will decide when this actually moves?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Not sure</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">When is the expected day of Closure?</value>
+    </values>
+</CustomMetadata>

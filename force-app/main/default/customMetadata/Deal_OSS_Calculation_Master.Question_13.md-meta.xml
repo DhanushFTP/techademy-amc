@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>13</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Confirm the budget range, owner, source, and approval mechanics while the answer is positive.
+• Check whether the budget is fully approved or still being aligned internally.
+• Anchor your commercial conversation inside that range.
+• Position value clearly so you do not get reduced to price alone.
+• Move towards proposal and approval with confidence, not assumption.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">13|Yes</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;Budget exists, but it has to be justified.&apos; Response: &apos;That is fair. Let us anchor the proposal around value and internal ease of approval, not just the number.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Good. Now confirm budget owner, buying window, and whether the amount matches the scope you are proposing.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Turn budget existence into budget certainty.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Is the budget already approved, or does it still need internal sign-off?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">Yes</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Turn a soft indication into real budget clarity before you progress.
+• Ask what range they are working with and who owns the spend.
+• Check whether the budget is approved, earmarked, or still being requested.
+• If the range is uncertain, offer phased options without undercutting value.
+• Do not assume &apos;looks like&apos; means safe to send final commercials.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">13|Looks like, but not sure</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;There should be budget somewhere.&apos; Response: &apos;Helpful. To shape the right proposal, can we get directional clarity on range and approval owner?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Convert budget hope into budget proof. Get a range, owner, and approval status before you invest more time.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: Assumed budget is not real budget.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What budget range has been discussed, and who finally confirms it?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">Looks like, but not sure</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Treat this as a qualification issue, not a pricing issue.
+• Find out whether budget can be created if the business case is strong enough.
+• Explore pilot, phased rollout, or next-cycle funding route if the need is real.
+• Quantify the cost of delay so the buyer has a reason to find money.
+• Do not rush to discount when there is no active budget.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">13|Not available, as of now</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We have no budget this cycle.&apos; Response: &apos;Understood. If the need is real, would a phased start or stronger business case help create a route forward?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">Do not rush proposal. Help them build a phase-one business case that can unlock spend faster.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: No active budget.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Say: &apos;If full budget is not live yet, we can shape a smaller first phase that is easier to approve.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Not available, as of now</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Lower the resistance before asking the same question again.
+• Ask for a workable range or commercial comfort zone rather than exact budget.
+• Position the conversation as helping them evaluate fit, not extracting information.
+• Use two commercial pathways to reveal the likely budget band indirectly.
+• Do not go deep into proposal without at least directional budget clarity.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">13|Customer not sharing</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We cannot disclose budget.&apos; Response: &apos;No issue. Even a working range or comfort band will help me suggest the right structure without wasting your time.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">Use ranges and approval language instead of asking for a secret number. Your goal is budget direction, not perfect disclosure.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: Budget is hidden and can kill the deal late.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Would it be fair to say this is in the small, mid, or large investment range for your team?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Customer not sharing</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">Does the customer have a budget for this purchase ?</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>3</label>
+    <protected>false</protected>
+    <values>
+        <field>Choice_A_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Use the early entry to shape the deal before competitors define it.
+• Clarify why action is needed now and what happens if the issue remains unsolved.
+• Help the buyer define success criteria, owners, and first milestones.
+• Get close to the users and the decision maker while the buying vision is still forming.
+• Drive towards a solution framing that naturally favours your strengths.</value>
+    </values>
+    <values>
+        <field>Choice_A_Key__c</field>
+        <value xsi:type="xsd:string">3|Need</value>
+    </values>
+    <values>
+        <field>Choice_A_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We are at a very early stage.&apos; Response: &apos;That is actually a good time to shape the right outcome and avoid a lot of late-stage correction.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A_Recommendation__c</field>
+        <value xsi:type="xsd:string">Good entry point. Push quickly into pain, urgency, and who owns the problem so you keep control of the deal.</value>
+    </values>
+    <values>
+        <field>Choice_A_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Low risk. Build urgency while you have momentum.</value>
+    </values>
+    <values>
+        <field>Choice_A_Score__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>Choice_A_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What is forcing action now, and who is most affected if this remains unsolved?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_A__c</field>
+        <value xsi:type="xsd:string">Need</value>
+    </values>
+    <values>
+        <field>Choice_B_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Convert interest into a real business case before the deal goes cold.
+• Find the underlying driver behind the stated want: performance, compliance, speed, quality, or visibility.
+• Test whether the buyer has urgency, ownership, and consequence for delay.
+• Sharpen the value proposition to specific outcomes rather than nice-to-have features.
+• Move the buyer from curiosity to committed evaluation.</value>
+    </values>
+    <values>
+        <field>Choice_B_Key__c</field>
+        <value xsi:type="xsd:string">3|Want</value>
+    </values>
+    <values>
+        <field>Choice_B_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;This is more of a good-to-have.&apos; Response: &apos;Makes sense. Let us test whether there is enough business value to treat it as a priority or keep it as a later initiative.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B_Recommendation__c</field>
+        <value xsi:type="xsd:string">Move this from interest to business need. Tie the ask to a measurable outcome, risk, or leadership priority.</value>
+    </values>
+    <values>
+        <field>Choice_B_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: &apos;Nice to have&apos; deals slip easily.</value>
+    </values>
+    <values>
+        <field>Choice_B_Score__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Choice_B_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;What improves for the business if this gets approved this quarter?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_B__c</field>
+        <value xsi:type="xsd:string">Want</value>
+    </values>
+    <values>
+        <field>Choice_C_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Do not assume a written requirement means high win probability.
+• Check whether the requirement came from a real need or from a standard sourcing process.
+• Rebuild influence by understanding pain, criteria, and political context behind the requirement.
+• Look for room to shape scope, sequencing, or buying priorities.
+• Position your offer around gaps competitors may miss.</value>
+    </values>
+    <values>
+        <field>Choice_C_Key__c</field>
+        <value xsi:type="xsd:string">3|Requirement</value>
+    </values>
+    <values>
+        <field>Choice_C_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;The requirement is already frozen.&apos; Response: &apos;Understood. I would still like to understand what sits behind it so I can align the response to what really matters.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C_Recommendation__c</field>
+        <value xsi:type="xsd:string">You entered after the need was formed. Re-open discovery and influence the criteria before you become a vendor in a race.</value>
+    </values>
+    <values>
+        <field>Choice_C_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">Risk: You may be too late and too comparable.</value>
+    </values>
+    <values>
+        <field>Choice_C_Score__c</field>
+        <value xsi:type="xsd:double">0.0</value>
+    </values>
+    <values>
+        <field>Choice_C_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;How were the current requirements decided, and where is there still room to shape the solution?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_C__c</field>
+        <value xsi:type="xsd:string">Requirement</value>
+    </values>
+    <values>
+        <field>Choice_D_Action_Plan__c</field>
+        <value xsi:type="xsd:string">• Re-open discovery instead of behaving like this is only a final comparison exercise.
+• Find the decision criteria, hidden objections, and who is actually driving preference.
+• Ask what would make one option clearly stronger than the others.
+• Tighten your messaging around the few areas where the buyer really cares.
+• Do not rely on a generic demo or proposal to win late-stage evaluation.</value>
+    </values>
+    <values>
+        <field>Choice_D_Key__c</field>
+        <value xsi:type="xsd:string">3|Evaluation</value>
+    </values>
+    <values>
+        <field>Choice_D_Likely_Objection_Response__c</field>
+        <value xsi:type="xsd:string">Buyer may say, &apos;We are only comparing options now.&apos; Response: &apos;That is exactly why it helps to know what will make one option clearly stronger from your side.&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D_Recommendation__c</field>
+        <value xsi:type="xsd:string">You are late. Stop pitching features and find the hidden decision logic, buyer bias, and what will actually tip the decision.</value>
+    </values>
+    <values>
+        <field>Choice_D_Risk_Flag__c</field>
+        <value xsi:type="xsd:string">High risk: Late entry with little control.</value>
+    </values>
+    <values>
+        <field>Choice_D_Score__c</field>
+        <value xsi:type="xsd:double">-1.0</value>
+    </values>
+    <values>
+        <field>Choice_D_Talk_Track__c</field>
+        <value xsi:type="xsd:string">Ask: &apos;Apart from the formal checklist, what will make one option feel safer or stronger to the final approver?&apos;</value>
+    </values>
+    <values>
+        <field>Choice_D__c</field>
+        <value xsi:type="xsd:string">Evaluation</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">At what stage did we get engaged with this opportunity?</value>
+    </values>
+</CustomMetadata>

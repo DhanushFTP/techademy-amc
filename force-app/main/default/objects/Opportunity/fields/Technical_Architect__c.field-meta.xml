@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Technical_Architect__c</fullName>
+    <label>Technical Architect</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>true</default>
+                <label>Not Applicable</label>
+            </value>
+            <value>
+                <fullName>Sameer</fullName>
+                <default>false</default>
+                <label>Sameer</label>
+            </value>
+            <value>
+                <fullName>Aditya</fullName>
+                <default>false</default>
+                <label>Aditya</label>
+            </value>
+            <value>
+                <fullName>Priyanka Shiwaji</fullName>
+                <default>false</default>
+                <label>Priyanka Shiwaji</label>
+            </value>
+            <value>
+                <fullName>Navin</fullName>
+                <default>false</default>
+                <label>Navin</label>
+            </value>
+            <value>
+                <fullName>Adi</fullName>
+                <default>false</default>
+                <label>Adi</label>
+            </value>
+            <value>
+                <fullName>Lishika</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lishika</label>
+            </value>
+            <value>
+                <fullName>Rajeev</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Rajeev</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

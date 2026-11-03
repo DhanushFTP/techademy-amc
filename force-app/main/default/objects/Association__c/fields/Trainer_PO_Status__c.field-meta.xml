@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trainer_PO_Status__c</fullName>
+    <label>Trainer PO Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>true</default>
+                <label>Not Applicable</label>
+            </value>
+            <value>
+                <fullName>Trainer PO Raised</fullName>
+                <default>false</default>
+                <label>Trainer PO Raised</label>
+            </value>
+            <value>
+                <fullName>PO Pending</fullName>
+                <default>false</default>
+                <label>PO Pending</label>
+            </value>
+            <value>
+                <fullName>PO Sent</fullName>
+                <default>false</default>
+                <label>PO Sent</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

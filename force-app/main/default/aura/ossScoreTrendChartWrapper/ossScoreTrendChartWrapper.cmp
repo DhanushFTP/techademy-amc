@@ -1,0 +1,20 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId"
+                access="global"
+                description="Embeds the OSSScoreTrendChart Visualforce page on a Lightning record page.">
+
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="height" type="Integer" default="340"
+                    description="Chart height in pixels." />
+    <aura:attribute name="vfUrl" type="String" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:if isTrue="{!not(empty(v.vfUrl))}">
+        <iframe src="{!v.vfUrl}"
+                width="100%"
+                height="{!v.height}"
+                frameBorder="0"
+                scrolling="no"
+                style="border: none; display: block;" />
+    </aura:if>
+</aura:component>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Pardot Access</label>
+    <permissionSets>AccountEngagementUserV2</permissionSets>
+    <permissionSets>pi__Pardot</permissionSets>
+    <permissionSets>pi__Pardot_Connector_User</permissionSets>
+    <permissionSets>pi__Pardot_Integration_User</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>
