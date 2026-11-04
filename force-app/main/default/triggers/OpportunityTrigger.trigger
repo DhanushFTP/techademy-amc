@@ -21,6 +21,8 @@ trigger OpportunityTrigger on Opportunity (before insert, after insert, before u
             opportunityTriggerHelper.updateAmountInWords(Trigger.new);
             // Process trainer solution requests for new records (no oldMap available)
             TrainerSolutionRequestEmailHelper.processTrainerSolutionRequests(Trigger.new, null);
+            //Added @dhanush on 03/11/2026 classifies the account as New Business / Existing when a deal is created in a won stage
+            AccountBusinessTypeHandler.handleAfterSave(Trigger.new, null);
         }
         if (Trigger.isUpdate) {
             // Process trainer solution requests for updated records (oldMap available)
@@ -30,6 +32,8 @@ trigger OpportunityTrigger on Opportunity (before insert, after insert, before u
             // Send deal alert emails on high value, Closed Won and Closed Lost deal changes
             // Author: Tharun N | Date: 28-09-2026
             OpportunityAlertEmailHandler.handleAfterUpdate(Trigger.new, Trigger.oldMap);
+            //Added @dhanush on 03/11/2026 classifies the account as New Business / Existing when a deal moves to a won stage
+            AccountBusinessTypeHandler.handleAfterSave(Trigger.new, Trigger.oldMap);
         }
     }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Billed_Date__c</fullName>
+    <description>Close Date of the account's most recent won opportunity. Set by automation.</description>
+    <inlineHelpText>Close Date of the most recent won opportunity on this account.</inlineHelpText>
+    <label>Last Billed Date</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

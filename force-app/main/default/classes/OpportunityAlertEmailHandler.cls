@@ -31,7 +31,8 @@ public class OpportunityAlertEmailHandler {
     private static final Decimal CLOSED_DEAL_THRESHOLD = 1000000; // 10 Lakhs
 
     // Stage values that trigger closed-deal alerts
-    private static final Set<String> STAGES_WON = new Set<String>{
+    //Added @dhanush on 03/11/2026 made public so AccountBusinessTypeHandler uses the same won stages
+    public static final Set<String> STAGES_WON = new Set<String>{
         'Invoiced', 'Invoiced - Delivery Pending', 'Invoiced - Delivery in Progress', 'Overdue', 'Collected'
     };
     private static final Set<String> STAGES_LOST = new Set<String>{
