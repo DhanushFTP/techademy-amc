@@ -4,7 +4,7 @@
  *  Author       : Dhanush
  *  Tests        : AccountBusinessTypeHandler
  *  Description  : Test class for AccountBusinessTypeHandler.
- *                 - Covers the 24-month rule (including exactly 24 months), backdated wins,
+ *                 - Covers the 2-financial-year rule (FY boundaries, same-FY wins), backdated wins,
  *                   several wins on one account in one save, and the trigger path.
  ***************************************************************/
 @isTest
@@ -37,23 +37,38 @@ private class AccountBusinessTypeHandlerTest {
         Assert.areEqual(CLOSE_DATE, acc.Last_Billed_Date__c);
     }
 
-    @isTest
-    static void billedOver24MonthsAgoIsNewBusiness() {
-        Account acc = classifyOne(CLOSE_DATE.addMonths(-30), CLOSE_DATE);
-        Assert.areEqual(AccountBusinessTypeHandler.NEW_BUSINESS, acc.Business_Type__c);
-    }
+    // CLOSE_DATE is in FY 2026-27, so the 2 prior FYs are 2024-25 and 2025-26
 
     @isTest
-    static void billedExactly24MonthsAgoIsNewBusiness() {
-        Account acc = classifyOne(CLOSE_DATE.addMonths(-24), CLOSE_DATE);
-        Assert.areEqual(AccountBusinessTypeHandler.NEW_BUSINESS, acc.Business_Type__c);
-    }
-
-    @isTest
-    static void billedWithin24MonthsIsExisting() {
-        Account acc = classifyOne(CLOSE_DATE.addMonths(-24).addDays(1), CLOSE_DATE);
+    static void billedLastFyIsExisting() {
+        Account acc = classifyOne(Date.newInstance(2025, 6, 1), CLOSE_DATE);
         Assert.areEqual(AccountBusinessTypeHandler.EXISTING, acc.Business_Type__c);
         Assert.areEqual(CLOSE_DATE, acc.Last_Billed_Date__c);
+    }
+
+    @isTest
+    static void billedAtStartOfTwoFysAgoIsExisting() {
+        // 1 Apr 2024 = first day of FY 2024-25 (31 months back, but still inside the 2 FYs)
+        Account acc = classifyOne(Date.newInstance(2024, 4, 1), CLOSE_DATE);
+        Assert.areEqual(AccountBusinessTypeHandler.EXISTING, acc.Business_Type__c);
+    }
+
+    @isTest
+    static void billedThreeFysAgoIsNewBusiness() {
+        // 31 Mar 2024 = last day of FY 2023-24
+        Account acc = classifyOne(Date.newInstance(2024, 3, 31), CLOSE_DATE);
+        Assert.areEqual(AccountBusinessTypeHandler.NEW_BUSINESS, acc.Business_Type__c);
+    }
+
+    @isTest
+    static void billedEarlierSameFyKeepsBusinessType() {
+        Account acc = new Account(Id = fakeAccountId(), Last_Billed_Date__c = Date.newInstance(2026, 5, 1),
+            Business_Type__c = AccountBusinessTypeHandler.NEW_BUSINESS);
+        List<Account> changed = AccountBusinessTypeHandler.classify(
+            new List<Opportunity>{ new Opportunity(AccountId = acc.Id, CloseDate = CLOSE_DATE) },
+            new Map<Id, Account>{ acc.Id => acc });
+        Assert.areEqual(AccountBusinessTypeHandler.NEW_BUSINESS, changed[0].Business_Type__c);
+        Assert.areEqual(CLOSE_DATE, changed[0].Last_Billed_Date__c);
     }
 
     @isTest
@@ -69,7 +84,7 @@ private class AccountBusinessTypeHandlerTest {
         List<Account> changed = AccountBusinessTypeHandler.classify(
             new List<Opportunity>{
                 new Opportunity(AccountId = acc.Id, CloseDate = CLOSE_DATE),
-                new Opportunity(AccountId = acc.Id, CloseDate = CLOSE_DATE.addMonths(-6))
+                new Opportunity(AccountId = acc.Id, CloseDate = CLOSE_DATE.addMonths(-12))
             },
             new Map<Id, Account>{ acc.Id => acc });
 
