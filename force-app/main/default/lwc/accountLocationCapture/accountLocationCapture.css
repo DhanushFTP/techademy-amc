@@ -1,0 +1,20 @@
+/******************************************************************
+ * Component Name : accountLocationCapture (styles)
+ * Company        : Fingertip Technologies Pvt Ltd
+ * Created Date   : 04-11-2026
+ * @description   : Styles for the Location Capture card (Account and
+ *                  Lead). Gives the loading spinner room inside the card.
+ * @author        : Tharun N
+ * Used By        : - accountLocationCapture (LWC)
+ * Change Log:
+ * -----------------------------------------------------------------------------
+ * Ver | Author          | Date       | Description
+ * -----------------------------------------------------------------------------
+ * 1.0 | Tharun N        | 04-11-2026 | Initial version
+ * 1.1 | Tharun N        | 11-11-2026 | Standard header added. No style change.
+ * -----------------------------------------------------------------------------
+ ******************************************************************/
+.spinner-holder {
+    position: relative;
+    min-height: 3rem;
+}

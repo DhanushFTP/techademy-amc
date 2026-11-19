@@ -8,8 +8,12 @@
     <label>Agentforce Studio</label>
     <navType>Console</navType>
     <tabs>standard-AgentforceStudio</tabs>
+    <tabs>Lead_Check_In__c</tabs>
     <uiType>Lightning</uiType>
     <workspaceConfig>
+        <mappings>
+            <tab>Lead_Check_In__c</tab>
+        </mappings>
         <mappings>
             <tab>standard-AgentforceStudio</tab>
         </mappings>

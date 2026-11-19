@@ -8,5 +8,6 @@
     <label>Digital Wallet</label>
     <navType>Standard</navType>
     <tabs>standard-ConsumptionCards</tabs>
+    <tabs>Lead_Check_In__c</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

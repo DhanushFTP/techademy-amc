@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_Status_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  ISPICKVAL(Type, &quot;Call&quot;),
+  ISBLANK(TEXT(Call_Status__c))
+)</errorConditionFormula>
+    <errorDisplayField>Call_Status__c</errorDisplayField>
+    <errorMessage>Please select a Call Status</errorMessage>
+</ValidationRule>

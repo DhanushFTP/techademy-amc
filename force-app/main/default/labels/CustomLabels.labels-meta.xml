@@ -76,4 +76,36 @@
         <shortDescription>restrictOpportunityUpdate</shortDescription>
         <value>false</value>
     </labels>
+    <labels>
+        <fullName>Account_Location_Locked_Message</fullName>
+        <categories>Account Location</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Shown when an account location is set and not approved to change</shortDescription>
+        <value>The location is already set for this account. To change it, check with the Salesforce admin.</value>
+    </labels>
+    <labels>
+        <fullName>Account_Location_Max_Accuracy_Meters</fullName>
+        <categories>Account Location</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Worst GPS accuracy (meters) accepted when saving an account location</shortDescription>
+        <value>100</value>
+    </labels>
+    <labels>
+        <fullName>Check_In_Max_Distance_Meters</fullName>
+        <categories>Check In</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Max distance (meters) from the saved location for Check In and Check Out</shortDescription>
+        <value>1000</value>
+    </labels>
+    <labels>
+        <fullName>Lead_Location_Locked_Message</fullName>
+        <categories>Lead Location</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Shown when a lead location is set and not approved to change</shortDescription>
+        <value>The location is already set for this Lead. To change it, check with the Salesforce admin.</value>
+    </labels>
 </CustomLabels>

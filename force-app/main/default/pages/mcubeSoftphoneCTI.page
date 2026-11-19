@@ -1,0 +1,880 @@
+<!--
+================================================================================
+ mcubeSoftphoneCTI.page
+================================================================================
+
+ @description  Visualforce page that serves as the Salesforce Open CTI adapter
+               for the MCube Softphone integration. This page:
+
+               1. Embeds the MCube web-based softphone widget via an iframe
+               2. Loads the Salesforce Open CTI JavaScript library
+               3. Listens for the MCube 'OpenPanel' postMessage envelope and
+                  screen-pops the related record's detail page
+               4. Supports outbound click-to-dial via the MCube outbound API
+                  (Open CTI Click-to-Dial here calls
+                  MCubeSoftphoneController.clickToCallRemote; the mcubeClick2Call
+                  Aura quick action calls clickToCall directly)
+
+ @controller   MCubeSoftphoneController — provides the authenticated iframe
+               URL and server-side search/logging methods.
+
+ @usage        This page URL is set as the "CTI Adapter URL" in the
+               Call Center Definition XML. Salesforce loads it inside the
+               softphone utility bar panel.
+
+ @see          MCubeSoftphoneController.cls
+ @see          Salesforce Open CTI Developer Guide
+ @author       MCube Integration Team
+ @version      1.0
+ @since        2026-03-27
+
+ SECURITY NOTE:
+   - All postMessage events are validated against the MCube origin
+     (https://mcube.vmc.in) to prevent cross-origin injection attacks.
+   - Credentials are managed server-side in the Apex controller.
+   - Never expose auth tokens in client-side JavaScript.
+
+ EVENT CONTRACT (MCube → Salesforce):
+   The MCube widget posts a single structured envelope on a ringing /
+   initiated call (both outbound and inbound):
+   {
+     Type:   String  — 'MCUBE'
+     Action: String  — 'OpenPanel'
+     Data:   Object  — {
+                          "Customer Number": String — customer phone number
+                          callid           : String — MCube call identifier
+                          didId            : String — DID / landing number
+                          refid            : String — Salesforce record id (may be '')
+                          type             : String — 'outbound_call' | 'inbound_call'
+                        }
+   }
+   On OpenPanel we show the softphone panel and open the related record's
+   detail page in the active tab — using refid when present, otherwise
+   resolving it via the call-routing service (mcubeCallRouting.route) by
+   passing the customer number + DID (didId / landing number).
+
+ EVENT CONTRACT (Salesforce → MCube):
+   Click-to-dial / control commands sent to the MCube widget. The widget's
+   inbound message handler expects MCube's own structured envelope (the same
+   { Type, Action, Data } shape the widget emits back to Salesforce) — NOT a
+   flat { type: 'DIAL' } object:
+   {
+     Type:   String  — 'MCUBE'
+     Action: String  — 'DIAL' | 'HANGUP' | 'HOLD' | 'MUTE'
+     Data:   Object  — { number: '<phone>' } for DIAL
+   }
+================================================================================
+-->
+<apex:page controller="MCubeSoftphoneController"
+           showHeader="false"
+           sidebar="false"
+           standardStylesheets="false"
+           applyHtmlTag="true"
+           applyBodyTag="false"
+           docType="html-5.0">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCube Softphone</title>
+
+    <!-- ===================================================================
+         STYLES — Softphone Panel Layout
+         Minimal styling to ensure the MCube iframe fills the softphone
+         panel completely. The panel dimensions are controlled by the
+         Call Center Definition (400h × 300w).
+    ==================================================================== -->
+    <style>
+        /* Reset — remove default browser margins/padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full-height body to fill the softphone panel */
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Salesforce Sans', Arial, sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        /* Container for the softphone iframe */
+        .softphone-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* MCube iframe — fills entire container */
+        .mcube-iframe {
+            width: 100%;
+            flex: 1;
+            border: none;
+        }
+
+        /* Status bar at the bottom — shows connection state */
+        .status-bar {
+            height: 24px;
+            background-color: #16325c;
+            color: #ffffff;
+            font-size: 11px;
+            line-height: 24px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .status-bar.connected {
+            background-color: #04844b;
+        }
+
+        .status-bar.error {
+            background-color: #c23934;
+        }
+
+        /* Loading overlay — shown while iframe loads */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f4f6f9;
+            z-index: 10;
+        }
+
+        .loading-overlay.hidden {
+            display: none;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #d8dde6;
+            border-top: 4px solid #0070d2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =================================================================
+         SOFTPHONE CONTAINER
+         The MCube widget is loaded inside this iframe. The src URL is
+         provided by the Apex controller with authentication parameters.
+    ================================================================== -->
+    <div class="softphone-container">
+
+        <apex:outputPanel layout="none" rendered="{!mcubeIframeUrl != ''}">
+            <!-- Loading spinner — hidden once iframe loads -->
+            <div id="loadingOverlay" class="loading-overlay">
+                <div class="spinner"></div>
+            </div>
+
+            <!-- MCube Softphone Widget iframe -->
+            <iframe id="mcubeFrame"
+                    class="mcube-iframe"
+                    src="{!mcubeIframeUrl}"
+                    allow="microphone; autoplay"
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                    title="MCube Softphone Widget">
+            </iframe>
+
+            <!-- Connection status bar -->
+            <div id="statusBar" class="status-bar">
+                Initializing CTI Adapter...
+            </div>
+        </apex:outputPanel>
+
+        <apex:outputPanel layout="none" rendered="{!mcubeIframeUrl == ''}">
+            <div style="display:flex; align-items:center; justify-content:center; height:100%; color:#54698d; font-size:13px; text-align:center; padding:20px;">
+                CTI is not enabled for your user account.<br/>
+                Please contact your administrator.
+            </div>
+        </apex:outputPanel>
+
+    </div>
+
+    <!-- =================================================================
+         SALESFORCE OPEN CTI LIBRARY
+         This is the official Salesforce Open CTI JavaScript API.
+         It MUST be loaded from the Salesforce instance (not a CDN).
+         The API version should match your org's API version.
+    ================================================================== -->
+    <script src="/support/api/60.0/lightning/opencti_min.js"></script>
+
+    <!-- =================================================================
+         MCube CTI ADAPTER — Core Integration Logic
+    ================================================================== -->
+    <script>
+    (function() {
+        'use strict';
+
+        // Skip CTI initialization if the user is not a CTI user
+        var isCTIEnabled = '{!JSENCODE(mcubeIframeUrl)}' !== '';
+        if (!isCTIEnabled) {
+            console.log('[MCube CTI] CTI is not enabled for this user — skipping initialization');
+            return;
+        }
+
+        // =================================================================
+        // CONFIGURATION
+        // =================================================================
+
+        /**
+         * Trusted origin for the MCube iframe.
+         * SECURITY: Only accept postMessage events from this origin.
+         * Value is set by the Apex controller to keep it server-managed.
+         */
+        var MCUBE_ORIGIN = '{!JSENCODE(mcubeOrigin)}';
+
+        /**
+         * SCREEN-POP LOCK CONFIGURATION
+         *
+         * One copy of this adapter runs in the utility bar of every open
+         * Salesforce browser tab/window, and every copy receives the same
+         * MCube OpenPanel event. Without coordination each copy would screen-pop
+         * the record, opening the detail page in all of them. The copies share
+         * a localStorage lock (same Visualforce origin) so exactly one wins the
+         * pop for a given call.
+         */
+        var POP_LOCK_PREFIX      = 'mcube_cti_pop_';
+        var POP_LOCK_TTL_MS      = 60000;  // a lock older than this is stale
+        var POP_CLAIM_DEFER_MS   = 300;    // background tabs wait, so the foreground tab claims first
+        var POP_CLAIM_CONFIRM_MS = 150;    // settle time before re-reading the winner
+
+        // =================================================================
+        // STATE MANAGEMENT
+        // =================================================================
+
+        /**
+         * Tracks the current call context for screen-pop and outbound dialing.
+         */
+        var currentCall = {
+            callId         : null,
+            direction      : null,   // 'inbound' or 'outbound'
+            phoneNumber    : null,
+            recordId       : null,   // Salesforce record ID (from screen pop)
+            objectType     : null,   // SObject type
+            startTime      : null,
+            customerNumber : null,
+            landingNumber  : null
+        };
+
+        /**
+         * Identifies this adapter instance (i.e. this browser tab/window) when
+         * competing for the screen-pop lock. Regenerated on every page load.
+         */
+        var TAB_ID = 'tab_' + Math.random().toString(36).slice(2)
+                            + '_' + new Date().getTime();
+
+        /**
+         * Call keys this tab has already attempted to claim, so a repeated
+         * OpenPanel event for the same call never pops twice in this tab.
+         */
+        var claimedCalls = {};
+
+        // =================================================================
+        // DOM REFERENCES
+        // =================================================================
+
+        var mcubeFrame     = document.getElementById('mcubeFrame');
+        var statusBar      = document.getElementById('statusBar');
+        var loadingOverlay = document.getElementById('loadingOverlay');
+
+        // =================================================================
+        // UTILITY FUNCTIONS
+        // =================================================================
+
+        /**
+         * Updates the status bar text and color.
+         * @param {String} message — Status text to display
+         * @param {String} state  — 'default' | 'connected' | 'error'
+         */
+        function updateStatus(message, state) {
+            statusBar.textContent = message;
+            statusBar.className = 'status-bar';
+            if (state === 'connected') {
+                statusBar.classList.add('connected');
+            } else if (state === 'error') {
+                statusBar.classList.add('error');
+            }
+        }
+
+        /**
+         * Safely logs messages with a consistent prefix for debugging.
+         * @param {String} message — Log message
+         * @param {*}      data    — Optional data to log
+         */
+        function log(message, data) {
+            if (data !== undefined) {
+                console.log('[MCube CTI] ' + message, data);
+            } else {
+                console.log('[MCube CTI] ' + message);
+            }
+        }
+
+        // =================================================================
+        // OPEN CTI INITIALIZATION
+        // =================================================================
+
+        /**
+         * Enable Click-to-Dial across all Salesforce pages.
+         * When enabled, phone number fields become clickable links that
+         * trigger our onClickToDial listener.
+         */
+        sforce.opencti.enableClickToDial({
+            callback: function(response) {
+                if (response.success) {
+                    log('Click-to-Dial enabled successfully');
+                } else {
+                    log('Failed to enable Click-to-Dial:', response.errors);
+                }
+            }
+        });
+
+        /**
+         * Register the Click-to-Dial listener.
+         * Fires when an agent clicks any phone number link in Salesforce.
+         * We forward the number to the MCube iframe to initiate the call.
+         *
+         * The response object contains:
+         *   - number:      The phone number clicked
+         *   - recordId:    The Salesforce record ID
+         *   - objectType:  The SObject type (Contact, Lead, Account, etc.)
+         */
+        sforce.opencti.onClickToDial({
+            listener: function(result) {
+                log('Click-to-Dial triggered:', result);
+
+                // Update current call state
+                currentCall.phoneNumber = result.number;
+                currentCall.recordId    = result.recordId;
+                currentCall.objectType  = result.objectType;
+                currentCall.direction   = 'outbound';
+
+                // Place the outbound call through the MCube outbound API
+                // (the same path as the mcubeClick2Call Aura quick action)
+                // instead of sending a DIAL envelope to the widget.
+                updateStatus('Dialing: ' + result.number, 'default');
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.MCubeSoftphoneController.clickToCallRemote}',
+                    result.recordId || '',
+                    result.number,
+                    function(res, event) {
+                        if (event.status && res && res.success) {
+                            log('Click-to-Dial outbound call placed: ' + result.number);
+                        } else {
+                            var msg = (res && res.message) ? res.message
+                                : (event && event.message ? event.message : 'call failed');
+                            log('Click-to-Dial outbound call failed: ' + msg);
+                            updateStatus('Call failed: ' + msg, 'error');
+                        }
+                    },
+                    { escape: false }
+                );
+
+                // Ensure the softphone panel is visible
+                sforce.opencti.setSoftphonePanelVisibility({
+                    visible: true,
+                    callback: function(response) {
+                        if (response.success) {
+                            log('Softphone panel shown for outbound call');
+                        }
+                    }
+                });
+            }
+        });
+
+        /**
+         * Register navigation change listener.
+         * Fires when the agent navigates to a different Salesforce page.
+         * Useful for maintaining context awareness.
+         */
+        sforce.opencti.onNavigationChange({
+            listener: function(result) {
+                log('Navigation changed:', result);
+            }
+        });
+
+        // =================================================================
+        // MCUBE EVENT HANDLERS
+        //
+        // The MCube widget drives this adapter with a single inbound event:
+        //   { Type:'MCUBE', Action:'OpenPanel', Data:{ ... } }
+        // fired on both outbound and inbound calls. We open the softphone
+        // panel and screen-pop the related record's detail page (resolving it
+        // via the call-routing service when no record id is echoed back).
+        // =================================================================
+
+        /**
+         * Returns localStorage if this tab can actually use it, else null.
+         * Storage can be blocked (private browsing, third-party storage
+         * restrictions); in that case we fall back to popping unconditionally,
+         * since a duplicate pop is better than no pop at all.
+         */
+        function getPopStore() {
+            try {
+                var probe = POP_LOCK_PREFIX + 'probe';
+                window.localStorage.setItem(probe, '1');
+                window.localStorage.removeItem(probe);
+                return window.localStorage;
+            } catch (storageErr) {
+                return null;
+            }
+        }
+
+        var popStore = getPopStore();
+
+        /**
+         * Reads a live (non-stale) screen-pop lock, or null.
+         * @param {String} key — Full localStorage key.
+         */
+        function readPopLock(key) {
+            try {
+                var raw = popStore.getItem(key);
+                if (!raw) {
+                    return null;
+                }
+                var lock = JSON.parse(raw);
+                if (!lock || typeof lock.ts !== 'number') {
+                    return null;
+                }
+                if (new Date().getTime() - lock.ts > POP_LOCK_TTL_MS) {
+                    popStore.removeItem(key);   // stale — the winner is long gone
+                    return null;
+                }
+                return lock;
+            } catch (readErr) {
+                return null;
+            }
+        }
+
+        /**
+         * Drops expired locks so localStorage does not grow without bound.
+         */
+        function prunePopLocks() {
+            try {
+                var now   = new Date().getTime();
+                var doomed = [];
+                for (var i = 0; i < popStore.length; i++) {
+                    var key = popStore.key(i);
+                    if (!key || key.indexOf(POP_LOCK_PREFIX) !== 0) {
+                        continue;
+                    }
+                    var lock = JSON.parse(popStore.getItem(key) || 'null');
+                    if (!lock || typeof lock.ts !== 'number'
+                        || now - lock.ts > POP_LOCK_TTL_MS) {
+                        doomed.push(key);
+                    }
+                }
+                for (var d = 0; d < doomed.length; d++) {
+                    popStore.removeItem(doomed[d]);
+                }
+            } catch (pruneErr) {
+                log('prunePopLocks error:', pruneErr);
+            }
+        }
+
+        /**
+         * Elects exactly one browser tab to screen-pop a given call.
+         *
+         * Every open Salesforce tab runs its own copy of this adapter and
+         * receives the same OpenPanel event, so all of them arrive here at
+         * roughly the same moment. Election works in two phases:
+         *
+         *   1. Background tabs (document.hidden) wait POP_CLAIM_DEFER_MS before
+         *      claiming, so the tab the agent is actually looking at claims
+         *      first and the rest see the lock already taken.
+         *   2. Tabs that still race write their own id, then re-read after
+         *      POP_CLAIM_CONFIRM_MS. localStorage is last-write-wins, so every
+         *      racer reads back the same id and only its owner proceeds.
+         *
+         * The lock is also the per-call de-dup: a repeated OpenPanel event for
+         * the same call finds the lock held and pops nothing.
+         *
+         * @param {String}   callKey   — Stable id for this call, shared by all tabs.
+         * @param {Function} onGranted — Runs only in the winning tab.
+         */
+        function claimScreenPop(callKey, onGranted) {
+            // No usable storage → cannot coordinate; keep the old behaviour.
+            if (!popStore) {
+                log('localStorage unavailable — popping without cross-tab lock');
+                onGranted();
+                return;
+            }
+
+            // Already handled by this tab (duplicate event for the same call).
+            // Keys are prefixed so a call id like 'constructor' cannot collide
+            // with an Object.prototype member.
+            if (claimedCalls['k_' + callKey]) {
+                log('Screen pop for call ' + callKey + ' already handled by this tab — skipping');
+                return;
+            }
+            claimedCalls['k_' + callKey] = true;
+
+            var key   = POP_LOCK_PREFIX + callKey;
+            var defer = document.hidden ? POP_CLAIM_DEFER_MS : 0;
+
+            setTimeout(function() {
+                var held = readPopLock(key);
+                if (held) {
+                    log('Screen pop for call ' + callKey
+                        + ' already claimed by another tab (' + held.tabId + ') — skipping');
+                    return;
+                }
+
+                try {
+                    popStore.setItem(key, JSON.stringify({ tabId: TAB_ID, ts: new Date().getTime() }));
+                } catch (writeErr) {
+                    log('Failed to write screen-pop lock — popping anyway:', writeErr);
+                    onGranted();
+                    return;
+                }
+
+                setTimeout(function() {
+                    var winner = readPopLock(key);
+                    if (winner && winner.tabId === TAB_ID) {
+                        log('Won screen-pop claim for call ' + callKey);
+                        prunePopLocks();
+                        onGranted();
+                    } else {
+                        log('Lost screen-pop claim for call ' + callKey
+                            + ' to ' + (winner ? winner.tabId : 'unknown') + ' — skipping');
+                    }
+                }, POP_CLAIM_CONFIRM_MS);
+            }, defer);
+        }
+
+        /**
+         * Opens a record's detail page in this tab.
+         *
+         * Uses Open CTI screenPop with an SObject target, which navigates the
+         * agent's current page (standard nav) or opens/focuses the record's tab
+         * (console nav) in THIS browser tab only. Cross-tab de-duplication is
+         * handled by claimScreenPop() — only the elected tab reaches this.
+         *
+         * @param {String} recordId — The Salesforce record ID to open.
+         */
+        function openRecordInActiveTab(recordId) {
+            if (!recordId) {
+                log('openRecordInActiveTab called without a recordId — skipping');
+                return;
+            }
+
+            currentCall.recordId = recordId;
+
+            sforce.opencti.screenPop({
+                type   : sforce.opencti.SCREENPOP_TYPE.SOBJECT,
+                params : { recordId: recordId },
+                callback: function(response) {
+                    if (response.success) {
+                        log('Opened record detail page in active tab: ' + recordId);
+                    } else {
+                        log('Failed to open record detail page:', response.errors);
+                    }
+                }
+            });
+        }
+
+        /**
+         * Persists an MCube event to the Apex logs (MCube_Apex_Log__c) via a
+         * fire-and-forget RemoteAction. Called for every MCUBE envelope so the
+         * full event payload is captured server-side for audit / debugging,
+         * independent of the screen-pop / routing outcome.
+         *
+         * @param {Object} envelope — The full { Type, Action, Data } envelope.
+         */
+        function logMcubeEventToApex(envelope) {
+            try {
+                var payload = (envelope && envelope.Data) || {};
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.MCubeSoftphoneController.logMcubeEvent}',
+                    envelope.Action || '',
+                    payload.type || '',
+                    JSON.stringify(envelope),
+                    function(result, event) {
+                        if (!event.status) {
+                            log('Failed to log MCube event to Apex:',
+                                event ? event.message : null);
+                        }
+                    },
+                    { escape: false }
+                );
+            } catch (logErr) {
+                log('logMcubeEventToApex error:', logErr);
+            }
+        }
+
+        /**
+         * MCUBE "OpenPanel" ENVELOPE HANDLER
+         * Triggered when the MCube widget posts its structured envelope
+         *   { Type:'MCUBE', Action:'OpenPanel', Data:{ ... } }
+         * on a ringing/initiated call.
+         *
+         * The Data payload looks like:
+         *   {
+         *     "Customer Number": "7989097566",  — customer's phone number
+         *     callid           : "9025...",     — MCube call identifier
+         *     didId            : "00918064...", — DID / landing number
+         *     refid            : "",            — Salesforce record id (if known)
+         *     target           : { ... },
+         *     timeStamp        : 1782228053348,
+         *     type             : "outbound_call" | "inbound_call"
+         *   }
+         *
+         * Behaviour:
+         *   1. Make the softphone panel visible.
+         *   2. If MCube already echoed a record id (refid), open that record's
+         *      detail page in the active tab directly.
+         *   3. Otherwise resolve the record through the call-routing service
+         *      (mcubeCallRouting.route, passing the DID + customer number) and
+         *      open the returned record's detail page in the active tab.
+         *
+         * @param {Object} envelope — The full { Type, Action, Data } envelope.
+         */
+        function handleMcubeOpenPanel(envelope) {
+            var payload = envelope.Data || {};
+
+            // MCube uses a space in the customer-number key; tolerate variants.
+            var customerNumber = payload['Customer Number']
+                              || payload.customerNumber
+                              || payload.CustomerNumber
+                              || '';
+            var landingNumber  = payload.didId || payload.did || '';
+            var recordId       = payload.refid || '';
+            var callType       = payload.type || '';
+
+            log('MCube OpenPanel — customer: ' + customerNumber
+                + ', did: ' + landingNumber
+                + ', refid: ' + (recordId || '(none)')
+                + ', type: ' + callType);
+
+            // Track call context for screen-pop / outbound dialing
+            currentCall.callId         = payload.callid || currentCall.callId;
+            currentCall.phoneNumber    = customerNumber;
+            currentCall.customerNumber = customerNumber;
+            currentCall.landingNumber  = landingNumber;
+            currentCall.direction      =
+                (callType.indexOf('inbound') !== -1) ? 'inbound' : 'outbound';
+
+            // 1. Always surface the softphone panel
+            sforce.opencti.setSoftphonePanelVisibility({
+                visible  : true,
+                callback : function(response) {
+                    if (response.success) {
+                        log('Softphone panel shown (MCube OpenPanel)');
+                    }
+                }
+            });
+
+            updateStatus('Call: ' + customerNumber, 'default');
+
+            // 2. Nothing to pop? Stop before claiming a lock.
+            //    Routing needs the DID (landing number) to resolve a config.
+            //    Some OpenPanel events — notably the initial incoming-call ring —
+            //    arrive with no call data at all (Customer Number / didId / refid
+            //    are undefined). In that case just leave the panel open; there is
+            //    nothing to route on, and calling the service would only return
+            //    NO_CONFIG.
+            if (!recordId && !landingNumber) {
+                log('OpenPanel has no DID/landing number (likely an incoming ring) — '
+                    + 'panel shown, skipping routing.');
+                return;
+            }
+
+            // 3. Elect a single tab to own the screen pop for this call.
+            //    Every open Salesforce tab gets this same event; only the
+            //    winner runs the routing lookup and opens the detail page, so
+            //    the record opens in one tab instead of all of them.
+            //    The key must be identical in every tab: prefer MCube's call
+            //    id, then the event timestamp, and only fall back to a local
+            //    time bucket when the payload carries neither.
+            var callKey = payload.callid
+                       || payload.callId
+                       || payload.timeStamp
+                       || payload.timestamp
+                       || (customerNumber + '_' + Math.floor(new Date().getTime() / 10000));
+            callKey = String(callKey);
+
+            claimScreenPop(callKey, function() {
+                popRecordForCall(customerNumber, landingNumber, recordId);
+            });
+        }
+
+        /**
+         * Resolves and opens the record for a call. Called only by the tab that
+         * won the screen-pop claim.
+         *
+         *   - refid echoed by MCube → open that record directly.
+         *   - otherwise             → resolve it through the call-routing
+         *                             service (DID + customer number) and open
+         *                             whatever it returns.
+         *
+         * @param {String} customerNumber — Customer's phone number.
+         * @param {String} landingNumber  — DID / landing number.
+         * @param {String} recordId       — Record id echoed by MCube, if any.
+         */
+        function popRecordForCall(customerNumber, landingNumber, recordId) {
+
+            // Record id already known → open it directly
+            if (recordId) {
+                log('refid present — opening record directly: ' + recordId);
+                openRecordInActiveTab(recordId);
+                return;
+            }
+
+            // No record id → resolve it via the call-routing service.
+            // The caller has already established that a DID is present.
+            log('No refid — routing via mcubeCallRouting.route (did + customer number)');
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.MCubeSoftphoneController.routeCall}',
+                customerNumber,
+                landingNumber,
+                function(result, event) {
+                    if (event.status && result) {
+                        try {
+                            var parsed = JSON.parse(result);
+                            log('Call routing result:', parsed);
+
+                            if (parsed.relatedToId) {
+                                openRecordInActiveTab(parsed.relatedToId);
+                            } else {
+                                log('Call routing returned no record (status: '
+                                    + parsed.status + '): ' + parsed.message);
+                            }
+                        } catch (parseErr) {
+                            log('Failed to parse call routing result:', parseErr);
+                        }
+                    } else {
+                        log('Call routing remoting failed:', event ? event.message : null);
+                    }
+                },
+                { escape: false }
+            );
+        }
+
+        // =================================================================
+        // POSTMESSAGE EVENT LISTENER (MCube → Salesforce)
+        // =================================================================
+
+        /**
+         * Central event listener for MCube iframe postMessage events.
+         *
+         * SECURITY: Every message is validated against MCUBE_ORIGIN before
+         * processing. Messages from any other origin are silently ignored.
+         *
+         * The MCube widget drives this adapter with a single envelope:
+         *   { Type:'MCUBE', Action:'OpenPanel', Data:{ ... } }
+         * fired on both outbound and inbound calls. Everything else is
+         * ignored.
+         */
+        window.addEventListener('message', function(event) {
+
+            // ---------------------------------------------------------
+            // DIAGNOSTIC: log every inbound postMessage and its origin so
+            // we can confirm messages reach this page and see the actual
+            // origin they arrive from. Remove once the origin is confirmed.
+            // ---------------------------------------------------------
+            
+            log('postMessage received — origin="' + event.origin
+                + '" | trusted="' + MCUBE_ORIGIN + '"', event.data);
+
+            // ---------------------------------------------------------
+            // SECURITY CHECK: Validate the message origin.
+            // Only accept messages from the trusted MCube domain to prevent
+            // cross-origin attacks where a malicious page could send fake
+            // call events to trigger screen pops.
+            // ---------------------------------------------------------
+            if (event.origin !== MCUBE_ORIGIN) {
+                log('REJECTED message — origin "' + event.origin
+                    + '" does not match trusted "' + MCUBE_ORIGIN + '"');
+                return;
+            }
+
+            var data = event.data;
+
+            // ---------------------------------------------------------
+            // MCUBE OpenPanel ENVELOPE
+            //   { Type:'MCUBE', Action:'OpenPanel', Data:{ ... } }
+            // Open the softphone panel and screen-pop the related record's
+            // detail page (resolving it via the call-routing service when no
+            // record id / refid is echoed back).
+            // ---------------------------------------------------------
+            if (data && data.Type === 'MCUBE') {
+                log('MCube envelope received. Action: ' + data.Action, data);
+
+                // Persist EVERY MCube event to the Apex logs (MCube_Apex_Log__c),
+                // regardless of action or screen-pop path. Fire-and-forget.
+                logMcubeEventToApex(data);
+
+                if (data.Action === 'OpenPanel') {
+                    handleMcubeOpenPanel(data);
+                }
+                return;
+            }
+
+            // Anything else is not part of the MCube OpenPanel contract.
+            // log('Ignored non-MCUBE message', data);
+
+        }, false);
+
+        // =================================================================
+        // IFRAME LOAD HANDLER
+        // =================================================================
+
+        /**
+         * Detect when the MCube iframe has finished loading.
+         * Hides the loading overlay and updates the status.
+         *
+         * Note: The iframe 'load' event fires when the page loads, but the
+         * MCube widget may still need time to initialize, so we hide the
+         * overlay after a short delay.
+         */
+        mcubeFrame.addEventListener('load', function() {
+            log('MCube iframe loaded');
+            // Hide the loading overlay shortly after the iframe loads
+            setTimeout(function() {
+                if (!loadingOverlay.classList.contains('hidden')) {
+                    loadingOverlay.classList.add('hidden');
+                    updateStatus('Ready', 'connected');
+                }
+            }, 5000);
+        });
+
+        // =================================================================
+        // CTI ADAPTER READY — Final initialization log
+        // =================================================================
+
+        log('MCube CTI Adapter initialized');
+        log('Trusted origin: ' + MCUBE_ORIGIN);
+        log('Open CTI API version: 60.0');
+
+        // Click-to-Call is placed through the MCube outbound API (Apex
+        // MCubeSoftphoneController.clickToCall / clickToCallRemote). The
+        // mcubeClick2Call Aura quick action calls the Apex directly and the
+        // Open CTI onClickToDial handler above calls clickToCallRemote — so
+        // the page no longer subscribes to the Dial_Command__c channel or
+        // sends DIAL envelopes to the widget.
+
+    })();
+    </script>
+
+</body>
+</html>
+
+</apex:page>

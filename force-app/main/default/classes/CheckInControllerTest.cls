@@ -1,3 +1,27 @@
+/******************************************************************
+ * Class Name    : CheckInControllerTest
+ * Company       : Fingertip Technologies Pvt Ltd
+ * Created Date  : 17-03-2026
+ * @description  : Tests for CheckInController: Account check-in and
+ *                 check-out inside and outside the check-in distance,
+ *                 missing Account Location, double check-out, active
+ *                 check-in, and the distance read from the custom label
+ *                 Check_In_Max_Distance_Meters.
+ * @author       : Karthik Kumar
+ * Used By       : - CheckInController
+ * Change Log:
+ * -----------------------------------------------------------------------------
+ * Ver | Author          | Date       | Description
+ * -----------------------------------------------------------------------------
+ * 1.0 | Karthik Kumar   | 17-03-2026 | Initial version
+ * 1.1 | Tharun N        | 16-11-2026 | Tests for the check-in distance from
+ *     |                 |            | the Check_In_Max_Distance_Meters label
+ *     |                 |            | (1000 m): label value used, a check-in
+ *     |                 |            | about 750 m away, and the distance in
+ *     |                 |            | the error message. Existing tests
+ *     |                 |            | unchanged.
+ * -----------------------------------------------------------------------------
+ ******************************************************************/
 @IsTest
 private class CheckInControllerTest {
 
@@ -12,7 +36,7 @@ private class CheckInControllerTest {
         insert acc;
     }
 
-    // ── Check-in within 500m should succeed ──
+    // ── Check-in within the check-in distance should succeed ──
     @IsTest
     static void testCheckInWithinRadius() {
         Account acc = [SELECT Id FROM Account WHERE Name = 'Test College' LIMIT 1];
@@ -30,7 +54,7 @@ private class CheckInControllerTest {
         System.assertNotEquals(null, rec.Check_In_Latitude__c, 'Latitude should be populated');
     }
 
-    // ── Check-in outside 500m should fail ──
+    // ── Check-in outside the check-in distance should fail ──
     @IsTest
     static void testCheckInOutsideRadius() {
         Account acc = [SELECT Id FROM Account WHERE Name = 'Test College' LIMIT 1];
@@ -145,5 +169,80 @@ private class CheckInControllerTest {
         Test.stopTest();
 
         System.assertEquals(null, active, 'Should return null when no active check-in');
+    }
+
+    /**
+    * Method Name: testMaxDistanceComesFromLabel
+    * @author: Tharun N
+    * @description: The check-in distance is read from the custom label
+    *               Check_In_Max_Distance_Meters.
+    * @parameters: None
+    * @return: void
+    */
+    @IsTest
+    static void testMaxDistanceComesFromLabel() {
+        Test.startTest();
+        Double maxDistance = CheckInController.maxDistanceMeters();
+        Test.stopTest();
+
+        System.assertEquals(Double.valueOf(System.Label.Check_In_Max_Distance_Meters.trim()), maxDistance,
+            'Distance should come from Check_In_Max_Distance_Meters');
+    }
+
+    /**
+    * Method Name: testCheckInAbout750MetersFollowsLabel
+    * @author: Tharun N
+    * @description: A check-in about 750 m from the account (refused under
+    *               the old 500 m rule) is allowed when the label allows
+    *               750 m or more, as with 1000 m, and refused otherwise.
+    * @parameters: None
+    * @return: void
+    */
+    @IsTest
+    static void testCheckInAbout750MetersFollowsLabel() {
+        Account acc = [SELECT Id FROM Account WHERE Name = 'Test College' LIMIT 1];
+        Double maxDistance = CheckInController.maxDistanceMeters();
+
+        // ~750 m north of the account
+        Decimal lat = 12.898900;
+        Decimal lng = 77.465362;
+
+        Boolean allowed;
+        Test.startTest();
+        try {
+            CheckInController.createCheckIn(acc.Id, lat, lng);
+            allowed = true;
+        } catch (AuraHandledException e) {
+            allowed = false;
+        }
+        Test.stopTest();
+
+        System.assertEquals(maxDistance >= 750, allowed,
+            'A check-in about 750 m away should follow the ' + maxDistance.intValue() + ' m limit');
+    }
+
+    /**
+    * Method Name: testOutsideRadiusMessageShowsConfiguredDistance
+    * @author: Tharun N
+    * @description: The "too far" message shows the distance from the
+    *               label, not 500.
+    * @parameters: None
+    * @return: void
+    */
+    @IsTest
+    static void testOutsideRadiusMessageShowsConfiguredDistance() {
+        Account acc = [SELECT Id FROM Account WHERE Name = 'Test College' LIMIT 1];
+        Double maxDistance = CheckInController.maxDistanceMeters();
+
+        Test.startTest();
+        try {
+            // ~5 km away
+            CheckInController.createCheckIn(acc.Id, 12.93, 77.50);
+            System.assert(false, 'Should have thrown AuraHandledException');
+        } catch (AuraHandledException e) {
+            System.assert(e.getMessage().contains('within ' + maxDistance.intValue() + ' meters'),
+                'Message should show the configured distance. Got: ' + e.getMessage());
+        }
+        Test.stopTest();
     }
 }

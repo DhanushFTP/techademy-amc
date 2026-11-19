@@ -1,7 +1,7 @@
 /**
- * @description  Test class for OpportunityAlertEmailHandler. Covers each alert rule, the
- *               Won / Lost stages, the department filter, duplicate suppression and bulk
- *               (batched) email sending.
+ * @description  Test class for OpportunityAlertEmailHandler. Covers each alert rule, Won / Lost
+ *               by Forecast Category, the 25 Lakhs crossing, inserted deals, the B2B filter,
+ *               duplicate suppression and bulk (batched) email sending.
  * @author       Tharun N
  * @date         28-09-2026
  * @group        Opportunity
@@ -11,6 +11,9 @@
 private class OpportunityAlertEmailHandlerTest {
 
     private static Integer idCounter = 1;
+
+    // Forecast Category of each stage, as configured in the org (loaded once per test)
+    private static Map<String, String> forecastByStage;
 
     /**
      * @description Generates a unique fake record Id so rules can be tested without DML.
@@ -28,30 +31,67 @@ private class OpportunityAlertEmailHandlerTest {
     }
 
     /**
-     * @description Builds an in-memory Opportunity with the given stage and amount, owned by
+     * @description Returns the org's Forecast Category for a stage, as Salesforce sets it on save.
+     */
+    private static String forecastCategory(String stage) {
+        if (forecastByStage == null) {
+            forecastByStage = new Map<String, String>();
+            for (OpportunityStage s : [SELECT MasterLabel, ForecastCategoryName FROM OpportunityStage]) {
+                forecastByStage.put(s.MasterLabel, s.ForecastCategoryName);
+            }
+        }
+        return forecastByStage.get(stage);
+    }
+
+    /**
+     * @description Builds an in-memory B2B Opportunity with the given stage and amount, owned by
      *              the running user.
      */
     private static Opportunity opp(Id oppId, String stage, Decimal amount) {
-        return new Opportunity(Id = oppId, Name = 'Alert Test Deal', StageName = stage,
-            Amount = amount, CloseDate = Date.today().addDays(10), OwnerId = UserInfo.getUserId());
+        return opp(oppId, stage, amount, 'B2B');
     }
 
     /**
-     * @description Puts the running user in the department, so tests do not depend on the
-     *              org's users or the Opportunity_Alert_Department_Head_Username label.
+     * @description Builds an in-memory Opportunity with the given owner line of business. The
+     *              Forecast Category is set from the stage, as on save. LOB__c is a formula
+     *              field, so the record is built from JSON to set it.
      */
-    private static void useRunningUserAsDepartment() {
-        OpportunityAlertEmailHandler.departmentUserIds = new Set<Id>{ UserInfo.getUserId() };
-        OpportunityAlertEmailHandler.departmentUserIdsLoaded = true;
+    private static Opportunity opp(Id oppId, String stage, Decimal amount, String lob) {
+        return (Opportunity) JSON.deserialize(JSON.serialize(new Map<String, Object>{
+            'Id'                   => oppId,
+            'Name'                 => 'Alert Test Deal',
+            'StageName'            => stage,
+            'ForecastCategoryName' => forecastCategory(stage),
+            'Amount'               => amount,
+            'CloseDate'            => Date.today().addDays(10),
+            'OwnerId'              => UserInfo.getUserId(),
+            'LOB__c'               => lob
+        }), Opportunity.class);
     }
 
     /**
-     * @description Runs the rule evaluation for a single old -> new change of a department deal.
+     * @description Copies a deal with a new stage and the Forecast Category Salesforce would set.
+     */
+    private static Opportunity withStage(Opportunity deal, String stage) {
+        Opportunity moved = deal.clone(true, true);
+        moved.StageName = stage;
+        moved.ForecastCategoryName = forecastCategory(stage);
+        return moved;
+    }
+
+    /**
+     * @description Runs the rule evaluation for a single old -> new change of a deal.
      */
     private static List<OpportunityAlertEmailHandler.AlertEmail> build(Opportunity oldOpp, Opportunity newOpp) {
-        useRunningUserAsDepartment();
         return OpportunityAlertEmailHandler.buildAlertEmails(
             new List<Opportunity>{ newOpp }, new Map<Id, Opportunity>{ oldOpp.Id => oldOpp });
+    }
+
+    /**
+     * @description Runs the rule evaluation for a single inserted deal.
+     */
+    private static List<OpportunityAlertEmailHandler.AlertEmail> buildInsert(Opportunity newOpp) {
+        return OpportunityAlertEmailHandler.buildAlertEmails(new List<Opportunity>{ newOpp }, null);
     }
 
     /**
@@ -76,22 +116,25 @@ private class OpportunityAlertEmailHandlerTest {
         return result;
     }
 
+    // ---------------- 25 Lakhs crossing ----------------
+
     @isTest
     static void highValueAmountChangeNotifiesDara() {
         Id oppId = fakeOppId();
         List<OpportunityAlertEmailHandler.AlertEmail> emails = build(opp(oppId, 'Needs Analysis', 2000000), opp(oppId, 'Needs Analysis', 3000000));
 
-        System.assertEquals(1, emails.size(), 'One email expected');
+        System.assertEquals(1, emails.size(), 'One email expected when the amount reaches 25 Lakhs');
         System.assertEquals(labelEmails(System.Label.Opportunity_Alert_High_Value_Emails), recipients(emails),
             'High value label recipients expected');
+        System.assert(emails[0].message.getSubject().startsWith('High Value Deal Update'), 'High value subject expected');
     }
 
     @isTest
-    static void highValueStageChangeNotifiesDara() {
+    static void highValueStageChangeSendsNothing() {
         Id oppId = fakeOppId();
-        List<OpportunityAlertEmailHandler.AlertEmail> emails = build(opp(oppId, 'Needs Analysis', 3000000), opp(oppId, 'Demo Scheduled', 3000000));
 
-        System.assertEquals(1, emails.size(), 'One email expected');
+        System.assertEquals(0, build(opp(oppId, 'Needs Analysis', 3000000), opp(oppId, 'Demo Scheduled', 3000000)).size(),
+            'No email expected for a stage change on an open deal');
     }
 
     @isTest
@@ -112,6 +155,14 @@ private class OpportunityAlertEmailHandlerTest {
     }
 
     @isTest
+    static void amountChangeAboveTwentyFiveLakhsSendsNothing() {
+        Id oppId = fakeOppId();
+
+        System.assertEquals(0, build(opp(oppId, 'Solution Proposed', 4300000), opp(oppId, 'Solution Proposed', 3800000)).size(),
+            'No email expected while the amount stays at 25 Lakhs or above');
+    }
+
+    @isTest
     static void amountDroppingBelowTwentyFiveLakhsStillNotifies() {
         Id oppId = fakeOppId();
         List<OpportunityAlertEmailHandler.AlertEmail> emails = build(opp(oppId, 'Needs Analysis', 3000000), opp(oppId, 'Needs Analysis', 2000000));
@@ -123,11 +174,21 @@ private class OpportunityAlertEmailHandlerTest {
     }
 
     @isTest
+    static void amountFallingFurtherBelowTwentyFiveLakhsSendsNothing() {
+        Id oppId = fakeOppId();
+
+        System.assertEquals(0, build(opp(oppId, 'Needs Analysis', 2000000), opp(oppId, 'Needs Analysis', 1500000)).size(),
+            'No email expected once the amount is already below 25 Lakhs');
+    }
+
+    @isTest
     static void amountChangeBelowTwentyFiveLakhsSendsNothing() {
         Id oppId = fakeOppId();
 
         System.assertEquals(0, build(opp(oppId, 'Needs Analysis', 2000000), opp(oppId, 'Needs Analysis', 2200000)).size(), 'No email expected');
     }
+
+    // ---------------- Won / Lost ----------------
 
     @isTest
     static void wonStageAtExactlyTenLakhsNotifiesTenLakhRecipients() {
@@ -178,6 +239,20 @@ private class OpportunityAlertEmailHandlerTest {
     }
 
     @isTest
+    static void highValueDealMovedToWonNotifiesAllRecipients() {
+        Id oppId = fakeOppId();
+        List<OpportunityAlertEmailHandler.AlertEmail> emails = build(opp(oppId, 'Negotiation / Review', 3000000), opp(oppId, 'Invoiced', 3000000));
+
+        Set<String> expected = labelEmails(System.Label.Opportunity_Alert_High_Value_Emails);
+        expected.addAll(labelEmails(System.Label.Opportunity_Alert_Closed_Won_10L_Emails));
+        expected.addAll(labelEmails(System.Label.Opportunity_Alert_Closed_Deal_Emails));
+
+        System.assertEquals(1, emails.size(), 'One combined email expected');
+        System.assertEquals(expected, recipients(emails), 'High Value + 10L + Closed Deal label recipients expected');
+        System.assert(emails[0].message.getSubject().startsWith('Deal Won'), 'Won subject expected');
+    }
+
+    @isTest
     static void everyWonStageSendsDealWonEmail() {
         for (String stage : new List<String>{ 'Invoiced', 'Invoiced - Delivery Pending', 'Invoiced - Delivery in Progress', 'Overdue', 'Collected' }) {
             Id oppId = fakeOppId();
@@ -200,22 +275,89 @@ private class OpportunityAlertEmailHandlerTest {
     }
 
     @isTest
+    static void commitToClosedSendsDealWon() {
+        Id oppId = fakeOppId();
+        List<OpportunityAlertEmailHandler.AlertEmail> emails = build(opp(oppId, 'Delivery Completed', 500000), opp(oppId, 'Invoiced', 500000));
+
+        System.assertEquals(1, emails.size(), 'One email expected when the deal moves from Commit to Closed');
+        System.assert(emails[0].message.getSubject().startsWith('Deal Won'), 'Won subject expected');
+    }
+
+    @isTest
+    static void forecastCategoryOverriddenToClosedSendsDealWon() {
+        Id oppId = fakeOppId();
+        Opportunity newOpp = opp(oppId, 'Delivery Completed', 500000);
+        newOpp.ForecastCategoryName = 'Closed';
+
+        List<OpportunityAlertEmailHandler.AlertEmail> emails = build(opp(oppId, 'Delivery Completed', 500000), newOpp);
+
+        System.assertEquals(1, emails.size(), 'Won follows the Forecast Category, as in the forecast sheet');
+        System.assert(emails[0].message.getSubject().startsWith('Deal Won'), 'Won subject expected');
+    }
+
+    @isTest
+    static void movingBetweenWonStagesSendsNothing() {
+        Id oppId = fakeOppId();
+
+        System.assertEquals(0, build(opp(oppId, 'Invoiced', 3000000), opp(oppId, 'Collected', 3000000)).size(),
+            'Only one Won email expected per deal: no email between Won stages');
+    }
+
+    @isTest
+    static void movingBetweenLostStagesSendsNothing() {
+        Id oppId = fakeOppId();
+
+        System.assertEquals(0, build(opp(oppId, 'Cold', 3000000), opp(oppId, 'Closed Lost', 3000000)).size(),
+            'Only one Lost email expected per deal: no email between Lost stages');
+    }
+
+    @isTest
+    static void amountChangeOnWonDealSendsNothing() {
+        Id oppId = fakeOppId();
+
+        System.assertEquals(0, build(opp(oppId, 'Collected', 2000000), opp(oppId, 'Collected', 3000000)).size(),
+            'No amount email expected once the deal is Won');
+    }
+
+    @isTest
+    static void amountChangeOnLostDealSendsNothing() {
+        Id oppId = fakeOppId();
+
+        System.assertEquals(0, build(opp(oppId, 'Closed Lost', 2000000), opp(oppId, 'Closed Lost', 3000000)).size(),
+            'No amount email expected once the deal is Lost');
+    }
+
+    @isTest
+    static void wonDealMovedToLostSendsDealLost() {
+        Id oppId = fakeOppId();
+        List<OpportunityAlertEmailHandler.AlertEmail> emails = build(opp(oppId, 'Collected', 500000), opp(oppId, 'Training Cancelled', 500000));
+
+        System.assertEquals(1, emails.size(), 'One email expected when a Won deal becomes Lost');
+        System.assert(emails[0].message.getSubject().startsWith('Deal Lost'), 'Lost subject expected');
+    }
+
+    @isTest
+    static void reopenedWonDealSendsNothing() {
+        Id oppId = fakeOppId();
+
+        System.assertEquals(0, build(opp(oppId, 'Invoiced', 3000000), opp(oppId, 'Delivery Completed', 3000000)).size(),
+            'No email expected when a Won deal is reopened without crossing 25 Lakhs');
+    }
+
+    @isTest
     static void closedWonBelowTwentyFiveLakhsSendsNothing() {
         Id oppId = fakeOppId();
 
         System.assertEquals(0, build(opp(oppId, 'Negotiation / Review', 1500000), opp(oppId, 'Closed Won', 1500000)).size(),
-            'Closed Won is not a Won stage, so no email expected');
+            'Closed Won is Commit, not Won, so no email expected');
     }
 
     @isTest
-    static void closedWonAtHighValueSendsHighValueUpdate() {
+    static void closedWonAtHighValueSendsNothing() {
         Id oppId = fakeOppId();
-        List<OpportunityAlertEmailHandler.AlertEmail> emails = build(opp(oppId, 'Negotiation / Review', 3000000), opp(oppId, 'Closed Won', 3000000));
 
-        System.assertEquals(1, emails.size(), 'One email expected');
-        System.assertEquals(labelEmails(System.Label.Opportunity_Alert_High_Value_Emails), recipients(emails),
-            'Only High Value label recipients expected');
-        System.assert(emails[0].message.getSubject().startsWith('High Value Deal Update'), 'High value subject expected');
+        System.assertEquals(0, build(opp(oppId, 'Negotiation / Review', 3000000), opp(oppId, 'Closed Won', 3000000)).size(),
+            'Closed Won is Commit, not Won, and the amount did not cross 25 Lakhs, so no email expected');
     }
 
     @isTest
@@ -244,120 +386,69 @@ private class OpportunityAlertEmailHandlerTest {
         System.assertEquals(0, build(opp(oppId, 'Needs Analysis', 500000), opp(oppId, 'Demo Scheduled', 800000)).size(), 'No email expected');
     }
 
+    // ---------------- Inserted deals ----------------
+
     @isTest
-    static void dealOwnedOutsideDepartmentSendsNothing() {
+    static void dealCreatedAtHighValueSendsHighValueEmail() {
+        List<OpportunityAlertEmailHandler.AlertEmail> emails = buildInsert(opp(fakeOppId(), 'Needs Analysis', 3000000));
+
+        System.assertEquals(1, emails.size(), 'One email expected for a deal created at 25 Lakhs or above');
+        System.assertEquals(labelEmails(System.Label.Opportunity_Alert_High_Value_Emails), recipients(emails),
+            'High value label recipients expected');
+        System.assert(emails[0].message.getSubject().startsWith('High Value Deal Update'), 'High value subject expected');
+    }
+
+    @isTest
+    static void dealCreatedBelowHighValueSendsNothing() {
+        System.assertEquals(0, buildInsert(opp(fakeOppId(), 'Needs Analysis', 2000000)).size(), 'No email expected');
+    }
+
+    @isTest
+    static void dealCreatedAsWonSendsDealWon() {
+        List<OpportunityAlertEmailHandler.AlertEmail> emails = buildInsert(opp(fakeOppId(), 'Invoiced', 500000));
+
+        System.assertEquals(1, emails.size(), 'One email expected for a deal created as Won');
+        System.assertEquals(labelEmails(System.Label.Opportunity_Alert_Closed_Deal_Emails), recipients(emails),
+            'Only Closed Deal label recipients expected below 10 Lakhs');
+        System.assert(emails[0].message.getSubject().startsWith('Deal Won'), 'Won subject expected');
+    }
+
+    @isTest
+    static void dealCreatedInLostStageSendsNothing() {
+        System.assertEquals(0, buildInsert(opp(fakeOppId(), 'Campaign', 3000000)).size(),
+            'No email expected for a deal created in a Lost stage');
+    }
+
+    @isTest
+    static void dealCreatedThenUpdatedInSameTransactionIsEmailedOnce() {
         Id oppId = fakeOppId();
-        Opportunity newOpp = opp(oppId, 'Invoiced', 3000000);
-        newOpp.OwnerId = fakeId(User.SObjectType);
+        System.assertEquals(1, buildInsert(opp(oppId, 'Needs Analysis', 3000000)).size(), 'One email expected on insert');
 
-        System.assertEquals(0, build(opp(oppId, 'Negotiation / Review', 3000000), newOpp).size(),
-            'No email expected for a deal owned outside the department');
+        System.assertEquals(0, build(opp(oppId, 'Needs Analysis', 3000000), opp(oppId, 'Needs Analysis', 2000000)).size(),
+            'No second email expected in the same transaction');
     }
 
-    @isTest
-    static void departmentFilterIsSkippedWhenHeadIsNotFound() {
-        OpportunityAlertEmailHandler.departmentUserIds = null;
-        OpportunityAlertEmailHandler.departmentUserIdsLoaded = true;
+    // ---------------- B2B filter ----------------
 
+    @isTest
+    static void b2aDealSendsNothing() {
         Id oppId = fakeOppId();
-        Opportunity newOpp = opp(oppId, 'Invoiced', 500000);
-        newOpp.OwnerId = fakeId(User.SObjectType);
 
-        System.assertEquals(1, OpportunityAlertEmailHandler.buildAlertEmails(
-            new List<Opportunity>{ newOpp },
-            new Map<Id, Opportunity>{ oppId => opp(oppId, 'Negotiation / Review', 500000) }).size(),
-            'Alert should still be sent when the department head is not found');
+        System.assertEquals(0, build(opp(oppId, 'Negotiation / Review', 3000000, 'B2A'), opp(oppId, 'Invoiced', 3000000, 'B2A')).size(),
+            'No email expected for a B2A deal');
     }
 
     @isTest
-    static void departmentUsersAreNotQueriedWhenNoRuleMatches() {
+    static void dealWithoutLobSendsNothing() {
         Id oppId = fakeOppId();
-        OpportunityAlertEmailHandler.buildAlertEmails(
-            new List<Opportunity>{ opp(oppId, 'Demo Scheduled', 800000) },
-            new Map<Id, Opportunity>{ oppId => opp(oppId, 'Needs Analysis', 500000) });
 
-        System.assert(!OpportunityAlertEmailHandler.departmentUserIdsLoaded, 'Users should only be queried when a rule matches');
+        System.assertEquals(0, build(opp(oppId, 'Negotiation / Review', 3000000, null), opp(oppId, 'Invoiced', 3000000, null)).size(),
+            'No email expected when the owner has no line of business');
+        System.assertEquals(0, buildInsert(opp(fakeOppId(), 'Needs Analysis', 3000000, null)).size(),
+            'No email expected for a new deal when the owner has no line of business');
     }
 
-    @isTest
-    static void departmentUsersAreQueriedOncePerTransaction() {
-        for (Integer i = 0; i < 2; i++) {
-            Id oppId = fakeOppId();
-            Integer queriesBefore = Limits.getQueries();
-            OpportunityAlertEmailHandler.buildAlertEmails(
-                new List<Opportunity>{ opp(oppId, 'Closed Lost', 500000) },
-                new Map<Id, Opportunity>{ oppId => opp(oppId, 'Negotiation / Review', 500000) });
-
-            if (i == 1) {
-                System.assertEquals(queriesBefore, Limits.getQueries(), 'Department users should be cached after the first run');
-            }
-        }
-        System.assert(OpportunityAlertEmailHandler.departmentUserIdsLoaded, 'Department users should be loaded');
-    }
-
-    @isTest
-    static void departmentIncludesManagerChainAndRoleTree() {
-        Id bossRole = fakeId(UserRole.SObjectType);
-        Id headRole = fakeId(UserRole.SObjectType);
-        Id childRole = fakeId(UserRole.SObjectType);
-        Id grandchildRole = fakeId(UserRole.SObjectType);
-        Id otherRole = fakeId(UserRole.SObjectType);
-        List<UserRole> roles = new List<UserRole>{
-            new UserRole(Id = bossRole),
-            new UserRole(Id = headRole, ParentRoleId = bossRole),
-            new UserRole(Id = childRole, ParentRoleId = headRole),
-            new UserRole(Id = grandchildRole, ParentRoleId = childRole),
-            new UserRole(Id = otherRole, ParentRoleId = bossRole)
-        };
-
-        Id boss = fakeId(User.SObjectType);
-        Id head = fakeId(User.SObjectType);
-        Id directReport = fakeId(User.SObjectType);
-        Id indirectReport = fakeId(User.SObjectType);
-        Id sameRoleUser = fakeId(User.SObjectType);
-        Id childRoleUser = fakeId(User.SObjectType);
-        Id grandchildRoleUser = fakeId(User.SObjectType);
-        Id outsider = fakeId(User.SObjectType);
-        List<User> users = new List<User>{
-            new User(Id = boss, Username = 'boss@alert.test', UserRoleId = bossRole),
-            new User(Id = head, Username = 'head@alert.test', ManagerId = boss, UserRoleId = headRole),
-            new User(Id = directReport, Username = 'direct@alert.test', ManagerId = head),
-            new User(Id = indirectReport, Username = 'indirect@alert.test', ManagerId = directReport, UserRoleId = otherRole),
-            new User(Id = sameRoleUser, Username = 'same@alert.test', UserRoleId = headRole),
-            new User(Id = childRoleUser, Username = 'child@alert.test', UserRoleId = childRole),
-            new User(Id = grandchildRoleUser, Username = 'grandchild@alert.test', UserRoleId = grandchildRole),
-            new User(Id = outsider, Username = 'outsider@alert.test', ManagerId = boss, UserRoleId = otherRole)
-        };
-
-        System.assertEquals(
-            new Set<Id>{ head, directReport, indirectReport, sameRoleUser, childRoleUser, grandchildRoleUser },
-            OpportunityAlertEmailHandler.findDepartmentUsers('head@alert.test', users, roles),
-            'Head, reports and role tree expected; the head\'s boss and other teams excluded');
-    }
-
-    @isTest
-    static void departmentUsesManagerChainWhenHeadHasNoRole() {
-        Id head = fakeId(User.SObjectType);
-        Id directReport = fakeId(User.SObjectType);
-        Id noRoleUser = fakeId(User.SObjectType);
-        List<User> users = new List<User>{
-            new User(Id = head, Username = 'head@alert.test'),
-            new User(Id = directReport, Username = 'direct@alert.test', ManagerId = head),
-            new User(Id = noRoleUser, Username = 'norole@alert.test')
-        };
-
-        System.assertEquals(new Set<Id>{ head, directReport },
-            OpportunityAlertEmailHandler.findDepartmentUsers('head@alert.test', users, new List<UserRole>()),
-            'Users without a role must not match a head without a role');
-    }
-
-    @isTest
-    static void departmentIsNullWhenHeadIsNotFound() {
-        List<User> users = new List<User>{ new User(Id = fakeId(User.SObjectType), Username = 'someone@alert.test') };
-
-        System.assertEquals(null, OpportunityAlertEmailHandler.findDepartmentUsers('head@alert.test', users, new List<UserRole>()),
-            'Null expected when the head is not found');
-    }
+    // ---------------- Duplicates and bulk ----------------
 
     @isTest
     static void sameDealIsNotEmailedTwiceInOneTransaction() {
@@ -389,7 +480,6 @@ private class OpportunityAlertEmailHandlerTest {
             oldMap.put(oppId, opp(oppId, 'Negotiation / Review', 500000));
             newOpps.add(opp(oppId, 'Closed Lost', 500000));
         }
-        useRunningUserAsDepartment();
 
         Test.startTest();
         OpportunityAlertEmailHandler.handleAfterUpdate(newOpps, oldMap);
@@ -412,14 +502,31 @@ private class OpportunityAlertEmailHandlerTest {
     static void emptyInputSendsNothing() {
         OpportunityAlertEmailHandler.handleAfterUpdate(new List<Opportunity>(), new Map<Id, Opportunity>());
         OpportunityAlertEmailHandler.handleAfterUpdate(null, null);
+        OpportunityAlertEmailHandler.handleAfterInsert(new List<Opportunity>());
+        OpportunityAlertEmailHandler.handleAfterInsert(null);
 
         System.assertEquals(0, OpportunityAlertEmailHandler.sendInvocationCount, 'No email calls expected');
     }
 
+    // ---------------- Saved deals ----------------
+
     /**
-     * @description Inserts a real open deal so emails and activities can be saved against it.
+     * @description Sets the running user's line of business to B2B, so deals they own are in
+     *              scope. The deploying user may have no LOB, so tests must not rely on it.
      */
-    private static Opportunity insertDeal() {
+    private static void makeRunningUserB2B() {
+        // User is a setup object: updated inside runAs to avoid mixed DML with the deal inserts
+        System.runAs(new User(Id = UserInfo.getUserId())) {
+            update new User(Id = UserInfo.getUserId(), LOB__c = 'B2B');
+        }
+    }
+
+    /**
+     * @description Inserts a real open deal owned by a B2B user, so emails and activities can be
+     *              saved against it. Returns it with its Forecast Category and LOB__c.
+     */
+    private static Opportunity insertDeal(Decimal amount) {
+        makeRunningUserB2B();
         Account acct = new Account(Name = 'Alert Test Account');
         insert acct;
         Contact con = new Contact(LastName = 'Alert Test Contact');
@@ -433,7 +540,7 @@ private class OpportunityAlertEmailHandlerTest {
             Expected_Start_Date__c = Date.today().addDays(1),
             End_Date__c            = Date.today().addDays(2),
             CSDM_Lead__c           = 'Lishika',
-            Amount                 = 500000,
+            Amount                 = amount,
             StageName              = 'Needs Analysis',
             CloseDate              = Date.today().addDays(20),
             Pipeline__c            = 'Deal Pipeline',
@@ -446,16 +553,16 @@ private class OpportunityAlertEmailHandlerTest {
             Line_of_Business__c    = 'Techademy: LMS Only'
         );
         insert deal;
-        return deal;
+        return [
+            SELECT Id, Name, StageName, ForecastCategoryName, Amount, CloseDate, OwnerId, LOB__c
+            FROM Opportunity WHERE Id = :deal.Id
+        ];
     }
 
     @isTest
     static void sentEmailIsLoggedAsActivityOnDeal() {
-        Opportunity deal = insertDeal();
-
-        Opportunity closedDeal = deal.clone(true, true);
-        closedDeal.StageName = 'Closed Lost';
-        List<OpportunityAlertEmailHandler.AlertEmail> emails = build(deal, closedDeal);
+        Opportunity deal = insertDeal(500000);
+        List<OpportunityAlertEmailHandler.AlertEmail> emails = build(deal, withStage(deal, 'Closed Lost'));
 
         Test.startTest();
         List<OpportunityAlertEmailHandler.AlertEmail> notLogged = OpportunityAlertEmailHandler.logEmailActivities(emails);
@@ -472,11 +579,8 @@ private class OpportunityAlertEmailHandlerTest {
 
     @isTest
     static void failedAlertIsRecordedOnDeal() {
-        Opportunity deal = insertDeal();
-
-        Opportunity closedDeal = deal.clone(true, true);
-        closedDeal.StageName = 'Closed Lost';
-        List<OpportunityAlertEmailHandler.AlertEmail> emails = build(deal, closedDeal);
+        Opportunity deal = insertDeal(500000);
+        List<OpportunityAlertEmailHandler.AlertEmail> emails = build(deal, withStage(deal, 'Closed Lost'));
         emails[0].failureReason = 'Email not sent - test failure';
 
         Test.startTest();
@@ -493,8 +597,7 @@ private class OpportunityAlertEmailHandlerTest {
 
     @isTest
     static void dealUpdateThroughTriggerSavesAlertOnDeal() {
-        Opportunity deal = insertDeal();
-        useRunningUserAsDepartment();
+        Opportunity deal = insertDeal(500000);
 
         Test.startTest();
         deal.Amount = 3000000;
@@ -507,5 +610,19 @@ private class OpportunityAlertEmailHandlerTest {
             'Alert should be saved on the deal as an email, or recorded as failed');
         System.assertEquals(OpportunityAlertEmailHandler.sentEmailCount > 0 ? 1 : 0, logged,
             'A sent alert email should be logged exactly once on the deal');
+    }
+
+    @isTest
+    static void dealInsertThroughTriggerSavesAlertOnDeal() {
+        Test.startTest();
+        Opportunity deal = insertDeal(3000000);
+        Test.stopTest();
+
+        Integer logged = [SELECT COUNT() FROM EmailMessage WHERE RelatedToId = :deal.Id];
+        // Sandboxes often have deliverability off; the alert must then be recorded as failed instead
+        System.assert(logged == 1 || OpportunityAlertEmailHandler.failedAlertCount > 0,
+            'Alert should be saved on the new deal as an email, or recorded as failed');
+        System.assertEquals(OpportunityAlertEmailHandler.sentEmailCount > 0 ? 1 : 0, logged,
+            'A sent alert email should be logged exactly once on the new deal');
     }
 }

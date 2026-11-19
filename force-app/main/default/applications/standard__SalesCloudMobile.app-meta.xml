@@ -23,5 +23,7 @@
     <tabs>standard-CollaborationGroup</tabs>
     <tabs>standard-File</tabs>
     <tabs>standard-ContentNote</tabs>
+    <tabs>Lead_Check_In__c</tabs>
     <uiType>Lightning</uiType>
+    <utilityBar>Sales_Cloud_Mobile_UtilityBar</utilityBar>
 </CustomApplication>

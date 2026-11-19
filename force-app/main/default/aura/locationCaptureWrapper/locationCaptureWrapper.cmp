@@ -1,0 +1,28 @@
+<aura:component implements="force:hasRecordId,force:lightningQuickAction" access="global">
+    <!--
+     ******************************************************************
+     * Component Name : locationCaptureWrapper
+     * Company        : Fingertip Technologies Pvt Ltd
+     * Created Date   : 06-11-2026
+     * @description   : Opens the Location Capture card
+     *                  (c:accountLocationCapture) from a quick action, so it
+     *                  can be used where the phone does not show the card on
+     *                  the record page. Lead phones open the OneMerge Lead
+     *                  page, which has no card, so the Lead "Capture
+     *                  Location" action uses this wrapper. Same pattern as
+     *                  checkInLocationWrapper.
+     * @author        : Tharun N
+     * Used By        : - Lead.Capture_Location quick action (Lead Layout,
+     *                    Mobile and Lightning Actions)
+     * Change Log:
+     * =============================================================================
+     * Ver | Author          | Date       | Description
+     * =============================================================================
+     * 1.0 | Tharun N        | 06-11-2026 | Initial version
+     * 1.1 | Tharun N        | 11-11-2026 | Standard header added. No change.
+     * =============================================================================
+     ******************************************************************
+    -->
+    <aura:attribute name="recordId" type="Id"/>
+    <c:accountLocationCapture recordId="{!v.recordId}"/>
+</aura:component>

@@ -65,6 +65,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
                 </componentInstanceProperties>
@@ -213,6 +217,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Account_Location__c</fieldItem>
                 <identifier>RecordAccount_Location__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Location_Override__c</fieldItem>
+                <identifier>RecordLocation_Override_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-7010fb4c-8c88-4c80-bd62-e8b2a9d7c9d1</name>
@@ -1147,21 +1161,12 @@
                     <name>actionNames</name>
                     <valueList>
                         <valueListItems>
-                            <value>MassAddToCampaign</value>
-                        </valueListItems>
-                        <valueListItems>
-                            <value>MassAddToList</value>
-                        </valueListItems>
-                        <valueListItems>
-                            <value>MassAddToNurtureList</value>
-                        </valueListItems>
-                        <valueListItems>
-                            <value>Merge</value>
-                        </valueListItems>
-                        <valueListItems>
                             <value>NewContact</value>
                         </valueListItems>
                     </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>adminFilters</name>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>maxRecordsToDisplay</name>
@@ -1194,10 +1199,6 @@
                         <valueListItems>
                             <value>CONTACT.PHONE1</value>
                         </valueListItems>
-                        <valueListItems>
-                            <value>Status__c</value>
-                        </valueListItems>
-                        <valueListItems/>
                     </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -1848,6 +1849,12 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>accountLocationCapture</componentName>
+                <identifier>c_accountLocationCapture</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>

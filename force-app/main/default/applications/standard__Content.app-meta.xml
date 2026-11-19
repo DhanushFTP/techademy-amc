@@ -14,4 +14,5 @@
     <tabs>Trainer_Certification__c</tabs>
     <tabs>Deal_Error_Approval_Log__c</tabs>
     <tabs>Check_In__c</tabs>
+    <tabs>Lead_Check_In__c</tabs>
 </CustomApplication>

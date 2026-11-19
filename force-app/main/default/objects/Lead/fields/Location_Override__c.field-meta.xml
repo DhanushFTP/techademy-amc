@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Location_Override__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Allows the Lead Geo Location to be captured again from a rep&apos;s phone (Capture Location action on the lead). Ticked by a System Administrator or a user with the Location Override permission set. Unticked automatically when the new location is saved, so each tick allows one update. Author: Tharun N | Date: 06-11-2026</description>
+    <inlineHelpText>Tick to let a rep update this lead&apos;s location once from their phone. It unticks itself after the location is saved.</inlineHelpText>
+    <label>Override Location</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

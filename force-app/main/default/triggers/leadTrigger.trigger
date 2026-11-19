@@ -8,4 +8,8 @@ trigger leadTrigger on Lead (before insert, after insert, before update, after u
         System.debug('Before Update Trigger on Lead');
         LeadTriggerHandler.addJtToTitleAndTitleToJt(trigger.new);
     }
+    if(Trigger.isUpdate && Trigger.isAfter){
+        // Converted lead: copy its phone-captured location to the Account if the Account has none
+        LeadConvertLocationHandler.copyLocationToAccount(Trigger.new, Trigger.oldMap);
+    }
 }

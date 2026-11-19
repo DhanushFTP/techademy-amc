@@ -1,0 +1,103 @@
+<!--
+ ============================================================================
+ Component  : mcubeClick2Call
+ Description: Aura quick-action component that initiates an MCube
+              Click-to-Call for any record that has phone fields.
+
+              Flow:
+              1. On init, calls MCubeSoftphoneController.getPhoneNumbers()
+                 to retrieve all phone numbers stored on the current record.
+              2. Renders a dropdown so the agent can choose the customer
+                 number to dial.
+              3. On "Call" click, invokes MCubeSoftphoneController.clickToCall()
+                 which places the outbound call through the MCube outbound API
+                 directly.
+              4. Shows a success or error toast and closes the quick action.
+
+ Controller : MCubeSoftphoneController
+ Author     : MCube Integration Team
+ Created    : 2026
+ ============================================================================
+-->
+<aura:component
+    controller="MCubeSoftphoneController"
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader"
+    access="global">
+
+    <!-- ================================================================== -->
+    <!--  ATTRIBUTES                                                         -->
+    <!-- ================================================================== -->
+
+    <!-- Injected automatically by force:hasRecordId -->
+    <aura:attribute name="recordId"      type="Id"       />
+
+    <!-- Phone numbers fetched from the record on init -->
+    <aura:attribute name="phoneList"     type="List"     default="[]" />
+
+    <!-- Currently selected phone number in the dropdown -->
+    <aura:attribute name="selectedPhone" type="String"   default="" />
+
+    <!-- Controls the spinner visibility during async operations -->
+    <aura:attribute name="isLoading"     type="Boolean"  default="false" />
+
+    <!-- Error message to display when something goes wrong -->
+    <aura:attribute name="errorMessage"  type="String"   default="" />
+
+    <!-- ================================================================== -->
+    <!--  LIFECYCLE HANDLER                                                  -->
+    <!-- ================================================================== -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <!-- ================================================================== -->
+    <!--  MARKUP                                                             -->
+    <!-- ================================================================== -->
+    <div class="slds-box slds-m-around_medium">
+
+        <!-- Loading spinner shown while fetching phone numbers -->
+        <aura:if isTrue="{!v.isLoading}">
+            <lightning:spinner alternativeText="Loading" size="small" />
+        </aura:if>
+
+        <!-- Error message display -->
+        <aura:if isTrue="{! !empty(v.errorMessage)}">
+            <div class="slds-notify slds-notify_alert slds-alert_warning slds-m-bottom_small" role="alert">
+                <span>{!v.errorMessage}</span>
+            </div>
+        </aura:if>
+
+        <!-- Phone number selector -->
+        <lightning:select
+            aura:id       = "phoneSelect"
+            name          = "phoneSelect"
+            label         = "Select Number to Call"
+            required      = "true"
+            value         = "{!v.selectedPhone}">
+            <option value="">-- Choose a number --</option>
+            <aura:iteration items="{!v.phoneList}" var="phone">
+                <option value="{!phone}">{!phone}</option>
+            </aura:iteration>
+        </lightning:select>
+
+    </div>
+
+    <!-- Action buttons -->
+    <div class="slds-clearfix slds-m-around_small">
+
+        <div class="slds-float_left">
+            <lightning:button
+                label    = "Cancel"
+                variant  = "neutral"
+                onclick  = "{!c.handleCancel}" />
+        </div>
+
+        <div class="slds-float_right">
+            <lightning:button
+                label    = "Call"
+                variant  = "brand"
+                iconName = "utility:call"
+                onclick  = "{!c.handleCall}" />
+        </div>
+
+    </div>
+
+</aura:component>

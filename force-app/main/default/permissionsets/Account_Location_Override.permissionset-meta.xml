@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Lets the user tick Override Location on an account or a lead so a rep can update that record&apos;s location once from their phone. Assigned to Lakshman and Yadav. Author: Tharun N | Date: 04-11-2026 | Lead added: 06-11-2026</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Account.Location_Override__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Lead.Location_Override__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Location Override (Account and Lead)</label>
+</PermissionSet>

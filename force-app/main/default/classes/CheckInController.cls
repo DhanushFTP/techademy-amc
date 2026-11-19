@@ -1,6 +1,38 @@
+/******************************************************************
+ * Class Name    : CheckInController
+ * Company       : Fingertip Technologies Pvt Ltd
+ * Created Date  : 07-05-2025
+ * @description  : Check In / Check Out on Accounts with phone GPS. The
+ *                 rep must be within the check-in distance of the
+ *                 account's Account Location. Saves Check_In__c and logs
+ *                 each attempt to lcon__Error_Message_Handler__c (Error
+ *                 Point 'Account Checkin').
+ *
+ *                 Config (custom label):
+ *                   Check_In_Max_Distance_Meters -> max distance in
+ *                       meters for Check In and Check Out (Account and
+ *                       Lead). 1000 m is used if the label is blank, zero
+ *                       or not a number.
+ * @author       : Karthik Kumar
+ * Used By       : - checkInLocation LWC (Account "Check In" action,
+ *                   through checkInLocationWrapper)
+ * Test Class    : CheckInControllerTest
+ * Change Log:
+ * -----------------------------------------------------------------------------
+ * Ver | Author          | Date       | Description
+ * -----------------------------------------------------------------------------
+ * 1.0 | Karthik Kumar   | 07-05-2025 | Initial version (500 m check-in
+ *     |                 |            | distance)
+ * 1.1 | Tharun N        | 16-11-2026 | Check-in distance raised from 500 m
+ *     |                 |            | to 1000 m and moved to the custom
+ *     |                 |            | label Check_In_Max_Distance_Meters
+ *     |                 |            | (maxDistanceMeters). No other change.
+ * -----------------------------------------------------------------------------
+ ******************************************************************/
 public with sharing class CheckInController {
 
-    private static final Double MAX_DISTANCE_METERS = 500.0;
+    // Used when the Check_In_Max_Distance_Meters label is blank, zero or not a number
+    private static final Double DEFAULT_MAX_DISTANCE_METERS = 1000.0;
     private static final Double EARTH_RADIUS_METERS = 6371000.0;
     private static final String ERROR_POINT = 'Account Checkin';
 
@@ -66,11 +98,32 @@ public with sharing class CheckInController {
             acc.Account_Location__Latitude__s, acc.Account_Location__Longitude__s
         );
 
-        if (distance > MAX_DISTANCE_METERS) {
+        Double maxDistance = maxDistanceMeters();
+        if (distance > maxDistance) {
             throwAuraError(
-                'You must be within ' + MAX_DISTANCE_METERS.intValue() + ' meters of the account location. '
+                'You must be within ' + maxDistance.intValue() + ' meters of the account location. '
                 + 'You are currently ' + distance.intValue() + ' meters away.'
             );
+        }
+    }
+
+    /**
+    * Method Name: maxDistanceMeters
+    * @author: Tharun N
+    * @description: Max distance allowed between the rep's phone and the
+    *               Account Location for Check In and Check Out, from the
+    *               custom label Check_In_Max_Distance_Meters. Falls back
+    *               to 1000 m when the label is blank, zero or not a number.
+    * @parameters: None
+    * @return: Double distance in meters.
+    */
+    @TestVisible
+    private static Double maxDistanceMeters() {
+        try {
+            Double value = Double.valueOf(System.Label.Check_In_Max_Distance_Meters.trim());
+            return value > 0 ? value : DEFAULT_MAX_DISTANCE_METERS;
+        } catch (Exception e) {
+            return DEFAULT_MAX_DISTANCE_METERS;
         }
     }
 

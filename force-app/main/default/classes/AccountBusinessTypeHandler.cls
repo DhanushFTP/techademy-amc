@@ -57,9 +57,7 @@ public without sharing class AccountBusinessTypeHandler {
      */
     @TestVisible
     private static List<Account> classify(List<Opportunity> wonOpps, Map<Id, Account> accounts) {
-        List<
-        
-        > sorted = wonOpps.clone();
+        List<Opportunity> sorted = wonOpps.clone();
         sorted.sort(new CloseDateAscending());
 
         Map<Id, Account> changed = new Map<Id, Account>();

@@ -21,7 +21,10 @@ trigger OpportunityTrigger on Opportunity (before insert, after insert, before u
             opportunityTriggerHelper.updateAmountInWords(Trigger.new);
             // Process trainer solution requests for new records (no oldMap available)
             TrainerSolutionRequestEmailHelper.processTrainerSolutionRequests(Trigger.new, null);
-            //Added @dhanush on 03/11/2026 classifies the account as New Business / Existing when a deal is created in a won stage
+            // Send deal alert emails for B2B deals created at 25 Lakhs or above or created as Won
+            // Author: Tharun N | Date: 04-11-2026
+            OpportunityAlertEmailHandler.handleAfterInsert(Trigger.new);
+            // Classify the account as New Business / Existing when a deal is won
             AccountBusinessTypeHandler.handleAfterSave(Trigger.new, null);
         }
         if (Trigger.isUpdate) {
@@ -29,10 +32,10 @@ trigger OpportunityTrigger on Opportunity (before insert, after insert, before u
             TrainerSolutionRequestEmailHelper.processTrainerSolutionRequests(Trigger.new, Trigger.oldMap);
             // Roll up amount to Parent_Deal__c on parent change
             OpportunityTriggerHandler.handleAfterUpdate(Trigger.new, Trigger.oldMap);
-            // Send deal alert emails on high value, Closed Won and Closed Lost deal changes
+            // Send deal alert emails when a B2B deal is Won or Lost or its amount crosses 25 Lakhs
             // Author: Tharun N | Date: 28-09-2026
             OpportunityAlertEmailHandler.handleAfterUpdate(Trigger.new, Trigger.oldMap);
-            //Added @dhanush on 03/11/2026 classifies the account as New Business / Existing when a deal moves to a won stage
+            // Classify the account as New Business / Existing when a deal is won
             AccountBusinessTypeHandler.handleAfterSave(Trigger.new, Trigger.oldMap);
         }
     }

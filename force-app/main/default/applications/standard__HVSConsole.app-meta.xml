@@ -27,6 +27,7 @@
     <tabs>Trainer_Certification__c</tabs>
     <tabs>Deal_Error_Approval_Log__c</tabs>
     <tabs>Check_In__c</tabs>
+    <tabs>Lead_Check_In__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>HVSConsole_UtilityBar</utilityBar>
     <workspaceConfig>
@@ -38,6 +39,9 @@
         </mappings>
         <mappings>
             <tab>Deal_Error_Approval_Log__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Lead_Check_In__c</tab>
         </mappings>
         <mappings>
             <tab>Trainer_Certification__c</tab>

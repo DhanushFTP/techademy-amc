@@ -1,0 +1,107 @@
+<!--
+ ******************************************************************
+ * Component Name : accountLocationCapture (template)
+ * Company        : Fingertip Technologies Pvt Ltd
+ * Created Date   : 04-11-2026
+ * @description   : Markup for the Location Capture card (Account and
+ *                  Lead): saved location, locked message, laptop note,
+ *                  and on the phone the GPS status with Retry and
+ *                  Save / Update Location buttons.
+ * @author        : Tharun N
+ * Used By        : - accountLocationCapture (LWC)
+ * Change Log:
+ * =============================================================================
+ * Ver | Author          | Date       | Description
+ * =============================================================================
+ * 1.0 | Tharun N        | 04-11-2026 | Initial version (Account Location card)
+ * 1.1 | Tharun N        | 06-11-2026 | Lead support: card title and messages
+ *     |                 |            | use the object name (cardTitle,
+ *     |                 |            | recordNoun) instead of "Account".
+ * 1.2 | Tharun N        | 11-11-2026 | Standard header added. No markup change.
+ * =============================================================================
+ ******************************************************************
+-->
+<template>
+    <lightning-card title={cardTitle} icon-name="utility:location">
+        <div class="slds-p-horizontal_medium">
+            <template lwc:if={isLoading}>
+                <div class="spinner-holder">
+                    <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                </div>
+            </template>
+
+            <template lwc:elseif={loadError}>
+                <p class="slds-text-color_error">{loadError}</p>
+            </template>
+
+            <template lwc:else>
+                <!-- Saved location -->
+                <template lwc:if={hasLocation}>
+                    <p class="slds-text-title slds-m-bottom_xx-small">Saved location</p>
+                    <p class="slds-text-body_regular">{savedLocationText}</p>
+                </template>
+                <template lwc:else>
+                    <p class="slds-text-body_regular">No location is saved for this {recordNoun} yet.</p>
+                </template>
+
+                <!-- Location set and not approved for override -->
+                <template lwc:if={showLocked}>
+                    <div class="slds-box slds-box_x-small slds-theme_shade slds-m-top_small slds-media slds-media_center">
+                        <div class="slds-media__figure">
+                            <lightning-icon icon-name="utility:lock" size="x-small"></lightning-icon>
+                        </div>
+                        <p class="slds-media__body slds-text-body_small">{state.lockedMessage}</p>
+                    </div>
+                </template>
+
+                <!-- Capture allowed, but not on a phone -->
+                <template lwc:elseif={showDesktopNote}>
+                    <p class="slds-text-body_small slds-text-color_weak slds-m-top_small">
+                        Open this {recordNoun} in the Salesforce app on your phone to capture its location.
+                    </p>
+                </template>
+
+                <!-- Capture on the phone -->
+                <template lwc:elseif={showCapture}>
+                    <template lwc:if={isOverride}>
+                        <p class="slds-text-body_small slds-m-top_small">
+                            Override approved: saving replaces the saved location. Override Location unticks itself after the save.
+                        </p>
+                    </template>
+
+                    <div class="slds-media slds-media_center slds-m-top_small" aria-live="polite">
+                        <div class="slds-media__figure">
+                            <lightning-icon icon-name={gpsIconName} variant={gpsIconVariant} size="x-small"></lightning-icon>
+                        </div>
+                        <p class="slds-media__body">
+                            <span class={gpsTextClass}>{gpsMessage}</span>
+                        </p>
+                    </div>
+
+                    <template lwc:if={moveText}>
+                        <p class="slds-text-body_small slds-text-color_weak slds-m-top_xx-small">{moveText}</p>
+                    </template>
+
+                    <div class="slds-m-top_small">
+                        <template lwc:if={showRetry}>
+                            <lightning-button
+                                class="slds-m-right_x-small"
+                                label="Retry"
+                                icon-name="utility:refresh"
+                                onclick={handleRetry}
+                                disabled={isSaving}>
+                            </lightning-button>
+                        </template>
+                        <lightning-button
+                            variant="brand"
+                            label={saveLabel}
+                            icon-name="utility:checkin"
+                            onclick={handleSave}
+                            disabled={isSaveDisabled}>
+                        </lightning-button>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

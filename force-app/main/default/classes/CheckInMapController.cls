@@ -7,6 +7,12 @@ public with sharing class CheckInMapController {
 
         // Determine 3-char prefix: 001 = Account, 005 = User
         String prefix = String.valueOf(parentId).substring(0,3);
+
+        // 00Q = Lead: lead visits are in Lead Check In (Lead_Check_In__c). Tharun N | 06-11-2026
+        if (prefix == '00Q') {
+            return LeadCheckInController.getMapMarkers(parentId);
+        }
+
         List<Check_In__c> recs;
 
         if (prefix == '005') {

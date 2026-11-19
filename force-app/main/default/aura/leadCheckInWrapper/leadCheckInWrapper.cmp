@@ -1,0 +1,8 @@
+<aura:component implements="force:hasRecordId,force:lightningQuickAction" access="global">
+    <!--
+        Opens the Lead check-in card (c:leadCheckInLocation) from the Check In action on a lead.
+        Same pattern as checkInLocationWrapper (Account). Author: Tharun N | Date: 06-11-2026
+    -->
+    <aura:attribute name="recordId" type="Id"/>
+    <c:leadCheckInLocation recordId="{!v.recordId}"/>
+</aura:component>

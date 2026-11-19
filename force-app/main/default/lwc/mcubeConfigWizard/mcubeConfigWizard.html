@@ -1,0 +1,473 @@
+<template>
+    <div class="wrap">
+
+        <!-- Stepper -->
+        <div class="stepper">
+            <template for:each={stepPills} for:item="pill">
+                <div key={pill.n} class={pill.cls} data-step={pill.n}>{pill.label}</div>
+            </template>
+        </div>
+
+        <!-- Step 1: Source Object -->
+        <template lwc:if={isStep1}>
+            <div class="card">
+                <p class="section-label">Source object</p>
+                <p class="section-desc">Choose the object created or searched when a call comes in.</p>
+
+                <!-- NEW mode — show dropdown to pick object -->
+                <template lwc:if={isNewMode}>
+                    <select onchange={objectSelection}>
+                        <option value="" disabled selected={isPlaceholderSelected}>— select object —</option>
+                        <template for:each={objectOptions} for:item="opt">
+                            <option key={opt.value} value={opt.value} selected={opt.selected}>{opt.label}</option>
+                        </template>
+                    </select>
+                </template>
+
+                <!-- EDIT mode — show locked read-only badge, cannot change object -->
+                <template lwc:if={isEditMode}>
+                    <div class="edit-obj-display">
+                        <span class="badge badge-info" style="font-size:14px;padding:6px 16px">{curObj}</span>
+                        <p class="section-desc" style="margin-top:6px">Source object cannot be changed on edit.</p>
+                    </div>
+                </template>
+
+                <!-- Duplicate config warning banner (NEW mode only) -->
+                <template lwc:if={hasExistingConfig}>
+                    <div class="warn-banner" style="margin-top:12px;padding:10px 14px;border:1px solid #c98a04;background:#fff8e1;border-radius:6px">
+                        <div style="font-weight:600;margin-bottom:4px">⚠ Active configuration already exists</div>
+                        <div style="margin-bottom:8px">{existingConfigWarning}</div>
+                        <button class="btn-sec" onclick={loadExistingConfig}>Edit existing configuration</button>
+                    </div>
+                </template>
+
+                <!-- ── Configuration mode picker ─────────────────────────────── -->
+                <div style="margin-top:18px;padding:14px;border:1px solid #e0e3e8;border-radius:6px;background:#fafbfc">
+                    <p class="section-label" style="margin-bottom:4px">Configuration mode</p>
+                    <p class="section-desc" style="margin-bottom:10px">Choose what this configuration is for.</p>
+
+                    <label style="display:block;margin-bottom:10px;cursor:pointer">
+                        <input type="radio" name="configMode" value="BOTH"
+                               checked={isBothMode} onchange={modeChange}
+                               style="margin-right:6px;vertical-align:middle" />
+                        <strong>Inbound &amp; Outbound</strong>
+                    </label>
+
+                    <label style="display:block;cursor:pointer">
+                        <input type="radio" name="configMode" value="OUTBOUND_ONLY"
+                               checked={isOutboundOnly} onchange={modeChange}
+                               style="margin-right:6px;vertical-align:middle" />
+                        <strong>Outbound only</strong>
+                    </label>
+                </div>
+
+                <!-- Required fields hint (only relevant when inbound is in scope) -->
+                <template lwc:if={isBothMode}>
+                    <div class="req-box">
+                        Required fields: <span>{requiredFields}</span>
+                    </div>
+
+                    <!-- Priority — routing tiebreak, digits only, optional -->
+                    <div class="req-box" style="margin-top:10px">
+                        <p class="section-label" style="margin-bottom:4px">Priority</p>
+                        <p class="section-desc" style="margin-bottom:6px">
+                            Lower number = higher priority when a landing number maps to multiple configs. Optional.
+                        </p>
+                        <input type="text" inputmode="numeric" placeholder="e.g. 1"
+                               value={priority} oninput={priorityChange}
+                               onkeydown={priorityKeydown} maxlength="9" />
+                    </div>
+                </template>
+            </div>
+            <div class="nav">
+                <button class="btn-sec" onclick={cancelAction}>Cancel</button>
+                <button class="btn-primary" onclick={nextStep}>Next →</button>
+            </div>
+        </template>
+
+        <!-- Step 2: Dedup -->
+        <template lwc:if={isStep2}>
+            <div class="card">
+                <div class="card-header">
+                    <p class="section-label">Deduplication field mapping</p>
+                    <span class="badge badge-info">{curObj}</span>
+                </div>
+
+                <!-- Matching logic selector -->
+                <div style="margin:4px 0 14px">
+                    <p class="col-hdr" style="margin-bottom:6px">Matching logic</p>
+                    <div class="rhs-type-tabs">
+                        <button class={dedupLogicAllClass}    data-logic="all"    onclick={setDedupLogic}>All (AND)</button>
+                        <button class={dedupLogicAnyClass}    data-logic="any"    onclick={setDedupLogic}>Any (OR)</button>
+                        <button class={dedupLogicCustomClass} data-logic="custom" onclick={setDedupLogic}>Custom</button>
+                    </div>
+                    <template lwc:if={dedupLogicCustom}>
+                        <input type="text"
+                               placeholder="e.g. 1 AND (2 OR 3)"
+                               value={dedupCustomLogic}
+                               oninput={dedupCustomLogicChange}
+                               style="margin-top:8px" />
+                        <p class="section-desc" style="margin-top:4px">Reference each field by its number. Use AND, OR and parentheses.</p>
+                    </template>
+                </div>
+
+                <div class="col-headers col-map">
+                    <span class="col-hdr">Salesforce field</span>
+                    <span></span>
+                    <span class="col-hdr">MCube value / mapping</span>
+                    <span></span>
+                </div>
+
+                <template for:each={dedupRowsView} for:item="row">
+                    <div key={row.id} class="map-row-card">
+                        <div style="display:flex;align-items:flex-start;gap:10px">
+
+                            <!-- Position number — referenced by custom logic -->
+                            <div class="order-badge">{row.num}</div>
+
+                            <div class="col-map" style="flex:1">
+
+                                <!-- LHS: Salesforce field -->
+                                <select data-id={row.id} onchange={dedupLhsChange}>
+                                    <template for:each={row.fieldOptions} for:item="opt">
+                                        <option key={opt.value} value={opt.value} selected={opt.selected}>
+                                            {opt.label}
+                                        </option>
+                                    </template>
+                                </select>
+
+                                <div class="eq-sign">=</div>
+
+                                <!-- RHS block -->
+                                <div>
+                                    <div class="rhs-type-tabs">
+                                        <button class={row.tabMcubeClass}  data-id={row.id} data-type="mcube"  onclick={setRhsType}>MCube</button>
+                                        <button class={row.tabStaticClass} data-id={row.id} data-type="static" onclick={setRhsType}>Static</button>
+                                        <button class={row.tabLookupClass} data-id={row.id} data-type="lookup" onclick={setRhsType}>Lookup</button>
+                                    </div>
+
+                                    <!-- MCube field dropdown -->
+                                    <template lwc:if={row.isMcube}>
+                                        <select data-id={row.id} onchange={dedupRhsValChange}>
+                                            <template for:each={row.mcubeOptions} for:item="opt">
+                                                <option key={opt.value} value={opt.value} selected={opt.selected}>
+                                                    {opt.label}
+                                                </option>
+                                            </template>
+                                        </select>
+                                    </template>
+
+                                    <!-- Static text input -->
+                                    <template lwc:if={row.isStatic}>
+                                        <input
+                                            type="text"
+                                            placeholder="static value"
+                                            value={row.rhsVal}
+                                            data-id={row.id}
+                                            oninput={dedupRhsValChange} />
+                                    </template>
+                                    <!-- Lookup record picker -->
+                                    <template lwc:if={row.isLookupType}>
+                                        <input
+                                            type="text"
+                                            placeholder="Enter Record ID"
+                                            value={row.rhsVal}
+                                            data-id={row.id}
+                                            oninput={dedupLookupChange}
+                                            maxlength="18"
+                                            style="padding:6px 12px;border:1px solid #ccc;border-radius:4px" />
+                                    </template>
+                                        <template lwc:else>
+                                            <div class="lookup-pill">Resolving lookup target for <strong>{row.lhsField}</strong>...</div>
+                                        </template>
+                                </div>
+
+                                <!-- Delete row button -->
+                                <button class="del-btn" data-id={row.id} onclick={removeDedupRow}>×</button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </template>
+
+                <button class="add-btn" onclick={addDedupRow}>+ add dedup field</button>
+
+                <!-- Validation error -->
+                <template lwc:if={dedupError}>
+                    <div class="warn-note" style="margin-top:8px">{dedupError}</div>
+                </template>
+
+            </div>
+
+            <div class="nav">
+                <button class="btn-sec" onclick={previousStep}>← back</button>
+                <button class="btn-primary" onclick={nextStep}>Next →</button>
+            </div>
+        </template>
+
+        <!-- Step 3: Defaults -->
+        <template lwc:if={isStep3}>
+            <div class="card">
+                <div class="card-header">
+                    <p class="section-label">Default value mapping</p>
+                    <span class="badge badge-warn">{curObj}</span>
+                </div>
+                <div class="col-headers col-map">
+                    <span class="col-hdr">Field <span class="req-star">*</span></span>
+                    <span></span>
+                    <span class="col-hdr">Static default value</span>
+                    <span></span>
+                </div>
+                <template for:each={defaultRowsView} for:item="row">
+                    <div key={row.id} class="col-map default-row">
+                        <select data-id={row.id} onchange={defaultFieldChange}>
+                            <template for:each={row.fieldOptions} for:item="opt">
+                                <option key={opt.value} value={opt.value} selected={opt.selected}>{opt.label}</option>
+                            </template>
+                        </select>
+                        <div class="eq-sign">=</div>
+                        <input type="text" placeholder="default value" value={row.value} data-id={row.id} oninput={defaultValueChange} />
+                        <button class="del-btn" data-id={row.id} onclick={removeDefaultRow}>×</button>
+                        <template lwc:if={row.isRequired}>
+                            <span></span><span></span>
+                            <div class="req-note">required field</div>
+                            <span></span>
+                        </template>
+                    </div>
+                </template>
+                <button class="add-btn" onclick={addDefaultRow}>+ add default field</button>
+            </div>
+            <div class="nav">
+                <button class="btn-sec" onclick={previousStep}>← back</button>
+                <button class="btn-primary" onclick={nextStep}>Next →</button>
+            </div>
+        </template>
+
+        <!-- Step 4: Landing #  (one source = one number) -->
+        <template lwc:if={isStep4}>
+            <div class="card">
+                <div class="card-header">
+                    <p class="section-label">Landing number → lead source mapping</p>
+                    <span class="badge badge-purple">{curObj}</span>
+                </div>
+                <p class="section-desc">Each source maps to <strong>one</strong> landing number. A landing number can only be tagged to one source.</p>
+
+                <div class="col-headers col-map" style="grid-template-columns: 1fr 1fr 1fr 32px">
+                    <span class="col-hdr">Source</span>
+                    <span class="col-hdr">Landing number <span class="req-star">*</span></span>
+                    <span class="col-hdr">Campaign name</span>
+                    <span></span>
+                </div>
+
+                <template for:each={landingSourcesView} for:item="src">
+                    <div key={src.id} class="landing-source-row" style="display:grid;grid-template-columns:1fr 1fr 1fr 32px;gap:8px;align-items:start;margin-bottom:10px">
+
+                        <!-- Source dropdown -->
+                        <select data-id={src.id} onchange={landingSourceChange}>
+                            <template for:each={src.sourceOptions} for:item="opt">
+                                <option key={opt.value} value={opt.value} selected={opt.selected}>{opt.label}</option>
+                            </template>
+                        </select>
+
+                        <!-- Single landing number input -->
+                        <div>
+                            <input type="text"
+                                   placeholder="e.g. 001 or +91-9900-XXXX"
+                                   value={src.number}
+                                   data-id={src.id}
+                                   oninput={landingNumberChange} />
+                            <template lwc:if={src.warn}>
+                                <div class="warn-note">{src.warn}</div>
+                            </template>
+                        </div>
+
+                        <!-- Campaign name -->
+                        <input type="text"
+                               placeholder="campaign name"
+                               value={src.campaign}
+                               data-id={src.id}
+                               oninput={landingCampaignChange} />
+
+                        <!-- Delete -->
+                        <button class="del-btn" data-id={src.id} onclick={removeLandingSource}>×</button>
+                    </div>
+                </template>
+
+                <button class="add-btn" onclick={addLandingSource}>+ add source</button>
+            </div>
+            <div class="nav">
+                <button class="btn-sec" onclick={previousStep}>← back</button>
+                <button class="btn-primary" onclick={nextStep}>Next →</button>
+            </div>
+        </template>
+
+        <!-- Step 5: Outbound -->
+        <template lwc:if={isStep5}>
+            <div class="card">
+                <div class="card-header">
+                    <p class="section-label">Outbound call — phone field priority</p>
+                    <span class="badge badge-info">{curObj}</span>
+                </div>
+                <p class="section-desc">Select which phone/mobile fields MCube should use for outbound calls. Priority order — first non-empty field wins.</p>
+                <div class="outbound-col-headers">
+                    <span></span>
+                    <span class="col-hdr">Salesforce field</span>
+                    <span class="col-hdr">Field label (display)</span>
+                    <span></span>
+                </div>
+                <template for:each={outboundRowsView} for:item="row">
+                    <div key={row.id} class="outbound-field-row">
+                        <div class="order-badge">{row.order}</div>
+                        <select data-id={row.id} onchange={outboundFieldChange}>
+                            <template for:each={row.fieldOptions} for:item="opt">
+                                <option key={opt.value} value={opt.value} selected={opt.selected}>{opt.label}</option>
+                            </template>
+                        </select>
+                        <input type="text" placeholder="display label" value={row.label} data-id={row.id} oninput={outboundLabelChange} />
+                        <button class="del-btn" data-id={row.id} onclick={removeOutboundRow}>×</button>
+                    </div>
+                </template>
+                <button class="add-btn" onclick={addOutboundRow}>+ add phone field</button>
+            </div>
+            <div class="nav">
+                <button class="btn-sec" onclick={previousStep}>← back</button>
+                <button class="btn-primary" onclick={nextStep}>Next →</button>
+            </div>
+        </template>
+
+        <!-- Step 6: Call Activity -->
+        <template lwc:if={isStep6}>
+            <div class="card">
+                <div class="card-header">
+                    <p class="section-label">Call activity field mapping</p>
+                    <template lwc:if={callActivityObj}>
+                        <span class="badge badge-info">{callActivityObj}</span>
+                    </template>
+                </div>
+                <p class="section-desc">Log call activity to an object. Turn this on to map the object's fields to MCube call values or static values.</p>
+
+                <!-- Enable toggle (default OFF) -->
+                <div class="toggle-wrap" style="margin:12px 0">
+                    <span class={callActivityToggleLabelClass}>{callActivityToggleLabel}</span>
+                    <div class={callActivityToggleTrackClass} onclick={toggleCallActivity}>
+                        <div class="toggle-knob"></div>
+                    </div>
+                </div>
+
+                <!-- Object + mapping rows — only when enabled -->
+                <template lwc:if={callActivityEnabled}>
+
+                    <!-- Target object dropdown -->
+                    <p class="section-label" style="margin-bottom:4px">Activity object</p>
+                    <select onchange={callActivityObjChange}>
+                        <template for:each={callActivityObjectOptions} for:item="opt">
+                            <option key={opt.value} value={opt.value} selected={opt.selected}>{opt.label}</option>
+                        </template>
+                    </select>
+
+                    <!-- Field mapping (shown once an object is picked) -->
+                    <template lwc:if={callActivityObj}>
+                        <div class="col-headers col-map" style="margin-top:16px">
+                            <span class="col-hdr">Salesforce field</span>
+                            <span></span>
+                            <span class="col-hdr">MCube value / static</span>
+                            <span></span>
+                        </div>
+
+                        <template for:each={callActivityRowsView} for:item="row">
+                            <div key={row.id} class="map-row-card">
+                                <div class="col-map">
+
+                                    <!-- LHS: object field -->
+                                    <select data-id={row.id} onchange={callActivityLhsChange}>
+                                        <template for:each={row.fieldOptions} for:item="opt">
+                                            <option key={opt.value} value={opt.value} selected={opt.selected}>
+                                                {opt.label}
+                                            </option>
+                                        </template>
+                                    </select>
+
+                                    <div class="eq-sign">=</div>
+
+                                    <!-- RHS block: MCube or Static (no lookup) -->
+                                    <div>
+                                        <div class="rhs-type-tabs">
+                                            <button class={row.tabMcubeClass}  data-id={row.id} data-type="mcube"  onclick={setCallActivityRhsType}>MCube</button>
+                                            <button class={row.tabStaticClass} data-id={row.id} data-type="static" onclick={setCallActivityRhsType}>Static</button>
+                                        </div>
+
+                                        <template lwc:if={row.isMcube}>
+                                            <select data-id={row.id} onchange={callActivityRhsValChange}>
+                                                <template for:each={row.mcubeOptions} for:item="opt">
+                                                    <option key={opt.value} value={opt.value} selected={opt.selected}>
+                                                        {opt.label}
+                                                    </option>
+                                                </template>
+                                            </select>
+                                        </template>
+
+                                        <template lwc:if={row.isStatic}>
+                                            <input
+                                                type="text"
+                                                placeholder="static value"
+                                                value={row.rhsVal}
+                                                data-id={row.id}
+                                                oninput={callActivityRhsValChange} />
+                                        </template>
+                                    </div>
+
+                                    <!-- Delete row -->
+                                    <button class="del-btn" data-id={row.id} onclick={removeCallActivityRow}>×</button>
+
+                                </div>
+                            </div>
+                        </template>
+
+                        <button class="add-btn" onclick={addCallActivityRow}>+ add field</button>
+                    </template>
+
+                </template>
+            </div>
+            <div class="nav">
+                <button class="btn-sec" onclick={previousStep}>← back</button>
+                <button class="btn-primary" onclick={nextStep}>Next →</button>
+            </div>
+        </template>
+
+        <!-- Step 7: Activate -->
+        <template lwc:if={isStep7}>
+            <div class="card">
+                <p class="section-label">Activate configuration</p>
+                <p class="section-desc">Review and activate this MCube configuration. Only one configuration can be active per object at a time.</p>
+                <div class="activate-block">
+                    <div>
+                        <div class="cfg-title">{cfgTitle}</div>
+                        <div class="cfg-sub">{cfgSub}</div>
+                    </div>
+                    <div class="toggle-wrap">
+                        <span class={toggleLabelClass}>{toggleLabel}</span>
+                        <div class={toggleTrackClass} onclick={toggleActive}>
+                            <div class="toggle-knob"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <p class="section-label" style="margin-bottom:8px">Summary</p>
+                <div class="summary-table">
+                    <template for:each={summaryRows} for:item="row">
+                        <div key={row.key} class="summary-row">
+                            <span class="summary-key">{row.key}</span>
+                            <span class="summary-val">{row.val}</span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div class="nav">
+                <button class="btn-sec" onclick={previousStep}>← back</button>
+                <button class="btn-primary" onclick={saveConfiguration}>Save configuration</button>
+            </div>
+        </template>
+
+    </div>
+</template>

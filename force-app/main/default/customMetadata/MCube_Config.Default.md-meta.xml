@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Default</label>
+    <protected>false</protected>
+    <values>
+        <field>API_Key__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>CallBack_URL__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Click_To_Call_URL__c</field>
+        <value xsi:type="xsd:string">http://api.mcube.com/Restmcube-api/outbound-calls</value>
+    </values>
+    <values>
+        <field>Enable_Mcube_Apex_Logs__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Mcube_EndPoint__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>New_Auth_Token__c</field>
+        <value xsi:type="xsd:string">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJUSEVfQ0xBSU0iLCJhdWQiOiJUSEVfQVVESUVOQ0UiLCJpYXQiOjE3OTQ5ODg5NTcsImV4cF9kYXRhIjoxODI2NTI0OTU3LCJkYXRhIjp7ImJpZCI6IjkxMTIifX0.9DcywoWGrjgqfJpSK5pEbRDApAMWHXGxUURvMz9sP6Q</value>
+    </values>
+    <values>
+        <field>Version__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+</CustomMetadata>

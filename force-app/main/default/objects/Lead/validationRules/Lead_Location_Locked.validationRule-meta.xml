@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Location_Locked</fullName>
+    <active>true</active>
+    <description>An existing Lead Geo Location can change only if Override Location was ticked before the save. System Administrators are exempt. Blank locations can be filled. Author: Tharun N | Date: 06-11-2026</description>
+    <errorConditionFormula>AND(
+    NOT(ISNEW()),
+    OR(
+        ISCHANGED(Lead_Geo_Location__Latitude__s),
+        ISCHANGED(Lead_Geo_Location__Longitude__s)
+    ),
+    NOT(ISBLANK(PRIORVALUE(Lead_Geo_Location__Latitude__s))),
+    NOT(ISBLANK(PRIORVALUE(Lead_Geo_Location__Longitude__s))),
+    NOT(PRIORVALUE(Location_Override__c)),
+    $Profile.Name &lt;&gt; &apos;System Administrator&apos;
+)</errorConditionFormula>
+    <errorMessage>Lead Geo Location is locked. Ask Lakshman, Yadav or the Salesforce admin to tick Override Location, then capture the location with Capture Location in the Salesforce app on your phone.</errorMessage>
+</ValidationRule>

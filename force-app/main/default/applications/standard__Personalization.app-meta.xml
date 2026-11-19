@@ -20,5 +20,6 @@
     <tabs>standard-PersnlTransformer</tabs>
     <tabs>standard-CalculatedAffinity</tabs>
     <tabs>standard-PersonalizationCampaign</tabs>
+    <tabs>Lead_Check_In__c</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

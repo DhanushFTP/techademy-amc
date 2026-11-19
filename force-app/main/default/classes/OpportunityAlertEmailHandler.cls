@@ -1,21 +1,26 @@
 /**
- * @description  Handles deal alert emails for Opportunity updates: evaluates the alert
- *               rules, builds the emails and sends them in bulk-safe batches.
- *               Called from OpportunityTrigger (after update).
+ * @description  Handles deal alert emails for Opportunity inserts and updates: evaluates the
+ *               alert rules, builds the emails and sends them in bulk-safe batches.
+ *               Called from OpportunityTrigger (after insert and after update).
  *
- *               Alert rules (evaluated on update) and the custom label holding each rule's
- *               recipients (comma/semicolon separated for multiple addresses):
- *                 1. Amount >= 25 Lakhs (before or after the change) and Stage or Amount changed
+ *               A deal is Won when its Forecast Category moves into Closed and Lost when it
+ *               moves into Omitted (the Forecast Category the forecast sheet uses). Moves between
+ *               Won stages or between Lost stages, and any change to a deal that stays Won or
+ *               Lost, send nothing.
+ *
+ *               Alert rules and the custom label holding each rule's recipients
+ *               (comma/semicolon separated for multiple addresses):
+ *                 1. Open deal whose amount crosses 25 Lakhs (rises to 25 Lakhs or above, or drops
+ *                    below it), or deal created at 25 Lakhs or above. Also a Won / Lost deal of
+ *                    25 Lakhs or above
  *                      -> Opportunity_Alert_High_Value_Emails
- *                 2. Amount >= 10 Lakhs and Stage changed to a Won or Lost stage
+ *                 2. Deal of 10 Lakhs or above moved to Won or Lost
  *                      -> Opportunity_Alert_Closed_Won_10L_Emails
- *                 3. Stage changed to a Won or Lost stage (any amount)
+ *                 3. Deal moved to Won or Lost (any amount), or created as Won
  *                      -> Opportunity_Alert_Closed_Deal_Emails
- *               Won stages are the Forecast Category Closed stages and Lost stages are the
- *               Forecast Category Omitted stages (STAGES_WON / STAGES_LOST).
- *               Rules apply only to deals owned by the department head
- *               (Opportunity_Alert_Department_Head_Username) or a user under the head: direct or
- *               indirect reports by Manager, or users in the head's role or any role below it.
+ *               Stage changes on an open deal, and amount changes that stay above or below
+ *               25 Lakhs, send nothing.
+ *               Rules apply only to deals whose owner's line of business is B2B (LOB__c).
  *               When several rules match, one email is sent per deal to the combined recipients.
  *               Each sent email is logged as an email activity on the deal. An alert that could
  *               not be sent or logged is recorded as a completed task on the deal.
@@ -30,13 +35,17 @@ public class OpportunityAlertEmailHandler {
     private static final Decimal HIGH_VALUE_THRESHOLD = 2500000; // 25 Lakhs
     private static final Decimal CLOSED_DEAL_THRESHOLD = 1000000; // 10 Lakhs
 
-    // Stage values that trigger closed-deal alerts
-    //Added @dhanush on 03/11/2026 made public so AccountBusinessTypeHandler uses the same won stages
+    // Forecast Categories (ForecastCategoryName) of a Won / Lost deal
+    private static final String FORECAST_WON = 'Closed';
+    private static final String FORECAST_LOST = 'Omitted';
+
+    // Owner line of business (Opportunity.LOB__c = owner's User.LOB__c) that receives alerts
+    private static final String ALERT_LOB = 'B2B';
+
+    // Won stages (Forecast Category Closed). Alerts use the Forecast Category; this list is
+    // used by AccountBusinessTypeHandler
     public static final Set<String> STAGES_WON = new Set<String>{
         'Invoiced', 'Invoiced - Delivery Pending', 'Invoiced - Delivery in Progress', 'Overdue', 'Collected'
-    };
-    private static final Set<String> STAGES_LOST = new Set<String>{
-        'Campaign', 'Closed Lost', 'Closed-Lost to Competition', 'Cold', 'Deferred', 'Solution Declined', 'Training Cancelled'
     };
 
     // Max emails passed to a single Messaging.sendEmail call
@@ -70,12 +79,6 @@ public class OpportunityAlertEmailHandler {
     private static OrgWideEmailAddress orgWideEmail;
     private static Boolean orgWideEmailLoaded = false;
 
-    // Department head and the users under the head (cached per transaction; null if the head is not found)
-    @TestVisible
-    private static Set<Id> departmentUserIds;
-    @TestVisible
-    private static Boolean departmentUserIdsLoaded = false;
-
     /**
      * @description Pairs an alert email with the deal it belongs to, so the email can be
      *              logged as an activity on that deal after it is sent.
@@ -94,6 +97,16 @@ public class OpportunityAlertEmailHandler {
     }
 
     /**
+     * @description Entry point from OpportunityTrigger (after insert). Builds the alert
+     *              emails for the new deals, sends them in bulk and logs each sent email as
+     *              an email activity on its deal.
+     * @param newOpps Trigger.new - inserted Opportunity records
+     */
+    public static void handleAfterInsert(List<Opportunity> newOpps) {
+        processAlerts(newOpps, null);
+    }
+
+    /**
      * @description Entry point from OpportunityTrigger (after update). Builds the alert
      *              emails for the updated deals, sends them in bulk and logs each sent
      *              email as an email activity on its deal.
@@ -101,6 +114,17 @@ public class OpportunityAlertEmailHandler {
      * @param oldOppMap Trigger.oldMap - Opportunity records before the update
      */
     public static void handleAfterUpdate(List<Opportunity> newOpps, Map<Id, Opportunity> oldOppMap) {
+        if (oldOppMap == null) return;
+        processAlerts(newOpps, oldOppMap);
+    }
+
+    /**
+     * @description Builds and sends the alert emails, then records the limit usage used to
+     *              detect a retried save.
+     * @param newOpps   Inserted or updated Opportunity records
+     * @param oldOppMap Opportunity records before the update (null for inserted deals)
+     */
+    private static void processAlerts(List<Opportunity> newOpps, Map<Id, Opportunity> oldOppMap) {
         sendEmailsInBulk(buildAlertEmails(newOpps, oldOppMap));
         emailInvocationsSnapshot = Limits.getEmailInvocations();
         dmlStatementsSnapshot = Limits.getDmlStatements();
@@ -109,10 +133,10 @@ public class OpportunityAlertEmailHandler {
     // ---------------- Rule evaluation ----------------
 
     /**
-     * @description Evaluates the alert rules for each updated Opportunity and builds one
-     *              email per matching deal. Does not send the emails.
-     * @param newOpps   Updated Opportunity records
-     * @param oldOppMap Opportunity records before the update
+     * @description Evaluates the alert rules for each inserted or updated Opportunity and
+     *              builds one email per matching deal. Does not send the emails.
+     * @param newOpps   Inserted or updated Opportunity records
+     * @param oldOppMap Opportunity records before the update (null for inserted deals)
      * @return List of alert emails ready to be sent (empty if no rule matched)
      */
     @TestVisible
@@ -120,7 +144,7 @@ public class OpportunityAlertEmailHandler {
         List<Opportunity> newOpps, Map<Id, Opportunity> oldOppMap
     ) {
         List<AlertEmail> emails = new List<AlertEmail>();
-        if (newOpps == null || newOpps.isEmpty() || oldOppMap == null) return emails;
+        if (newOpps == null || newOpps.isEmpty()) return emails;
 
         // A partial-success save was rolled back and is being retried: the emails of the first
         // attempt were discarded, so the deals must be evaluated again
@@ -136,46 +160,60 @@ public class OpportunityAlertEmailHandler {
         String orgUrl = URL.getOrgDomainUrl().toExternalForm();
 
         for (Opportunity opp : newOpps) {
-            Opportunity oldOpp = oldOppMap.get(opp.Id);
-            if (oldOpp == null || processedOppIds.contains(opp.Id)) continue;
+            // Null for an inserted deal
+            Opportunity oldOpp = oldOppMap == null ? null : oldOppMap.get(opp.Id);
+            if ((oldOppMap != null && oldOpp == null) || processedOppIds.contains(opp.Id)) continue;
+            // Alerts only for deals owned by B2B users
+            if (opp.LOB__c != ALERT_LOB) continue;
 
             Decimal amount = opp.Amount == null ? 0 : opp.Amount;
-            Decimal oldAmount = oldOpp.Amount == null ? 0 : oldOpp.Amount;
-            // High value before or after the change, so a drop below 25 Lakhs still alerts
-            Boolean isHighValue = amount >= HIGH_VALUE_THRESHOLD || oldAmount >= HIGH_VALUE_THRESHOLD;
-            Boolean stageChanged = opp.StageName != oldOpp.StageName;
-            Boolean amountChanged = opp.Amount != oldOpp.Amount;
-            Boolean movedToWon = stageChanged && STAGES_WON.contains(opp.StageName);
-            Boolean movedToLost = stageChanged && STAGES_LOST.contains(opp.StageName);
+            Decimal oldAmount = (oldOpp == null || oldOpp.Amount == null) ? 0 : oldOpp.Amount;
+            Boolean isHighValue = amount >= HIGH_VALUE_THRESHOLD;
+            Boolean wasHighValue = oldAmount >= HIGH_VALUE_THRESHOLD;
+            Boolean isWon = opp.ForecastCategoryName == FORECAST_WON;
+            Boolean isLost = opp.ForecastCategoryName == FORECAST_LOST;
+            // Won / Lost only when the deal enters the Forecast Category, so moves between Won (or
+            // Lost) stages send nothing. A deal created as Won alerts; one created in a Lost stage
+            // (e.g. Campaign) does not
+            Boolean movedToWon = isWon && (oldOpp == null || oldOpp.ForecastCategoryName != FORECAST_WON);
+            Boolean movedToLost = isLost && oldOpp != null && oldOpp.ForecastCategoryName != FORECAST_LOST;
+            Boolean movedToWonOrLost = movedToWon || movedToLost;
+            // Amount alert only for an open deal whose amount crosses 25 Lakhs either way; a deal
+            // created at 25 Lakhs or above counts as crossing
+            Boolean crossedHighValue = !isWon && !isLost && isHighValue != wasHighValue;
 
             Set<String> recipients = new Set<String>();
             List<String> reasons = new List<String>();
 
-            // Rule 1: High value deal with Stage or Amount change
-            if (isHighValue && (stageChanged || amountChanged)) {
+            // Rule 1: Open deal crossing 25 Lakhs, or a Won / Lost deal of 25 Lakhs or above
+            if (crossedHighValue) {
                 recipients.addAll(highValueEmails);
-                reasons.add('High value deal (25 Lakhs or above) - ' +
-                    (stageChanged && amountChanged ? 'Stage and Amount changed'
-                        : stageChanged ? 'Stage changed' : 'Amount changed'));
+                reasons.add(oldOpp == null ? 'Deal created at 25 Lakhs or above'
+                    : isHighValue ? 'Amount reached 25 Lakhs or above' : 'Amount dropped below 25 Lakhs');
+            } else if (movedToWonOrLost && isHighValue) {
+                recipients.addAll(highValueEmails);
+                reasons.add('High value deal (25 Lakhs or above)');
             }
-            // Rule 2: Deal of 10 Lakhs or above moved to a Won / Lost stage
-            if ((movedToWon || movedToLost) && amount >= CLOSED_DEAL_THRESHOLD) {
+            // Rule 2: Deal of 10 Lakhs or above moved to Won / Lost
+            if (movedToWonOrLost && amount >= CLOSED_DEAL_THRESHOLD) {
                 recipients.addAll(closedWon10LEmails);
-                reasons.add('Deal of 10 Lakhs or above moved to ' + opp.StageName);
+                reasons.add('Deal of 10 Lakhs or above');
             }
-            // Rule 3: Any deal moved to a Won / Lost stage
-            if (movedToWon || movedToLost) {
+            // Rule 3: Any deal moved to Won / Lost
+            if (movedToWonOrLost) {
                 recipients.addAll(closedDealEmails);
-                reasons.add('Deal moved to ' + opp.StageName);
+                reasons.add((oldOpp == null ? 'Deal created in ' : 'Deal moved to ') + opp.StageName +
+                    ' (Forecast Category ' + opp.ForecastCategoryName + ')');
             }
 
-            if (recipients.isEmpty() || !isDepartmentDeal(opp)) continue;
+            if (recipients.isEmpty()) continue;
             processedOppIds.add(opp.Id);
 
             Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
             email.setToAddresses(new List<String>(recipients));
             email.setSubject(buildSubject(opp, movedToWon, movedToLost));
-            email.setHtmlBody(buildHtmlBody(opp, oldOpp, reasons, orgUrl));
+            // An inserted deal has no old values, so the deal itself is shown as both old and new
+            email.setHtmlBody(buildHtmlBody(opp, oldOpp == null ? opp : oldOpp, reasons, orgUrl));
             // Activity is logged manually (logEmailActivities) since recipients are plain addresses
             email.setSaveAsActivity(false);
             emails.add(new AlertEmail(opp.Id, email));
@@ -188,83 +226,6 @@ public class OpportunityAlertEmailHandler {
             }
         }
         return emails;
-    }
-
-    // ---------------- Department filter ----------------
-
-    /**
-     * @description Checks whether a deal is owned by the department head or a user under the
-     *              head. Users are queried once per transaction and cached, and only when a
-     *              deal matches an alert rule. If the head is not found the deal is treated as
-     *              in scope, so a wrong label cannot silently stop every alert.
-     * @param opp Updated Opportunity
-     * @return True if the deal should alert
-     */
-    private static Boolean isDepartmentDeal(Opportunity opp) {
-        if (!departmentUserIdsLoaded) {
-            departmentUserIdsLoaded = true;
-            String headUsername = System.Label.Opportunity_Alert_Department_Head_Username.trim();
-            departmentUserIds = findDepartmentUsers(
-                headUsername,
-                [SELECT Id, Username, ManagerId, UserRoleId FROM User WHERE UserType = 'Standard'],
-                [SELECT Id, ParentRoleId FROM UserRole]
-            );
-            if (departmentUserIds == null) {
-                System.debug(LoggingLevel.ERROR, 'Opportunity alert department filter skipped - head not found: ' + headUsername);
-            }
-        }
-        return departmentUserIds == null || departmentUserIds.contains(opp.OwnerId);
-    }
-
-    /**
-     * @description Finds the department head and the users under the head: direct or indirect
-     *              reports by Manager, plus users in the head's role or any role below it.
-     * @param headUsername Username of the department head
-     * @param users        Users to search
-     * @param roles        Roles to search
-     * @return Ids of the head and the users under the head, or null if the head is not found
-     */
-    @TestVisible
-    private static Set<Id> findDepartmentUsers(String headUsername, List<User> users, List<UserRole> roles) {
-        User head;
-        Map<Id, Id> managerByUser = new Map<Id, Id>();
-        for (User u : users) {
-            if (u.Username == headUsername) head = u;
-            managerByUser.put(u.Id, u.ManagerId);
-        }
-        if (head == null) return null;
-
-        Set<Id> departmentUsers = rollUpTo(head.Id, managerByUser);
-        if (head.UserRoleId != null) {
-            Map<Id, Id> parentByRole = new Map<Id, Id>();
-            for (UserRole role : roles) {
-                parentByRole.put(role.Id, role.ParentRoleId);
-            }
-            Set<Id> departmentRoles = rollUpTo(head.UserRoleId, parentByRole);
-            for (User u : users) {
-                if (departmentRoles.contains(u.UserRoleId)) departmentUsers.add(u.Id);
-            }
-        }
-        return departmentUsers;
-    }
-
-    /**
-     * @description Returns the root plus every record that rolls up to it, direct or indirect.
-     * @param rootId     Top of the hierarchy
-     * @param parentById Each record's Id mapped to its parent's Id
-     * @return Ids of the root and the records under it
-     */
-    private static Set<Id> rollUpTo(Id rootId, Map<Id, Id> parentById) {
-        Set<Id> members = new Set<Id>{ rootId };
-        Integer previousSize = 0;
-        // Each pass adds one more level; stops when a pass adds nobody
-        while (members.size() != previousSize) {
-            previousSize = members.size();
-            for (Id childId : parentById.keySet()) {
-                if (members.contains(parentById.get(childId))) members.add(childId);
-            }
-        }
-        return members;
     }
 
     // ---------------- Bulk sending ----------------
@@ -466,9 +427,9 @@ public class OpportunityAlertEmailHandler {
 
     /**
      * @description Builds the email subject based on the deal outcome.
-     * @param opp         Updated Opportunity
-     * @param movedToWon  True if the stage just changed to a Won stage
-     * @param movedToLost True if the stage just changed to a Lost stage
+     * @param opp         Inserted or updated Opportunity
+     * @param movedToWon  True if the deal just became Won
+     * @param movedToLost True if the deal just became Lost
      * @return Email subject
      */
     private static String buildSubject(Opportunity opp, Boolean movedToWon, Boolean movedToLost) {
@@ -478,8 +439,9 @@ public class OpportunityAlertEmailHandler {
 
     /**
      * @description Builds the HTML email body with the alert reasons and deal details.
-     * @param opp     Updated Opportunity
-     * @param oldOpp  Opportunity before the update (used to show old -> new values)
+     * @param opp     Inserted or updated Opportunity
+     * @param oldOpp  Opportunity before the update, used to show old -> new values (the deal
+     *                itself for an inserted deal)
      * @param reasons Alert reasons that matched for this deal
      * @param orgUrl  Current org base URL used for the deal link
      * @return HTML email body
@@ -493,7 +455,7 @@ public class OpportunityAlertEmailHandler {
         return
             '<div style="font-family:Arial,sans-serif;font-size:14px;color:#333;">' +
             '<p>Hi,</p>' +
-            '<p>The following deal has been updated and requires your attention:</p>' +
+            '<p>The following deal requires your attention:</p>' +
             '<ul>' + reasonList + '</ul>' +
             '<table cellpadding="6" cellspacing="0" border="1" style="border-collapse:collapse;border-color:#ddd;">' +
             row('Deal Name', opp.Name) +
